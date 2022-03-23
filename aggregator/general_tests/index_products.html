@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title> Cadastro de Produtos </title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta name="description" content="htmlProducts"/>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/script_jobs.js"></script>
+	<link rel="stylesheet" href="style.css" type="text/css"/>
+</head>
+<body>
+	<div id="main">
+		<h1> Cadastro de itens</h1>
+		<form action="" method="post" id="frmLoadFile">
+			<fieldset>
+				<legend>Carregar Lista de Produtos</legend>
+				<table id="tblLoadFile" cellspacing="10">
+					<tr>
+						<td>
+							<input type="file" id="fileUpload" accept=".json"/>
+						</td>
+						<td>
+							<input type="submit" value="Carregar arquivo" id="btnLoadFile"/>
+						</td>
+					</tr>
+				</table><!-- /tblLoadFile -->
+			</fieldset>
+			<p></p>
+		</form><!-- /frmLoadFile -->
+		<form action="" method="post" id="frmRegister">
+			<fieldset>
+				<legend>Cadastro de Produtos</legend>
+				<table id="tblRegisterItems" cellspacing="10">
+					<tr id="rowProductDescription">
+						<td>
+							<label for="txtProductID">ID:</label><br>
+							<input type="text" id="txtProductID" class="input" value="" size="30"/>
+						</td>
+						<td>
+							<label for="txtProductName">Produto:</label><br>
+							<input type="text" id="txtProductName" class="input" value="" size="30"/>
+						</td>
+						<td>
+							<label for="txtProductJob">Job:</label><br>
+							<input list="dtlProductJob" id="txtProductJob">
+							<datalist id="dtlProductJob"></datalist>
+						</td>
+					</tr>
+					<tr id="rowProcess">
+						<td>
+							<label for="txtProductProcess">Processo:</label><br>
+							<input list="dtlProductProcess" id="txtProductProcess">
+							<datalist id="dtlProductProcess"></datalist>
+						
+						</td>
+						<td>
+							<label for="txtProductProcessSetup">Setup (min):</label><br>
+							<input type="text" id="txtProductProcessSetup" class="input" value="" size="30"/>
+						</td>
+						<td>
+							<label for="txtProductProcessTime">Tempo (min):</label><br>
+							<input type="text" id="txtProductProcessTime" class="input" value="" size="30"/>
+						</td>
+						<td>
+							<label for="txtProductProcessImpositions">Imposições:</label><br>
+							<textarea id="txtProductProcessImpositions" rows="1" cols="32"></textarea><br>
+						</td>
+					</tr>
+					<tr id="rowMaterial">
+						<td>
+							<label for="txtProductMaterial">Material:</label><br>
+							<input list="dtlProductMaterial" id="txtProductMaterial">
+							<datalist id="dtlProductMaterial"></datalist>
+						</td>
+						<td>
+							<label for="txtProductMaterialQuantity">Quantidade:</label><br>
+							<input type="text" id="txtProductMaterialQuantity" class="input" value="" size="30"/>
+						</td>
+						<td>
+							<label for="txtProductMaterialImpositions">Imposições:</label><br>
+							<textarea id="txtProductMaterialImpositions" rows="1" cols="32"></textarea><br>
+						</td>
+					</tr>
+					<tr id="rowOutsourced">
+						<td>
+							<label for="txtProductOutsourced">Terceirizados:</label><br>
+							<input list="dtlProductOutsourced" id="txtProductOutsourced">
+							<datalist id="dtlProductOutsourced"></datalist>
+						</td>
+						<td>
+							<label for="txtProductOutsourcedTime">Tempo (min):</label><br>
+							<input type="text" id="txtProductOutsourcedTime" class="input" value="" size="30"/>
+						</td>
+						<td>
+							<label for="txtProductOutsourcedImpositions">Imposições:</label><br>
+							<textarea id="txtProductOutsourcedImpositions" rows="1" cols="32"></textarea><br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="txtProductProcessPredecessor">Predecessor (ID):</label><br>
+							<input type="text" id="txtProductProcessPredecessor" class="input" value="" size="30"/>
+						</td>
+						<td>
+							<label for="txtProductProcessSuccessor">Sucessor (ID):</label><br>
+							<input type="text" id="txtProductProcessSuccessor" class="input" value="" size="30"/>
+						</td>
+					</tr>
+				</table>
+				<input type="submit" value="Adicionar" id="btnAddItem"/>
+			</fieldset>
+		</form><!-- /frmRegister -->
+		<table id="tblListItems"></table>
+		<input type="submit" value="Salvar" id="btnRegister"/>
+	</div><!-- /main -->
+</body>
+</html>

@@ -1,0 +1,324 @@
+{
+  "__ProductVariableModel__": {
+    "declared_variables": [
+      "medidas_do_trabalho",
+      "medidas_do_trabalho.largura",
+      "medidas_do_trabalho",
+      "medidas_do_trabalho.comprimento",
+      "midia",
+      "midia.materias_primas"
+    ],
+    "undeclared_variables": null,
+    "post_scripts": [],
+    "pre_scripts": [
+      {
+        "__HPLScript__": {
+          "context_variable": "medidas_do_trabalho",
+          "script": "inteiro indice_maximo = medidas_do_trabalho.tamanho - 1  objeto largura  objeto comprimento  inteiro indice_atual = 0  enquanto (indice_atual MenorOuIgual indice_maximo) faz {     se(medidas_do_trabalho{indice_atual}.chaves.contem(\"largura\")){        largura = medidas_do_trabalho{indice_atual}     }     se(medidas_do_trabalho{indice_atual}.chaves.contem(\"comprimento\")){         comprimento = medidas_do_trabalho{indice_atual}     }     indice_atual = indice_atual + 1  }  objeto trabalho = {        largura: largura.largura;        comprimento: comprimento.comprimento;        descricao: \"Banner em Lona\";        copias: 1 } [trabalho]",
+          "language": 0
+        }
+      }
+    ],
+    "processes": [
+      {
+        "__ProcessVariableModel__": {
+          "declared_variables": [
+            "tabela_de_produtividade",
+            "tabela_de_produtividade.familia_para_refilar",
+            "tabela_de_produtividade.espessura_maxima",
+            "tabela_de_produtividade.produtividade",
+            "tabela_de_produtividade",
+            "tabela_de_produtividade.tempo_de_setup",
+            "tabela_de_produtividade",
+            "tabela_de_produtividade.numero_de_pessoas_alocadas",
+            "sobras_de_midia_por_copia",
+            "sobras_de_midia_por_copia.descricao",
+            "sobras_de_midia_por_copia",
+            "sobras_de_midia_por_copia.superior",
+            "sobras_de_midia_por_copia",
+            "sobras_de_midia_por_copia.inferior",
+            "sobras_de_midia_por_copia",
+            "sobras_de_midia_por_copia.esquerda",
+            "sobras_de_midia_por_copia",
+            "sobras_de_midia_por_copia.direita",
+            "agrupamento_de_processos",
+            "agrupamento_de_processos.agrupado_por_medida"
+          ],
+          "undeclared_variables": null,
+          "post_scripts": [],
+          "pre_scripts": [
+            {
+              "__HPLScript__": {
+                "context_variable": "tabela_de_produtividade",
+                "script": "sequência tabela_temporaria = tabela_de_produtividade.tabela_de_produtividade            inteiro tamanho_produtividade = tabela_temporaria.tamanho - 1            inteiro produtividade_atual = 0  sequência materias_primas_escolhidas = materia_prima_escolhida inteiro tamanho_materia_prima_escolhida = materias_primas_escolhidas.tamanho - 1 inteiro materia_prima_atual = 0 enquanto(materia_prima_atual menorOuIgual tamanho_materia_prima_escolhida) faz { objeto propriedades_materia_prima = materias_primas_escolhidas{materia_prima_atual}.propriedades            enquanto(produtividade_atual menorOuIgual tamanho_produtividade) faz {                               objeto linha_produtividade = tabela_temporaria{produtividade_atual}                               sequência familias_produtividade = linha_produtividade.familia_para_refilar                                se (familias_produtividade.contem(materias_primas_escolhidas{materia_prima_atual}.familia) e                                    propriedades_materia_prima.espessura menorOuIgual linha_produtividade.espessura_maxima){                                    linha_produtividade{\"tempo_de_setup\"}=tabela_de_produtividade{\"tempo_de_setup\"}                                    linha_produtividade{\"numero_de_pessoas_alocadas\"}=tabela_de_produtividade{\"numero_de_pessoas_alocadas\"}                                    tabela_de_produtividade = linha_produtividade                                }                                produtividade_atual = produtividade_atual + 1                }   materia_prima_atual = materia_prima_atual + 1     }         tabela_de_produtividade",
+                "language": 0
+              }
+            }
+          ],
+          "simulator_hpl_script": {},
+          "feedstock_formulas": [
+            {
+              "__ProcessFeedstockVariableModel__": {
+                "choose_feedstock_script": {
+                  "__HPLScript__": {
+                    "context_variable": "materia_prima_escolhida",
+                    "script": "se (não existe(materia_prima_escolhida)) { inteiro indice_escolhido = 0 inteiro indice_atual = 0 objeto materias_primas = midia_de_impressao{0} sequência opcoes_materia_prima = materias_primas.materias_primas inteiro indice_maximo = opcoes_materia_prima.tamanho - 1 sequência materias_primas_escolhidas enquanto (indice_atual MenorOuIgual indice_maximo) faz { objeto opcao_materia_prima = opcoes_materia_prima{indice_atual} objeto mp_escolhida = opcoes_materia_prima{indice_escolhido} se (opcao_materia_prima.price menorOuIgual mp_escolhida.price) { indice_escolhido = indice_atual materias_primas_escolhidas.adiciona(opcoes_materia_prima{indice_escolhido}) } indice_atual = indice_atual + 1 } materias_primas_escolhidas }",
+                    "language": 0
+                  }
+                },
+                "feedstock_spent_script": {
+                  "__HPLScript__": {
+                    "context_variable": "materia_prima_gasta",
+                    "script": "0",
+                    "language": 0
+                  }
+                },
+                "post_scripts": null
+              }
+            }
+          ],
+          "ink_cost_script": {},
+          "ink_quantity_script": {},
+          "ink_quantities_script": {},
+          "total_loss_script": {},
+          "percent_loss_script": {},
+          "print_area_script": {},
+          "time_spent_script": {
+            "__HPLScript__": {
+              "context_variable": "tempo_gasto",
+              "script": "inteiro tamanho = medidas_do_trabalho.tamanho - 1               flutuante tempo = 0,0             se (agrupamento_de_processos.agrupado_por_medida) {                 inteiro indice = 0                objeto medida                enquanto (indice menorOuIgual tamanho) faz {                    medida = medidas_do_trabalho{indice}                     tempo = tempo + ((medida.comprimento + medida.largura) * 2 / tabela_de_produtividade.produtividade ) * medida.copias + tabela_de_produtividade.tempo_de_setup                     indice = indice + 1                 }             } senão {                objeto medida = medidas_do_trabalho{indice}                 tempo = tempo + ((medida.comprimento + medida.largura) * 2 / tabela_de_produtividade.tabela_de_produtividade ) * medida.copias + tabela_de_produtividade.tempo_de_setup             }            tempo = (tempo) hr             tempo",
+              "language": 0
+            }
+          },
+          "total_time_spent_script": {},
+          "feedstock_spent_script": {},
+          "allocation_map_script": {},
+          "amendment_list_script": {},
+          "obj_script": {},
+          "subtotal_script": {
+            "__HPLScript__": {
+              "context_variable": "custo_total",
+              "script": "custo_tempo + custo_materia_prima",
+              "language": 0
+            }
+          }
+        }
+      },
+      {
+        "__ProcessVariableModel__": {
+          "declared_variables": [
+            "equipamentos",
+            "equipamentos.equipamentos",
+            "restricoes",
+            "restricoes.considerar_o_numero_de_emendas",
+            "restricoes",
+            "restricoes.considerar_apenas_um_fornecedor",
+            "restricoes",
+            "restricoes.considerar_sobra_para_emenda_imprimivel",
+            "restricoes",
+            "restricoes.aceitar_cortes_verticais",
+            "restricoes",
+            "restricoes.permitir_reuso_de_midia",
+            "restricoes",
+            "restricoes.aceitar_cortes_horizontais",
+            "restricoes",
+            "restricoes.considerar_o_numero_de_midias",
+            "restricoes",
+            "restricoes.considerar_midias_com_altura_maxima"
+          ],
+          "undeclared_variables": null,
+          "post_scripts": [],
+          "pre_scripts": [],
+          "simulator_hpl_script": {
+            "__HPLScript__": {
+              "context_variable": "simulador",
+              "script": "sequência sobras_midia = trabalho.sobras_de_midia_por_original_para_acabamentos sequência medidas_temporarias = medidas_do_trabalho inteiro tamanho_medida = medidas_temporarias.tamanho - 1 inteiro indice_medida_atual = 0 objeto medida_atual sequência medidas enquanto (indice_medida_atual menorOuIgual tamanho_medida) faz {   medida_atual = medidas_temporarias{indice_medida_atual}   texto largura = medida_atual.largura   texto comprimento = medida_atual.comprimento   texto descricao = medida_atual.descricao   flutuante num_copias = medida_atual.copias   flutuante tamanho_da_emenda = 100   texto emenda_horizontal = \"right\"   texto emenda_vertical = \"bottom\"   indice_medida_atual = indice_medida_atual + 1   sequência medida = [largura; comprimento; descricao; num_copias; tamanho_da_emenda; emenda_horizontal; emenda_vertical]   medidas.adiciona(medida) }  sequência maquinas_temporarias = equipamentos.equipamentos inteiro tamanho_maquinas = maquinas_temporarias.tamanho - 1 inteiro indice_maquina_atual = 0 objeto maquina_atual sequência maquinas enquanto (indice_maquina_atual menorOuIgual tamanho_maquinas) faz {   maquina_atual = maquinas_temporarias{indice_maquina_atual}   sequência perfis_de_impressao = maquina_atual.context.perfis_de_impressao.perfis_de_impressao    inteiro tamanho_perfis_de_impressao = perfis_de_impressao.tamanho - 1   inteiro indice_perfil_atual = 0   objeto perfil_atual   enquanto (indice_perfil_atual menorOuIgual tamanho_perfis_de_impressao) faz {     perfil_atual = perfis_de_impressao{indice_perfil_atual}      texto RIP_time = perfil_atual.rip      sequência midia_de_impressao = midia_de_impressao     inteiro tamanho_midias = midia_de_impressao.tamanho - 1     inteiro indice_midia_atual = 0     sequência bins     sequência lista_materias_primas     enquanto (indice_midia_atual menorOuIgual tamanho_midias) faz {       objeto midia_atual = midia_de_impressao{indice_midia_atual}        sequência materias_primas = midia_atual.materias_primas       inteiro tamanho_materias = materias_primas.tamanho - 1       inteiro indice_materia_prima_atual = 0       indice_midia_atual = indice_midia_atual + 1       enquanto (indice_materia_prima_atual menorOuIgual tamanho_materias) faz {         objeto materia_prima_atual = materias_primas{indice_materia_prima_atual}          objeto opcoes = materia_prima_atual.opcoes         texto largura = opcoes.largura         texto comprimento = opcoes.comprimento         flutuante preco = materia_prima_atual.price         flutuante option_id = materia_prima_atual.option_id      texto materia_prima_id = materia_prima_atual.id  inteiro materia_prima_version = materia_prima_atual.version  texto  materia_prima_measurement_unit = materia_prima_atual.measurement_unit       indice_materia_prima_atual = indice_materia_prima_atual + 1         sequência properties = materia_prima_atual.chaves  inteiro comercial_id = -1                booleano has_comercial_id = properties.contem([\"comercial_id\"])                se (has_comercial_id) {                      comercial_id = materia_prima_atual.comercial_id                }    sequência bin = [largura; comprimento; preco; option_id; comercial_id; materia_prima_id; materia_prima_version; materia_prima_measurement_unit]            bins.adiciona(bin)         lista_materias_primas.adiciona(materia_prima_atual)       }     }       objeto perfis = perfil_atual.tinta   sequência tintas = perfis.tintas   inteiro tamanho_tintas = tintas.tamanho - 1    inteiro indice_tinta_atual = 0    objeto tinta_atual    sequência inks    enquanto (indice_tinta_atual menorOuIgual tamanho_tintas) faz {        tinta_atual = tintas{indice_tinta_atual}     sequência related_feedstock_list = tinta_atual.materia_prima_relacionada    objeto related_feedstock = related_feedstock_list{0}        sequência ink = [related_feedstock.id; related_feedstock.price; tinta_atual.consumo; related_feedstock.option_id; related_feedstock.version]      indice_tinta_atual = indice_tinta_atual + 1  inks.adiciona(ink)    }     texto calc_type = \"openess_calc\"      texto init_time = perfil_atual.acerto_midia      booleano inset_reels = falso      objeto margens_e_sobras_padroes = maquina_atual.context.margens_e_sobras_padroes     texto superior = margens_e_sobras_padroes.superior     texto esquerda = margens_e_sobras_padroes.esquerda     texto direita = margens_e_sobras_padroes.direita     texto inferior = margens_e_sobras_padroes.inferior       objeto margins = { top: superior; left: esquerda; right: direita; bottom: inferior}      objeto propriedades_da_impressora = maquina_atual.context.propriedades_da_impressora     texto openess = propriedades_da_impressora.boca      texto produtivity = perfil_atual.produtividade      texto time_cost = maquina_atual.context.centro_de_custos     inteiro space_between_reels = 100      inteiro max_parallel_reels = 100           indice_maquina_atual = indice_maquina_atual + 1   inteiro public_id_maquina_atual = maquina_atual.public_id  inteiro version_maquina_atual = maquina_atual.version    objeto maquina_temporaria = {machine_public_id: public_id_maquina_atual; printing_profile_index: indice_perfil_atual;RIP_time: RIP_time; bins: bins; inks: inks; calc_type: calc_type; init_time: init_time; inset_reels: inset_reels; margins: margins; max_parallel_reels: max_parallel_reels; openess: openess; produtivity: produtivity; time_cost: time_cost; space_between_reels: space_between_reels; version: version_maquina_atual}   indice_perfil_atual = indice_perfil_atual + 1  maquinas.adiciona(maquina_temporaria)   } }  inteiro generations = 300 inteiro max_stablement = 10 inteiro population = 10  objeto informacoes_geneticas = {generations: generations; max_stablement: max_stablement; population: population}  booleano consider_amendments_number = restricoes.considerar_o_numero_de_emendas booleano consider_bins_number = restricoes.considerar_o_numero_de_midias booleano horizontal_cut = restricoes.aceitar_cortes_horizontais booleano infinite_height = restricoes.considerar_midias_com_altura_maxima flutuante minimum_cut = 1000 booleano overwrite_itens_amendments_configurations = falso booleano printed_amendment = restricoes.considerar_sobra_para_emenda_imprimivel booleano reuse_bins = restricoes.permitir_reuso_de_midia booleano same_supplier = restricoes.considerar_apenas_um_fornecedor booleano vertical_cut = restricoes.aceitar_cortes_verticais  booleano use_feedstock = verdadeiro  objeto cuts = trabalho.cuttings  objeto restricoes = {consider_amendments_number: consider_amendments_number; consider_bins_number: consider_bins_number; horizontal_cut: horizontal_cut; infinite_height: infinite_height; minimum_cut: minimum_cut; overwrite_itens_amendments_configurations: overwrite_itens_amendments_configurations; printed_amendment: printed_amendment; reuse_bins: reuse_bins; same_supplier: same_supplier; vertical_cut: vertical_cut; use_feedstock: use_feedstock; cuts: cuts}  objeto resultado_simulador = simulador_impressao(medidas;maquinas;informacoes_geneticas;restricoes;sobras_midia) sequência bins_ids_temporarias = resultado_simulador.suppliers inteiro tamanho_bins_ids = bins_ids_temporarias.tamanho - 1 inteiro indice_bin_id_atual = 0 sequência materia_prima_escolhida enquanto(indice_bin_id_atual menorOuIgual tamanho_bins_ids) faz { flutuante option_id_bin = bins_ids_temporarias{indice_bin_id_atual} sequência bins_temporarias = lista_materias_primas inteiro tamanho_bins_temporarias = bins_temporarias.tamanho - 1 inteiro indice_bin_atual = 0 enquanto (indice_bin_atual menorOuIgual tamanho_bins_temporarias) faz { objeto bin_atual = bins_temporarias{indice_bin_atual} se (bin_atual.option_id igual option_id_bin) { materia_prima_escolhida.adiciona(bin_atual) } indice_bin_atual = indice_bin_atual + 1 } indice_bin_id_atual = indice_bin_id_atual + 1 } resultado_simulador{\"choose_feedstocks\"} = materia_prima_escolhida resultado_simulador",
+              "language": 0
+            }
+          },
+          "feedstock_formulas": [],
+          "ink_cost_script": {
+            "__HPLScript__": {
+              "context_variable": "custo_tinta",
+              "script": "simulador.ink_cost",
+              "language": 0
+            }
+          },
+          "ink_quantity_script": {
+            "__HPLScript__": {
+              "context_variable": "quantidade_tinta",
+              "script": "simulador.ink_quantity",
+              "language": 0
+            }
+          },
+          "ink_quantities_script": {
+            "__HPLScript__": {
+              "context_variable": "quantidades_tintas",
+              "script": "simulador.inks_quantities",
+              "language": 0
+            }
+          },
+          "total_loss_script": {
+            "__HPLScript__": {
+              "context_variable": "perda_total",
+              "script": "simulador.total_loss",
+              "language": 0
+            }
+          },
+          "percent_loss_script": {
+            "__HPLScript__": {
+              "context_variable": "porcentagem_perda",
+              "script": "simulador.percent",
+              "language": 0
+            }
+          },
+          "print_area_script": {
+            "__HPLScript__": {
+              "context_variable": "area_impressao",
+              "script": "simulador.retangle_area",
+              "language": 0
+            }
+          },
+          "time_spent_script": {
+            "__HPLScript__": {
+              "context_variable": "tempo_gasto",
+              "script": "simulador.print_time",
+              "language": 0
+            }
+          },
+          "total_time_spent_script": {},
+          "feedstock_spent_script": {},
+          "allocation_map_script": {
+            "__HPLScript__": {
+              "context_variable": "mapa_de_alocacao",
+              "script": "simulador.allocation_map",
+              "language": 0
+            }
+          },
+          "amendment_list_script": {
+            "__HPLScript__": {
+              "context_variable": "lista_de_emendas",
+              "script": "simulador.amendment_list",
+              "language": 0
+            }
+          },
+          "obj_script": {
+            "__HPLScript__": {
+              "context_variable": "objeto_retornado",
+              "script": "simulador.obj",
+              "language": 0
+            }
+          },
+          "subtotal_script": {
+            "__HPLScript__": {
+              "context_variable": "custo_total",
+              "script": "custo_tempo + custo_materia_prima",
+              "language": 0
+            }
+          }
+        }
+      },
+      {
+        "__ProcessVariableModel__": {
+          "declared_variables": [
+            "bastao_de_acabamento",
+            "bastao_de_acabamento.bastao_de_acabamento",
+            "ponteira_de_acabamento",
+            "ponteira_de_acabamento.ponteira_de_acabamento",
+            "corda_de_acabamento",
+            "corda_de_acabamento.corda_de_acabamento",
+            "produtividade",
+            "produtividade.largura_maxima",
+            "produtividade.produtividade",
+            "produtividade",
+            "produtividade.tempo_de_setup",
+            "produtividade",
+            "produtividade.numero_de_pessoas"
+          ],
+          "undeclared_variables": null,
+          "post_scripts": [],
+          "pre_scripts": [],
+          "simulator_hpl_script": {},
+          "feedstock_formulas": [
+            {
+              "__ProcessFeedstockVariableModel__": {
+                "choose_feedstock_script": {
+                  "__HPLScript__": {
+                    "context_variable": "bastao_escolhido",
+                    "script": "inteiro indice_atual = 0  flutuante comprimento_max   sequência opcoes_materia_prima = bastao_de_acabamento.bastao_de_acabamento   inteiro indice_maximo = opcoes_materia_prima.tamanho - 1   sequência materias_primas_escolhidas   enquanto (indice_atual MenorOuIgual indice_maximo) faz {      objeto opcao_materia_prima = opcoes_materia_prima{indice_atual}             objeto opcoes_opcao_materia_prima = opcao_materia_prima.opcoes     se (opcoes_opcao_materia_prima.comprimento maiorOuIgual medidas_do_trabalho{0}.largura) { \\        materias_primas_escolhidas.adiciona(opcoes_materia_prima{indice_atual})      }      indice_atual = indice_atual + 1   }    materias_primas_escolhidas  ",
+                    "language": 0
+                  }
+                },
+                "feedstock_spent_script": {
+                  "__HPLScript__": {
+                    "context_variable": "bastao_gasto",
+                    "script": "2",
+                    "language": 0
+                  }
+                },
+                "post_scripts": null
+              }
+            },
+            {
+              "__ProcessFeedstockVariableModel__": {
+                "choose_feedstock_script": {
+                  "__HPLScript__": {
+                    "context_variable": "ponteira_escolhida",
+                    "script": "ponteira_de_acabamento.ponteira_de_acabamento",
+                    "language": 0
+                  }
+                },
+                "feedstock_spent_script": {
+                  "__HPLScript__": {
+                    "context_variable": "ponteira_gasto",
+                    "script": "objeto opcoes_bastao = bastao_escolhido.opcoes  objeto opcoes_ponteira_atual = ponteira_escolhida.opcoes  se(opcoes_bastao.diametro igual opcoes_ponteira_atual.diametro){ 4 }",
+                    "language": 0
+                  }
+                },
+                "post_scripts": null
+              }
+            },
+            {
+              "__ProcessFeedstockVariableModel__": {
+                "choose_feedstock_script": {
+                  "__HPLScript__": {
+                    "context_variable": "corda_escolhida",
+                    "script": "corda_de_acabamento.corda_de_acabamento",
+                    "language": 0
+                  }
+                },
+                "feedstock_spent_script": {
+                  "__HPLScript__": {
+                    "context_variable": "corda_gasto",
+                    "script": "medidas_do_trabalho.comprimento * 1,2",
+                    "language": 0
+                  }
+                },
+                "post_scripts": null
+              }
+            }
+          ],
+          "ink_cost_script": {},
+          "ink_quantity_script": {},
+          "ink_quantities_script": {},
+          "total_loss_script": {},
+          "percent_loss_script": {},
+          "print_area_script": {},
+          "time_spent_script": {
+            "__HPLScript__": {
+              "context_variable": "bastao_ponteira_corda_tempo",
+              "script": "sequência tabela_temporaria = produtividade.produtividade  inteiro tamanho_produtividade = tabela_temporaria.tamanho - 1              inteiro produtividade_atual = 0    enquanto(produtividade_atual menorOuIgual tamanho_produtividade) faz {          objeto linha_produtividade = tabela_temporaria{produtividade_atual}          texto largura_maxima = linha_produtividade.largura_maxima          se (medidas_do_trabalho{0}.largura menorOuIgual largura_maxima){          linha_produtividade{\"tempo_de_setup\"}=produtividade{\"tempo_de_setup\"}                          linha_produtividade{\"numero_de_pessoas\"}=produtividade{\"numero_de_pessoas\"}                                      produtividade = linha_produtividade                                          }          produtividade_atual = produtividade_atual + 1  }   medidas_do_trabalho{0}.largura/produtividade.produtividade + produtividade.tempo_de_setup",
+              "language": 0
+            }
+          },
+          "total_time_spent_script": {},
+          "feedstock_spent_script": {},
+          "allocation_map_script": {},
+          "amendment_list_script": {},
+          "obj_script": {},
+          "subtotal_script": {}
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title> Cadastro de Recursos </title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta name="description" content="htmlResources"/>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/script_resources.js"></script>
+	<link rel="stylesheet" href="style.css" type="text/css"/>
+</head>
+<body>
+	<div id="main">
+		<h1> Cadastro de itens</h1>
+		<form action="" method="post" id="frmLoadFile">
+			<fieldset>
+				<legend>Carregar Lista de Recursos</legend>
+				<table id="tblLoadFile" cellspacing="10">
+					<tr>
+						<td>
+							<input type="file" id="fileUpload" accept=".json"/>
+						</td>
+						<td>
+							<input type="submit" value="Carregar arquivo" id="btnLoadFile"/>
+						</td>
+					</tr>
+				</table><!-- /tblLoadFile -->
+			</fieldset>
+			<p></p>
+		</form><!-- /frmLoadFile -->
+		<form action="" method="post" id="frmRegister">
+			<fieldset>
+				<legend>Cadastro de Recursos</legend>
+				<table id="tblRegisterItems" cellspacing="10">
+					<tr>
+						<td>
+							<label for="txtResourceID">ID:</label><br/>
+							<input type="text" id="txtResourceID" class="input" value="" size="30"/>
+						</td>
+						<td>
+							<label for="txtResourceName">Nome:</label><br/>
+							<input type="text" id="txtResourceName" class="input" value="" size="30"/>
+						</td>
+						<td>
+							<label for="txtResourceHourType">Tipo de hora:</label><br/>
+							<input type="text" id="txtResourceHourType" class="input" value="" size="30"/>
+						</td>
+						<td>
+							<label for="txtResourceSectors">Setor:</label>
+							<input type="text" id="txtResourceSectors" class="input" value="" size="30"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="txtResourceGroups">Grupo:</label>
+							<input type="text" id="txtResourceGroups" class="input" value="" size="30"/>
+						</td>
+						<td>
+							<label for="txtResourceCostCenter">Centro de custos:</label>
+							<input type="text" id="txtResourceCostCenter" class="input" value="" size="30"/>
+						</td>
+						<td>
+							<label for="txtResourceJourney">Jornada:</label>
+							<input type="text" id="txtResourceJourney" class="input" value="" size="30"/>
+						</td>
+					</tr>
+				</table><!-- /tblRegisterItems -->
+				<input type="submit" value="Adicionar" id="btnAddItem"/>
+			</fieldset>
+		</form><!-- /frmRegister -->
+		<table id="tblListItems"></table>
+		<input type="submit" value="Salvar" id="btnRegister"/>
+	</div><!-- /main -->
+</body>
+</html>

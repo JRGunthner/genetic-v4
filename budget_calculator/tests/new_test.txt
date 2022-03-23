@@ -1,0 +1,618 @@
+{
+  "__ProposalWithUserToken__": {
+    "data": {
+      "context": {},
+      "items": [
+        {
+          "__ProposalItem__": {
+            "context": {
+              "__Context__": {}
+            },
+            "price_method": null,
+            "products": [
+              {
+                "__Product__": {
+                  "context": {
+                    "quantidade": 0.0,
+                    "medidas_do_trabalho": {
+                        "largura": "10cm",
+                        "comprimento": "50cm"
+                    },
+                    "midia": [
+                      {
+                        "materias_primas": [
+                          {
+                            "price": 10.0,
+                            "familia": [
+                              "adesivos",
+                              "brancos",
+                              "transparentes"
+                            ],
+                            "opcoes": {
+                              "largura": "3m",
+                              "comprimento": "50m"
+                            },
+                            "propriedades": {
+                              "espessura": "50mm"
+                            },
+                            "campos_customizados": {},
+                            "id": "5cd9558bff314706e02d33d2",
+                            "version": 5,
+                            "measurement_unit": "m*m",
+                            "option_id": 3.0
+                          }
+                        ]
+                      }
+                    ],
+                    "checklists": {}
+                  },
+                  "price_method": {
+                    "__BudgetPriceMethod__": {
+                      "hpl_formula": {
+                        "__HPLScript__": {
+                          "context_variable": "custo_total",
+                          "script": "flutuante percentual = 0,0 se ( existe(margem)){ se(existe(margem_minima)){ se (margem maiorOuIgual margem_minima) { percentual = percentual + margem } senão { percentual = percentual + margem_minima } } senão { percentual = percentual + margem }} se ( existe(imposto_percentual)){ percentual = percentual + imposto_percentual} se (existe(comissao_percentual)){ percentual = percentual + comissao_percentual} (custo_total * 100) /(100 - percentual)",
+                          "language": 0
+                        }
+                      },
+                      "context": {
+                        "margem": 20.0,
+                        "margem_minima": 15.0,
+                        "tipo": "0"
+                      }
+                    }
+                  },
+                  "commission": null,
+                  "processes": [
+                    {
+                      "__Process__": {
+                        "context": {
+                          "tabela_de_produtividade": {
+                            "tabela_de_produtividade": [
+                              {
+                                "espessura_maxima": "80mm",
+                                "produtividade": "100m/hr",
+                                "familia_para_refilar": [
+                                  "Adesivos",
+                                  "Brancos",
+                                  "Transparentes"
+                                ]
+                              },
+                              {
+                                "espessura_maxima": "80mm",
+                                "produtividade": "50m/hr",
+                                "familia_para_refilar": [
+                                  "Adesivos",
+                                  "Brancos"
+                                ]
+                              }
+                            ],
+                            "espessura_maxima": null,
+                            "tempo_de_setup": "2min",
+                            "numero_de_pessoas_alocadas": 1.0
+                          },
+                          "sobras_de_midia_por_copia": {
+                            "descricao": "Refile",
+                            "superior": "3mm",
+                            "inferior": "3mm",
+                            "esquerda": "3mm",
+                            "direita": "3mm"
+                          },
+                          "agrupamento_de_processos": {
+                            "agrupado_por_medida": true
+                          },
+                          "familia_para_refilar": null,
+                          "espessura_maxima": null,
+                          "produtividade": null,
+                          "tempo_de_setup": null,
+                          "numero_de_pessoas_alocadas": null,
+                          "descricao": null,
+                          "superior": null,
+                          "inferior": null,
+                          "esquerda": null,
+                          "direita": null,
+                          "group_by_measurement": null,
+                          "boca": null,
+                          "nome": null,
+                          "rip": null,
+                          "acerto_midia": null,
+                          "tinta": null,
+                          "equipamentos": null,
+                          "consider_amendments_number": null,
+                          "consider_bins_number": null,
+                          "accept_horizontal_cuts": null,
+                          "infinite_height": null,
+                          "printed_amendment": null,
+                          "reuse_bins": null,
+                          "same_supplier": null,
+                          "accept_vertical_cuts": null,
+                          "largura": null,
+                          "comprimento": null,
+                          "copias": null,
+                          "materias_primas": null,
+                          "a_impressao_e_invertida?": null,
+                          "vinil_de_calco_branco": null,
+                          "numero_de_pessoas": null,
+                          "e_agrupado_por_medida": null,
+                          "centro_de_custos": "59,68 1/hr"
+                        },
+                        "pre_hpl_scripts": [
+                          {
+                            "__HPLScript__": {
+                              "context_variable": "tabela_de_produtividade",
+                              "script": "sequência tabela_temporaria = tabela_de_produtividade.tabela_de_produtividade            inteiro tamanho_produtividade = tabela_temporaria.tamanho - 1            inteiro produtividade_atual = 0            objeto propriedades_materia_prima = materia_prima_escolhida.propriedades            enquanto(produtividade_atual menorOuIgual tamanho_produtividade) faz {                               objeto linha_produtividade = tabela_temporaria{produtividade_atual}                               sequência familias_produtividade = linha_produtividade.familia_para_refilar                                se (familias_produtividade.contem(materia_prima_escolhida.familia) e                                    propriedades_materia_prima.espessura menorOuIgual linha_produtividade.espessura_maxima){                                    linha_produtividade{\"tempo_de_setup\"}=tabela_de_produtividade{\"tempo_de_setup\"}                                    linha_produtividade{\"numero_de_pessoas_alocadas\"}=tabela_de_produtividade{\"numero_de_pessoas_alocadas\"}                                    tabela_de_produtividade = linha_produtividade                                }                                produtividade_atual = produtividade_atual + 1                }                 tabela_de_produtividade",
+                              "language": 0
+                            }
+                          }
+                        ],
+                        "simulator_hpl_script": null,
+                        "ink_cost_formula": null,
+                        "ink_quantity_formula": null,
+                        "inks_quantities_formula": null,
+                        "total_loss_formula": null,
+                        "percent_loss_formula": null,
+                        "printing_area_formula": null,
+                        "choose_machine_id_formula": null,
+                        "choose_profile_index_formula": null,
+                        "choose_midia_feedstock_formula": null,
+                        "time_spent_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "tempo_gasto",
+                            "script": "inteiro tamanho = medidas_do_trabalho.tamanho - 1               flutuante tempo = 0,0             se (agrupamento_de_processos.agrupado_por_medida) {                 inteiro indice = 0                objeto medida                enquanto (indice menorOuIgual tamanho) faz {                    medida = medidas_do_trabalho{indice}                     tempo = tempo + ((medida.comprimento + medida.largura) * 2 / tabela_de_produtividade.produtividade ) * medida.copias + tabela_de_produtividade.tempo_de_setup                     indice = indice + 1                 }             } senão {                objeto medida = medidas_do_trabalho{indice}                 tempo = tempo + ((medida.comprimento + medida.largura) * 2 / tabela_de_produtividade.tabela_de_produtividade ) * medida.copias + tabela_de_produtividade.tempo_de_setup             }            tempo = (tempo) hr             tempo",
+                            "language": 0
+                          }
+                        },
+                        "feedstock_formulas": [
+                          {
+                            "__ProcessFeedstockFormula__": {
+                              "feedstock_spent_formula": {
+                                "__HPLScript__": {
+                                  "context_variable": "materia_prima_gasta",
+                                  "script": "0",
+                                  "language": 0
+                                }
+                              },
+                              "choose_feedstock_formula": {
+                                "__HPLScript__": {
+                                  "context_variable": "materia_prima_escolhida",
+                                  "script": "se (não existe(materia_prima_escolhida)){                inteiro indice_escolhido = 0                inteiro indice_atual = 0                objeto materias_primas = midia_de_impressao{0}                sequência opcoes_materia_prima = materias_primas.materias_primas                inteiro indice_maximo = opcoes_materia_prima.tamanho - 1                enquanto (indice_atual MenorOuIgual indice_maximo) faz{                    objeto opcao_materia_prima = opcoes_materia_prima{indice_atual}                    objeto mp_escolhida = opcoes_materia_prima{indice_escolhido}                    se (opcao_materia_prima.price menorOuIgual mp_escolhida.price){                        indice_escolhido = indice_atual                    }                    indice_atual = indice_atual + 1                } opcoes_materia_prima{indice_escolhido}           }",
+                                  "language": 0
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "total_time_spent_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "custo_tempo",
+                            "script": " tempo_gasto * tabela_de_produtividade.numero_de_pessoas_alocadas * centro_de_custos",
+                            "language": 0
+                          }
+                        },
+                        "allocation_map_formula": null,
+                        "amendment_list_formula": null,
+                        "obj_formula": null,
+                        "sub_total_formula": null,
+                        "post_hpl_scripts": [],
+                        "entry_variables": {
+                          "quantidade": "quantidade",
+                          "medidas_do_trabalho": "medidas_do_trabalho",
+                          "midia": "midia",
+                          "impressao_invertida": "impressao_invertida"
+                        },
+                        "return_variables": {
+                          "tabela_de_produtividade": "tabela_de_produtividade",
+                          "materia_prima_escolhida": "materia_prima_escolhida",
+                          "materia_prima_gasta": "materia_prima_gasta",
+                          "tempo_gasto": "tempo_gasto",
+                          "custo_tempo": "custo_tempo",
+                          "custo_total": "custo_total"
+                        },
+                        "processes": null,
+                        "cost_center_hour": 0.0,
+                        "feedstocks": [],
+                        "production_cost": null,
+                        "time_spent": 0.0,
+                        "automap_variables": {
+                          "midia_de_impressao": "midia",
+                          "medidas_do_trabalho": "tabela_de_produtividade"
+                        }
+                      }
+                    },
+                    {
+                      "__Process__": {
+                        "context": {
+                          "equipamentos": {
+                            "equipamentos": [
+                              {
+                                "public_id": 1,
+                                "version": 10,
+                                "context": {
+                                  "propriedades_da_impressora": {
+                                    "boca": "4m"
+                                  },
+                                  "margens_e_sobras_padroes": {
+                                    "superior": "15mm",
+                                    "inferior": "15mm",
+                                    "esquerda": "10mm",
+                                    "direita": "10mm"
+                                  },
+                                  "perfis_de_impressao": {
+                                    "perfis_de_impressao": [
+                                      {
+                                        "produtividade": "30m*m/hr",
+                                        "rip": "5min",
+                                        "acerto_midia": "5min",
+                                        "nome": "Teste",
+                                        "tinta": {
+                                          "tintas": [
+                                            {
+                                              "id": null,
+                                              "cor": "CYAN",
+                                              "consumo": 12,
+                                              "tipo": 0,
+                                              "materia_prima_conectada": false,
+                                              "materia_prima_relacionada": [
+                                                {
+                                                  "price": 0.0,
+                                                  "familia": [
+                                                    "tintas",
+                                                    "impressora",
+                                                    "solvente"
+                                                  ],
+                                                  "opcoes": {
+                                                    "cor": "Ciano"
+                                                  },
+                                                  "propriedades": {},
+                                                  "campos_customizados": {},
+                                                  "id": "5ca25b95c2be050cc0943ab4",
+                                                  "version": 2,
+                                                  "measurement_unit": "mm",
+                                                  "option_id": 4.0
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "id": null,
+                                              "cor": "MAGENTA",
+                                              "consumo": 12,
+                                              "tipo": 0,
+                                              "materia_prima_conectada": false,
+                                              "materia_prima_relacionada": [
+                                                {
+                                                  "price": 0.0,
+                                                  "familia": [
+                                                    "tintas",
+                                                    "impressora",
+                                                    "solvente"
+                                                  ],
+                                                  "opcoes": {
+                                                    "cor": "Magenta"
+                                                  },
+                                                  "propriedades": {},
+                                                  "campos_customizados": {},
+                                                  "id": "5ca25b96c2be050cc0943ab6",
+                                                  "version": 3,
+                                                  "measurement_unit": "mm",
+                                                  "option_id": 5.0
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ],
+                                    "rip": null
+                                  },
+                                  "familia_para_refilar": null,
+                                  "espessura_maxima": null,
+                                  "produtividade": null,
+                                  "tempo_de_setup": null,
+                                  "numero_de_pessoas_alocadas": null,
+                                  "descricao": null,
+                                  "superior": null,
+                                  "inferior": null,
+                                  "esquerda": null,
+                                  "direita": null,
+                                  "group_by_measurement": null,
+                                  "boca": null,
+                                  "nome": null,
+                                  "rip": null,
+                                  "acerto_midia": null,
+                                  "tinta": null,
+                                  "equipamentos": null,
+                                  "consider_amendments_number": null,
+                                  "consider_bins_number": null,
+                                  "accept_horizontal_cuts": null,
+                                  "infinite_height": null,
+                                  "printed_amendment": null,
+                                  "reuse_bins": null,
+                                  "same_supplier": null,
+                                  "accept_vertical_cuts": null,
+                                  "largura": null,
+                                  "comprimento": null,
+                                  "copias": null,
+                                  "materias_primas": null,
+                                  "a_impressao_e_invertida?": null,
+                                  "vinil_de_calco_branco": null,
+                                  "numero_de_pessoas": null,
+                                  "e_agrupado_por_medida": null,
+                                  "centro_de_custos": "0 1/hr"
+                                },
+                                "default_values": {},
+                                "fields_values": null,
+                                "block_fields_values": {},
+                                "cost_center_amount": 0.0
+                              }
+                            ]
+                          },
+                          "restricoes": {
+                            "considerar_o_numero_de_emendas": false,
+                            "considerar_apenas_um_fornecedor": false,
+                            "considerar_sobra_para_emenda_imprimivel": false,
+                            "aceitar_cortes_verticais": false,
+                            "permitir_reuso_de_midia": true,
+                            "aceitar_cortes_horizontais": false,
+                            "considerar_o_numero_de_midias": false,
+                            "considerar_midias_com_altura_maxima": true
+                          },
+                          "trabalho": {
+                            "sobras_de_midia_por_original_para_acabamentos": [
+                              {
+                                "measure": {
+                                  "length": "50cm",
+                                  "width": "10cm",
+                                  "copies": 1,
+                                  "description": "Cabeça"
+                                },
+                                "descricao": "Acabamento 1",
+                                "superior": "1cm",
+                                "inferior": "1cm",
+                                "esquerda": "1cm",
+                                "direita": "1cm"
+                              },
+                              {
+                                "measure": {
+                                  "length": "80cm",
+                                  "width": "10cm",
+                                  "copies": 1,
+                                  "description": "Corpo"
+                                },
+                                "descricao": "Acabamento 2",
+                                "superior": "2cm",
+                                "inferior": "2cm",
+                                "esquerda": "2cm",
+                                "direita": "2cm"
+                              }
+                            ],
+                            "sobras_de_midia_para_emenda/sobreposicao": {
+                              "branca": "0",
+                              "impressa": "0",
+                              "frente_e_verso": false,
+                              "forcar_emenda/sobreposicao": false
+                            },
+                            "cuttings": {
+                              "force_manual_cuts": false,
+                              "use_symmetrical_cuts": false,
+                              "use_cuts_by_unit": false
+                            }
+                          },
+                          "familia_para_refilar": null,
+                          "espessura_maxima": null,
+                          "produtividade": null,
+                          "tempo_de_setup": null,
+                          "numero_de_pessoas_alocadas": null,
+                          "descricao": null,
+                          "superior": null,
+                          "inferior": null,
+                          "esquerda": null,
+                          "direita": null,
+                          "group_by_measurement": null,
+                          "boca": null,
+                          "nome": null,
+                          "rip": null,
+                          "acerto_midia": null,
+                          "tinta": null,
+                          "consider_amendments_number": null,
+                          "consider_bins_number": null,
+                          "accept_horizontal_cuts": null,
+                          "infinite_height": null,
+                          "printed_amendment": null,
+                          "reuse_bins": null,
+                          "same_supplier": null,
+                          "accept_vertical_cuts": null,
+                          "largura": null,
+                          "comprimento": null,
+                          "copias": null,
+                          "materias_primas": null,
+                          "a_impressao_e_invertida?": null,
+                          "vinil_de_calco_branco": null,
+                          "numero_de_pessoas": null,
+                          "e_agrupado_por_medida": null,
+                          "centro_de_custos": "59,68 1/hr"
+                        },
+                        "pre_hpl_scripts": [],
+                        "simulator_hpl_script": {
+                          "__HPLScript__": {
+                            "context_variable": "simulador",
+                            "script": "sequência medidas_temporarias = medidas_do_trabalho inteiro tamanho_medida = medidas_temporarias.tamanho - 1 inteiro indice_medida_atual = 0 objeto medida_atual sequência medidas enquanto (indice_medida_atual menorOuIgual tamanho_medida) faz {   medida_atual = medidas_temporarias{indice_medida_atual}   texto largura = medida_atual.largura   texto comprimento = medida_atual.comprimento   texto descricao = medida_atual.descricao   flutuante num_copias = medida_atual.copias   flutuante tamanho_da_emenda = 100   texto emenda_horizontal = \"right\"   texto emenda_vertical = \"bottom\"   indice_medida_atual = indice_medida_atual + 1   sequência medida = [largura; comprimento; descricao; num_copias; tamanho_da_emenda; emenda_horizontal; emenda_vertical]   medidas.adiciona(medida) }  sequência maquinas_temporarias = equipamentos.equipamentos inteiro tamanho_maquinas = maquinas_temporarias.tamanho - 1 inteiro indice_maquina_atual = 0 objeto maquina_atual sequência maquinas enquanto (indice_maquina_atual menorOuIgual tamanho_maquinas) faz {   maquina_atual = maquinas_temporarias{indice_maquina_atual}   sequência perfis_de_impressao = maquina_atual.context.perfis_de_impressao.perfis_de_impressao    inteiro tamanho_perfis_de_impressao = perfis_de_impressao.tamanho - 1   inteiro indice_perfil_atual = 0   objeto perfil_atual   enquanto (indice_perfil_atual menorOuIgual tamanho_perfis_de_impressao) faz {     perfil_atual = perfis_de_impressao{indice_perfil_atual}      texto RIP_time = perfil_atual.rip      sequência midia_de_impressao = midia_de_impressao     inteiro tamanho_midias = midia_de_impressao.tamanho - 1     inteiro indice_midia_atual = 0     sequência bins     sequência lista_materias_primas     enquanto (indice_midia_atual menorOuIgual tamanho_midias) faz {       objeto midia_atual = midia_de_impressao{indice_midia_atual}        sequência materias_primas = midia_atual.materias_primas       inteiro tamanho_materias = materias_primas.tamanho - 1       inteiro indice_materia_prima_atual = 0       indice_midia_atual = indice_midia_atual + 1       enquanto (indice_materia_prima_atual menorOuIgual tamanho_materias) faz {         objeto materia_prima_atual = materias_primas{indice_materia_prima_atual}          objeto opcoes = materia_prima_atual.opcoes         texto largura = opcoes.largura         texto comprimento = opcoes.comprimento         flutuante preco = materia_prima_atual.price         flutuante option_id = materia_prima_atual.option_id      texto materia_prima_id = materia_prima_atual.id  inteiro materia_prima_version = materia_prima_atual.version  texto  materia_prima_measurement_unit = materia_prima_atual.measurement_unit       indice_materia_prima_atual = indice_materia_prima_atual + 1         sequência properties = materia_prima_atual.chaves  inteiro comercial_id = -1                booleano has_comercial_id = properties.contem([\"comercial_id\"])                se (has_comercial_id) {                      comercial_id = materia_prima_atual.comercial_id                }    sequência bin = [largura; comprimento; preco; option_id; comercial_id; materia_prima_id; materia_prima_version; materia_prima_measurement_unit]            bins.adiciona(bin)         lista_materias_primas.adiciona(materia_prima_atual)       }     }       objeto perfis = perfil_atual.tinta   sequência tintas = perfis.tintas   inteiro tamanho_tintas = tintas.tamanho - 1    inteiro indice_tinta_atual = 0    objeto tinta_atual    sequência inks    enquanto (indice_tinta_atual menorOuIgual tamanho_tintas) faz {        tinta_atual = tintas{indice_tinta_atual}     sequência related_feedstock_list = tinta_atual.materia_prima_relacionada    objeto related_feedstock = related_feedstock_list{0}        sequência ink = [related_feedstock.id; related_feedstock.price; tinta_atual.consumo; related_feedstock.option_id; related_feedstock.version]      indice_tinta_atual = indice_tinta_atual + 1  inks.adiciona(ink)    }     texto calc_type = \"openess_calc\"      texto init_time = perfil_atual.acerto_midia      booleano inset_reels = falso      objeto margens_e_sobras_padroes = maquina_atual.context.margens_e_sobras_padroes     texto superior = margens_e_sobras_padroes.superior     texto esquerda = margens_e_sobras_padroes.esquerda     texto direita = margens_e_sobras_padroes.direita     texto inferior = margens_e_sobras_padroes.inferior       objeto margins = { top: superior; left: esquerda; right: direita; bottom: inferior}      objeto propriedades_da_impressora = maquina_atual.context.propriedades_da_impressora     texto openess = propriedades_da_impressora.boca      texto produtivity = perfil_atual.produtividade      texto time_cost = maquina_atual.context.centro_de_custos     inteiro space_between_reels = 100      inteiro max_parallel_reels = 100           indice_maquina_atual = indice_maquina_atual + 1   inteiro public_id_maquina_atual = maquina_atual.public_id  inteiro version_maquina_atual = maquina_atual.version    objeto maquina_temporaria = {machine_public_id: public_id_maquina_atual; printing_profile_index: indice_perfil_atual;RIP_time: RIP_time; bins: bins; inks: inks; calc_type: calc_type; init_time: init_time; inset_reels: inset_reels; margins: margins; max_parallel_reels: max_parallel_reels; openess: openess; produtivity: produtivity; time_cost: time_cost; space_between_reels: space_between_reels; version: version_maquina_atual}   indice_perfil_atual = indice_perfil_atual + 1  maquinas.adiciona(maquina_temporaria)   } }  inteiro generations = 300 inteiro max_stablement = 10 inteiro population = 10  objeto informacoes_geneticas = {generations: generations; max_stablement: max_stablement; population: population}  booleano consider_amendments_number = restricoes.considerar_o_numero_de_emendas booleano consider_bins_number = restricoes.considerar_o_numero_de_midias booleano horizontal_cut = restricoes.aceitar_cortes_horizontais booleano infinite_height = restricoes.considerar_midias_com_altura_maxima flutuante minimum_cut = 1000 booleano overwrite_itens_amendments_configurations = falso booleano printed_amendment = restricoes.considerar_sobra_para_emenda_imprimivel booleano reuse_bins = restricoes.permitir_reuso_de_midia booleano same_supplier = restricoes.considerar_apenas_um_fornecedor booleano vertical_cut = restricoes.aceitar_cortes_verticais  booleano use_feedstock = verdadeiro  objeto cuts = trabalho.cuttings  objeto restricoes = {consider_amendments_number: consider_amendments_number; consider_bins_number: consider_bins_number; horizontal_cut: horizontal_cut; infinite_height: infinite_height; minimum_cut: minimum_cut; overwrite_itens_amendments_configurations: overwrite_itens_amendments_configurations; printed_amendment: printed_amendment; reuse_bins: reuse_bins; same_supplier: same_supplier; vertical_cut: vertical_cut; use_feedstock: use_feedstock; cuts: cuts}  objeto resultado_simulador = simulador_impressao(medidas;maquinas;informacoes_geneticas; restricoes) sequência bins_ids_temporarias = resultado_simulador.suppliers inteiro tamanho_bins_ids = bins_ids_temporarias.tamanho - 1 inteiro indice_bin_id_atual = 0 sequência materia_prima_escolhida enquanto(indice_bin_id_atual menorOuIgual tamanho_bins_ids) faz { flutuante option_id_bin = bins_ids_temporarias{indice_bin_id_atual} sequência bins_temporarias = lista_materias_primas inteiro tamanho_bins_temporarias = bins_temporarias.tamanho - 1 inteiro indice_bin_atual = 0 enquanto (indice_bin_atual menorOuIgual tamanho_bins_temporarias) faz { objeto bin_atual = bins_temporarias{indice_bin_atual} se (bin_atual.option_id igual option_id_bin) { materia_prima_escolhida.adiciona(bin_atual) } indice_bin_atual = indice_bin_atual + 1 } indice_bin_id_atual = indice_bin_id_atual + 1 } resultado_simulador{\"choose_feedstocks\"} = materia_prima_escolhida resultado_simulador",
+                            "language": 0
+                          }
+                        },
+                        "ink_cost_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "custo_tinta",
+                            "script": "simulador.ink_cost",
+                            "language": 0
+                          }
+                        },
+                        "ink_quantity_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "quantidade_tinta",
+                            "script": "simulador.ink_quantity",
+                            "language": 0
+                          }
+                        },
+                        "inks_quantities_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "quantidades_tintas",
+                            "script": "simulador.inks_quantities",
+                            "language": 0
+                          }
+                        },
+                        "total_loss_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "perda_total",
+                            "script": "simulador.total_loss",
+                            "language": 0
+                          }
+                        },
+                        "percent_loss_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "porcentagem_perda",
+                            "script": "simulador.percent",
+                            "language": 0
+                          }
+                        },
+                        "printing_area_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "area_impressao",
+                            "script": "simulador.retangle_area",
+                            "language": 0
+                          }
+                        },
+                        "choose_machine_id_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "info_maquina",
+                            "script": "simulador.machine_info",
+                            "language": 0
+                          }
+                        },
+                        "choose_profile_index_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "indice_perfil",
+                            "script": "simulador.printing_profile_index",
+                            "language": 0
+                          }
+                        },
+                        "choose_midia_feedstock_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "choose_midia_feedstock",
+                            "script": "simulador.used_reels",
+                            "language": 0
+                          }
+                        },
+                        "time_spent_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "tempo_gasto",
+                            "script": "simulador.print_time",
+                            "language": 0
+                          }
+                        },
+                        "feedstock_formulas": [],
+                        "total_time_spent_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "custo_tempo",
+                            "script": "simulador.print_time_cost",
+                            "language": 0
+                          }
+                        },
+                        "allocation_map_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "mapa_de_alocacao",
+                            "script": "simulador.allocation_map",
+                            "language": 0
+                          }
+                        },
+                        "amendment_list_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "lista_de_emendas",
+                            "script": "simulador.amendment_list",
+                            "language": 0
+                          }
+                        },
+                        "obj_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "objeto_retornado",
+                            "script": "simulador.obj",
+                            "language": 0
+                          }
+                        },
+                        "sub_total_formula": null,
+                        "post_hpl_scripts": [],
+                        "entry_variables": {
+                          "quantidade": "quantidade",
+                          "medidas_do_trabalho": "medidas_do_trabalho",
+                          "midia": "midia",
+                          "impressao_invertida": "impressao_invertida"
+                        },
+                        "return_variables": {
+                          "simulador": "simulador",
+                          "custo_tinta": "custo_tinta",
+                          "quantidade_tinta": "quantidade_tinta",
+                          "quantidades_tintas": "quantidades_tintas",
+                          "perda_total": "perda_total",
+                          "porcentagem_perda": "porcentagem_perda",
+                          "area_impressao": "area_impressao",
+                          "info_maquina": "info_maquina",
+                          "indice_perfil": "indice_perfil",
+                          "choose_midia_feedstock": "choose_midia_feedstock",
+                          "mapa_de_alocacao": "mapa_de_alocacao",
+                          "lista_de_emendas": "lista_de_emendas",
+                          "objeto_retornado": "objeto_retornado",
+                          "tempo_gasto": "tempo_gasto",
+                          "custo_tempo": "custo_tempo",
+                          "custo_total": "custo_total"
+                        },
+                        "processes": null,
+                        "cost_center_hour": 0.0,
+                        "feedstocks": [],
+                        "production_cost": null,
+                        "time_spent": 0.0,
+                        "automap_variables": {
+                          "midia_de_impressao": "midia",
+                          "simulador": "equipamentos"
+                        }
+                      }
+                    }
+                  ],
+                  "pre_hpl_scripts": [
+                          {
+                            "__HPLScript__": {
+                              "context_variable": "medidas_do_trabalho",
+                              "script": "[medidas_do_trabalho]",
+                              "language": 0
+                            }
+                          }
+                   ],
+                  "post_hpl_scripts": null,
+                  "feedstocks": [],
+                  "production_cost": null,
+                  "income_selling_cost": {
+                    "__IncomeTaxSellingCost__": {
+                      "imposto_percentual": 15.0,
+                      "imposto_absoluto": 0.0
+                    }
+                  },
+                  "selling_cost": null,
+                  "total_value": 0.0,
+                  "automap_variables": null
+                }
+              }
+            ],
+            "processes": [],
+            "feedstocks": [],
+            "selling_cost": null,
+            "production_cost": null,
+            "hidden": false,
+            "apportionment_value": 0.0
+          }
+        }
+      ],
+      "public_id": 39,
+      "account_id": 172,
+      "calculation_id": "5cdf06f468151f2a58c3c25a"
+    },
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1laWQiOiI1YjcxZGFkOTM4YmQ1YzBlNTA2NWZkY2MiLCJ1bmlxdWVfbmFtZSI6InJvZHJpZ28uemFuZWxsYTEyQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYWNjZXNzY29udHJvbHNlcnZpY2UvMjAxMC8wNy9jbGFpbXMvaWRlbnRpdHlwcm92aWRlciI6IkFTUC5ORVQgSWRlbnRpdHkiLCJlbWFpbCI6InJvZHJpZ28uemFuZWxsYTEyQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoicm9kcmlnby56YW5lbGxhMTJAZ21haWwuY29tIiwiYWNjb3VudCI6IjE3MiIsImxhbmd1YWdlIjoicHQtQlIiLCJwcm9maWxlSWQiOiI1Y2EyNTNmNjU1NGZmZTFjZTgxMjJmMTMiLCJpc3MiOiJIb2xkcHJpbnROZXRBdXRoIiwiYXVkIjoiNDE0ZTE5MjdhMzg4NGY2OGFiYzc5ZjcyODM4MzdmZDEiLCJuYmYiOjE1NTgxMTcyNzB9.5cT0pGp6LaGhpT5vA1XPWugLzRoovyt981oL-zbwFJE"
+  }
+}

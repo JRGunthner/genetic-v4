@@ -1,0 +1,676 @@
+{
+  "__ProposalWithUserToken__": {
+    "data": {
+      "context": {},
+      "items": [
+        {
+          "__ProposalItem__": {
+            "context": {
+              "__Context__": {}
+            },
+            "price_method": null,
+            "products": [
+              {
+                "__Product__": {
+                  "context": {
+                    "medidas_do_trabalho": [
+                      {
+                        "largura": "10m",
+                        "comprimento": "56m",
+                        "copias": 100.0,
+                        "descricao": "jhsdfdsg"
+                      }
+                    ],
+                    "midia_de_impressao": [
+                      {
+                        "materias_primas": [
+                          {
+                            "preco": 5.0,
+                            "id": "5bd0bbe2bdc16a04f800a59c",
+                            "option_id": 1,
+                            "familia": [
+                              "adesivos",
+                              "brancos"
+                            ],
+                            "opcoes": {
+                              "largura": "10m",
+                              "comprimento": "5m"
+                            },
+                            "propriedades": {
+                              "liner": "1m",
+                              "espessura": "5mm",
+                              "durabilidade": "1m"
+                            },
+                            "campos_customizados": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "price_method": {
+                    "__BudgetPriceMethod__": {
+                      "hpl_formula": {
+                        "__HPLScript__": {
+                          "context_variable": "custo_total",
+                          "script": "flutuante percentual = 0,0 se ( existe(margem)){ se(existe(margem_minima)){ se (margem maiorOuIgual margem_minima) { percentual = percentual + margem } senão { percentual = percentual + margem_minima } } senão { percentual = percentual + margem }} se ( existe(imposto_percentual)){ percentual = percentual + imposto_percentual} se (existe(comissao_percentual)){ percentual = percentual + comissao_percentual} (custo_total * 100) /(100 - percentual)",
+                          "language": 0
+                        }
+                      },
+                      "context": {
+                        "margem": 5.0,
+                        "margem_minima": 2.0,
+                        "tipo": "0"
+                      }
+                    }
+                  },
+                  "commission": null,
+                  "processes": [
+                    {
+                      "__Process__": {
+                        "context": {
+                          "equipamentos": {
+                            "equipamentos": [
+                              {
+                                "public_id": 3,
+                                "version": 2,
+                                "context": {
+                                  "propriedades_da_impressora": {
+                                    "boca": null
+                                  },
+                                  "margens_e_sobras_padroes": {
+                                    "superior": null,
+                                    "inferior": null,
+                                    "esquerda": null,
+                                    "direita": null
+                                  },
+                                  "perfis_de_impressao": {
+                                    "perfis_de_impressao": [
+                                      {
+                                        "produtividade": "34m/hr",
+                                        "rip": "4hr",
+                                        "acerto_midia": "4hr",
+                                        "nome": "cef",
+                                        "tinta": {
+                                          "class_name": "HoldNetApi.MongoDriver.Entity.FieldContent.HoldInkContent",
+                                          "inks": [
+                                            {
+                                              "id": null,
+                                              "color": "MAGENTA",
+                                              "related_feedstock": {
+                                                "fields_values": [],
+                                                "id": "5be3315fbdc16a05a84dd760",
+                                                "feedstock_price_id": "5be3315bbdc16a05a84dd75e",
+                                                "technical_name": "MAYZA TINTA",
+                                                "description": "Tinta para impressão",
+                                                "public_id": 14,
+                                                "version": 3,
+                                                "lock": false,
+                                                "families": [
+                                                  "paints",
+                                                  "printer",
+                                                  "solvent"
+                                                ],
+                                                "feedstock_price_type": 1,
+                                                "unit_use": "5a81a89885fff137890d3f50",
+                                                "cost_engineering_model": {
+                                                  "id": "5b9ab2a27466302dc424bf8b",
+                                                  "public_id": 26,
+                                                  "version": 1
+                                                },
+                                                "definition_fields": {
+                                                  "options_fields": [
+                                                    {
+                                                      "field_type": "5a81a89885fff137890d3f28",
+                                                      "measurement_unit": null,
+                                                      "key_field": false,
+                                                      "field_definition": null,
+                                                      "content_type": 0,
+                                                      "field_size": 0
+                                                    }
+                                                  ],
+                                                  "properties_fields": [
+                                                    {
+                                                      "field_type": "5b9ab2a27466302dc424bf8a",
+                                                      "measurement_unit": null,
+                                                      "key_field": false,
+                                                      "field_definition": null,
+                                                      "content_type": 0,
+                                                      "field_size": 0
+                                                    }
+                                                  ],
+                                                  "custom_fields": []
+                                                },
+                                                "supplier_list": null,
+                                                "suppliers": null,
+                                                "comercial_names": null,
+                                                "comercial_name": null,
+                                                "context": null,
+                                                "field_value": null,
+                                                "favorite": false,
+                                                "inactive": false,
+                                                "deleted": false,
+                                                "use_comercial_names": false,
+                                                "creation_time": "2018-11-07T18:39:27.9Z"
+                                              },
+                                              "consumption": 14,
+                                              "percentage": 3,
+                                              "type": 0,
+                                              "linked_feedstock": false
+                                            }
+                                          ],
+                                          "id": null,
+                                          "color": null,
+                                          "related_feedstock": null,
+                                          "consumption": 0,
+                                          "percentage": 0,
+                                          "linked_feedstock": false
+                                        }
+                                      }
+                                    ],
+                                    "rip": null
+                                  },
+                                  "largura": null,
+                                  "comprimento": null,
+                                  "produtividade": null,
+                                  "descricao": null,
+                                  "superior": null,
+                                  "inferior": null,
+                                  "esquerda": null,
+                                  "direita": null,
+                                  "materias_primas": null,
+                                  "copias": null,
+                                  "boca": null,
+                                  "nome": null,
+                                  "rip": null,
+                                  "acerto_midia": null,
+                                  "tinta": null,
+                                  "stay_width_and_height": null,
+                                  "allow_reuse_media": null,
+                                  "consider_media_infinite_height": null,
+                                  "choose_only_commercial_name": null,
+                                  "consider_leftover_printable_splice": null,
+                                  "accept_vertical_cuts": null,
+                                  "accept_horizontal_cuts": null,
+                                  "equipamentos": null,
+                                  "centro_de_custos": "0 1/hr"
+                                },
+                                "default_values": {},
+                                "fields_values": null,
+                                "block_fields_values": {},
+                                "cost_center_amount": 0.0
+                              }
+                            ]
+                          },
+                          "restricoes": {
+                            "fixar_largura_na_vertical_e_altura_na_horizontal": null,
+                            "permitir_reuso_de_midia": null,
+                            "considerar_midias_com_altura_maxima": null,
+                            "escolher_apenas_um_nome_comercial": null,
+                            "considerar_sobra_para_emenda_imprimivel": null,
+                            "aceitar_cortes_verticais": null,
+                            "aceitar_cortes_horizontais": null
+                          },
+                          "largura": null,
+                          "comprimento": null,
+                          "produtividade": null,
+                          "descricao": null,
+                          "superior": null,
+                          "inferior": null,
+                          "esquerda": null,
+                          "direita": null,
+                          "materias_primas": null,
+                          "copias": null,
+                          "boca": null,
+                          "nome": null,
+                          "rip": null,
+                          "acerto_midia": null,
+                          "tinta": null,
+                          "stay_width_and_height": null,
+                          "allow_reuse_media": null,
+                          "consider_media_infinite_height": null,
+                          "choose_only_commercial_name": null,
+                          "consider_leftover_printable_splice": null,
+                          "accept_vertical_cuts": null,
+                          "accept_horizontal_cuts": null,
+                          "centro_de_custos": "1000 1/hr"
+                        },
+                        "pre_hpl_scripts": [],
+                        "simulator_hpl_script": null,
+                        "choose_feedstock_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "materia_prima_escolhida",
+                            "script": "se (não existe(materia_prima_escolhida)){                inteiro indice_escolhido = 0                inteiro indice_atual = 0                objeto materias_primas = midia_de_impressao{0}                sequência opcoes_materia_prima = materias_primas.materias_primas                inteiro indice_maximo = opcoes_materia_prima.tamanho - 1                enquanto (indice_atual MenorOuIgual indice_maximo) faz{                    objeto opcao_materia_prima = opcoes_materia_prima{indice_atual}                    objeto mp_escolhida = opcoes_materia_prima{indice_escolhido}                    se (opcao_materia_prima.preco menorOuIgual mp_escolhida.preco){                        indice_escolhido = indice_atual                    }                    indice_atual = indice_atual + 1                } opcoes_materia_prima{indice_escolhido}           }",
+                            "language": 0
+                          }
+                        },
+                        "time_spent_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "tempo_gasto",
+                            "script": "inteiro tamanho = medidas_do_trabalho.tamanho - 1               flutuante tempo = 0,0             se (agrupamento_de_processos.agrupado_por_medida) {                 inteiro indice = 0                objeto medida                enquanto (indice menorOuIgual tamanho) faz {                    medida = medidas_do_trabalho{indice}                     tempo = tempo + ((medida.comprimento + medida.largura) * 2 / tabela_de_produtividade.produtividade ) * medida.copias + tabela_de_produtividade.tempo_de_setup                     indice = indice + 1                 }             } senão {                objeto medida = medidas_do_trabalho{indice}                 tempo = tempo + ((medida.comprimento + medida.largura) * 2 / tabela_de_produtividade.tabela_de_produtividade ) * medida.copias + tabela_de_produtividade.tempo_de_setup             }            tempo = (tempo) hr             tempo",
+                            "language": 0
+                          }
+                        },
+                        "feedstock_spent_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "materia_prima_gasta",
+                            "script": "0",
+                            "language": 0
+                          }
+                        },
+                        "total_time_spent_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "custo_tempo",
+                            "script": " tempo_gasto * tabela_de_produtividade.numero_de_pessoas_alocadas * centro_de_custos",
+                            "language": 0
+                          }
+                        },
+                        "total_feedstock_spent_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "custo_materia_prima",
+                            "script": "materia_prima_gasta * materia_prima_selecionada.preco",
+                            "language": 0
+                          }
+                        },
+                        "sub_total_formula": null,
+                        "post_hpl_scripts": [],
+                        "entry_variables": {
+                          "medidas_do_trabalho": "medidas_do_trabalho",
+                          "midia_de_impressao": "midia_de_impressao"
+                        },
+                        "return_variables": {
+                          "materia_prima_escolhida": "materia_prima_escolhida",
+                          "tempo_gasto": "tempo_gasto",
+                          "custo_tempo": "custo_tempo",
+                          "materia_prima_gasta": "materia_prima_gasta",
+                          "custo_materia_prima": "custo_materia_prima",
+                          "custo_total": "custo_total"
+                        },
+                        "processes": null,
+                        "cost_center_hour": 0.0,
+                        "feedstocks": [],
+                        "production_cost": null,
+                        "time_spent": 0.0
+                      }
+                    }
+                  ],
+                  "pre_hpl_scripts": null,
+                  "post_hpl_scripts": null,
+                  "feedstocks": [],
+                  "production_cost": null,
+                  "income_selling_cost": {
+                    "__IncomeTaxSellingCost__": {
+                      "imposto_percentual": 3.0,
+                      "imposto_absoluto": 0.0
+                    }
+                  },
+                  "selling_cost": null,
+                  "total_value": 0.0
+                }
+              }
+            ],
+            "processes": [],
+            "feedstocks": [],
+            "selling_cost": null,
+            "production_cost": null,
+            "hidden": false,
+            "apportionment_value": 0.0
+          }
+        }
+      ],
+      "public_id": 108,
+      "account_id": 173,
+      "calculation_id": "5be33607bdc16a05a84dd777"
+    },
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1laWQiOiI1Yjc0NTljNzM4YmQ1YzA1NDgwMDY0NjUiLCJ1bmlxdWVfbmFtZSI6Im1heXphYmVlbEBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL2FjY2Vzc2NvbnRyb2xzZXJ2aWNlLzIwMTAvMDcvY2xhaW1zL2lkZW50aXR5cHJvdmlkZXIiOiJBU1AuTkVUIElkZW50aXR5IiwiZW1haWwiOiJtYXl6YWJlZWxAZ21haWwuY29tIiwidXNlcm5hbWUiOiJtYXl6YWJlZWxAZ21haWwuY29tIiwiYWNjb3VudCI6IjE3MyIsImxhbmd1YWdlIjoicHQtQlIiLCJpc3MiOiJIb2xkcHJpbnROZXRBdXRoIiwiYXVkIjoiNDE0ZTE5MjdhMzg4NGY2OGFiYzc5ZjcyODM4MzdmZDEiLCJleHAiOjE1NDE2MDM4MTIsIm5iZiI6MTU0MTUxNzQxMn0.VRN9CTcfsbrZs1S1PLqp6RkLep1XEaVH5hkGrSjwliM"
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "__ProposalWithUserToken__": {
+    "data": {
+      "context": {},
+      "items": [
+        {
+          "__ProposalItem__": {
+            "context": {
+              "__Context__": {}
+            },
+            "price_method": null,
+            "products": [
+              {
+                "__Product__": {
+                  "context": {
+                    "medidas_do_trabalho": [
+                      {
+                        "largura": "10m",
+                        "comprimento": "56m",
+                        "copias": 100.0,
+                        "descricao": "jhsdfdsg"
+                      }
+                    ],
+                    "midia_de_impressao": [
+                      {
+                        "materias_primas": [
+                          {
+                            "preco": 5.0,
+                            "id": "5bd0bbe2bdc16a04f800a59c",
+                            "option_id": 1,
+                            "familia": [
+                              "adesivos",
+                              "brancos"
+                            ],
+                            "opcoes": {
+                              "largura": "10m",
+                              "comprimento": "5m"
+                            },
+                            "propriedades": {
+                              "liner": "1m",
+                              "espessura": "5mm",
+                              "durabilidade": "1m"
+                            },
+                            "campos_customizados": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "price_method": {
+                    "__BudgetPriceMethod__": {
+                      "hpl_formula": {
+                        "__HPLScript__": {
+                          "context_variable": "custo_total",
+                          "script": "flutuante percentual = 0,0 se ( existe(margem)){ se(existe(margem_minima)){ se (margem maiorOuIgual margem_minima) { percentual = percentual + margem } senão { percentual = percentual + margem_minima } } senão { percentual = percentual + margem }} se ( existe(imposto_percentual)){ percentual = percentual + imposto_percentual} se (existe(comissao_percentual)){ percentual = percentual + comissao_percentual} (custo_total * 100) /(100 - percentual)",
+                          "language": 0
+                        }
+                      },
+                      "context": {
+                        "margem": 5.0,
+                        "margem_minima": 2.0,
+                        "tipo": "0"
+                      }
+                    }
+                  },
+                  "commission": null,
+                  "processes": [
+                    {
+                      "__Process__": {
+                        "context": {
+                          "equipamentos": {
+                            "equipamentos": [
+                              {
+                                "public_id": 3,
+                                "version": 2,
+                                "context": {
+                                  "propriedades_da_impressora": {
+                                    "boca": null
+                                  },
+                                  "margens_e_sobras_padroes": {
+                                    "superior": null,
+                                    "inferior": null,
+                                    "esquerda": null,
+                                    "direita": null
+                                  },
+                                  "perfis_de_impressao": {
+                                    "perfis_de_impressao": [
+                                      {
+                                        "produtividade": "34m/hr",
+                                        "rip": "4hr",
+                                        "acerto_midia": "4hr",
+                                        "nome": "cef",
+                                        "tinta": {
+                                          "class_name": "HoldNetApi.MongoDriver.Entity.FieldContent.HoldInkContent",
+                                          "inks": [
+                                            {
+                                              "id": null,
+                                              "color": "MAGENTA",
+                                              "related_feedstock": {
+                                                "fields_values": [],
+                                                "id": "5be3315fbdc16a05a84dd760",
+                                                "feedstock_price_id": "5be3315bbdc16a05a84dd75e",
+                                                "technical_name": "MAYZA TINTA",
+                                                "description": "Tinta para impressão",
+                                                "public_id": 14,
+                                                "version": 3,
+                                                "lock": false,
+                                                "families": [
+                                                  "paints",
+                                                  "printer",
+                                                  "solvent"
+                                                ],
+                                                "feedstock_price_type": 1,
+                                                "unit_use": "5a81a89885fff137890d3f50",
+                                                "cost_engineering_model": {
+                                                  "id": "5b9ab2a27466302dc424bf8b",
+                                                  "public_id": 26,
+                                                  "version": 1
+                                                },
+                                                "definition_fields": {
+                                                  "options_fields": [
+                                                    {
+                                                      "field_type": "5a81a89885fff137890d3f28",
+                                                      "measurement_unit": null,
+                                                      "key_field": false,
+                                                      "field_definition": null,
+                                                      "content_type": 0,
+                                                      "field_size": 0
+                                                    }
+                                                  ],
+                                                  "properties_fields": [
+                                                    {
+                                                      "field_type": "5b9ab2a27466302dc424bf8a",
+                                                      "measurement_unit": null,
+                                                      "key_field": false,
+                                                      "field_definition": null,
+                                                      "content_type": 0,
+                                                      "field_size": 0
+                                                    }
+                                                  ],
+                                                  "custom_fields": []
+                                                },
+                                                "supplier_list": null,
+                                                "suppliers": null,
+                                                "comercial_names": null,
+                                                "comercial_name": null,
+                                                "context": {
+                                                  "preco": 4.0,
+                                                  "id": "5be3315fbdc16a05a84dd760",
+                                                  "familia": [
+                                                    "tintas",
+                                                    "impressora",
+                                                    "solvente"
+                                                  ],
+                                                  "opcoes": {},
+                                                  "propriedades": {},
+                                                  "campos_customizados": {}
+                                                },
+                                                "field_value": null,
+                                                "favorite": false,
+                                                "inactive": false,
+                                                "deleted": false,
+                                                "use_comercial_names": false,
+                                                "creation_time": "2018-11-07T18:39:27.9Z"
+                                              },
+                                              "consumption": 14,
+                                              "percentage": 3,
+                                              "type": 0,
+                                              "linked_feedstock": false
+                                            }
+                                          ],
+                                          "id": null,
+                                          "color": null,
+                                          "related_feedstock": null,
+                                          "consumption": 0,
+                                          "percentage": 0,
+                                          "linked_feedstock": false
+                                        }
+                                      }
+                                    ],
+                                    "rip": null
+                                  },
+                                  "largura": null,
+                                  "comprimento": null,
+                                  "produtividade": null,
+                                  "descricao": null,
+                                  "superior": null,
+                                  "inferior": null,
+                                  "esquerda": null,
+                                  "direita": null,
+                                  "materias_primas": null,
+                                  "copias": null,
+                                  "boca": null,
+                                  "nome": null,
+                                  "rip": null,
+                                  "acerto_midia": null,
+                                  "tinta": null,
+                                  "stay_width_and_height": null,
+                                  "allow_reuse_media": null,
+                                  "consider_media_infinite_height": null,
+                                  "choose_only_commercial_name": null,
+                                  "consider_leftover_printable_splice": null,
+                                  "accept_vertical_cuts": null,
+                                  "accept_horizontal_cuts": null,
+                                  "equipamentos": null,
+                                  "centro_de_custos": "0 1/hr"
+                                },
+                                "default_values": {},
+                                "fields_values": null,
+                                "block_fields_values": {},
+                                "cost_center_amount": 0.0
+                              }
+                            ]
+                          },
+                          "restricoes": {
+                            "fixar_largura_na_vertical_e_altura_na_horizontal": null,
+                            "permitir_reuso_de_midia": null,
+                            "considerar_midias_com_altura_maxima": null,
+                            "escolher_apenas_um_nome_comercial": null,
+                            "considerar_sobra_para_emenda_imprimivel": null,
+                            "aceitar_cortes_verticais": null,
+                            "aceitar_cortes_horizontais": null
+                          },
+                          "largura": null,
+                          "comprimento": null,
+                          "produtividade": null,
+                          "descricao": null,
+                          "superior": null,
+                          "inferior": null,
+                          "esquerda": null,
+                          "direita": null,
+                          "materias_primas": null,
+                          "copias": null,
+                          "boca": null,
+                          "nome": null,
+                          "rip": null,
+                          "acerto_midia": null,
+                          "tinta": null,
+                          "stay_width_and_height": null,
+                          "allow_reuse_media": null,
+                          "consider_media_infinite_height": null,
+                          "choose_only_commercial_name": null,
+                          "consider_leftover_printable_splice": null,
+                          "accept_vertical_cuts": null,
+                          "accept_horizontal_cuts": null,
+                          "centro_de_custos": "1000 1/hr"
+                        },
+                        "pre_hpl_scripts": [],
+                        "simulator_hpl_script": null,
+                        "choose_feedstock_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "materia_prima_escolhida",
+                            "script": "se (não existe(materia_prima_escolhida)){                inteiro indice_escolhido = 0                inteiro indice_atual = 0                objeto materias_primas = midia_de_impressao{0}                sequência opcoes_materia_prima = materias_primas.materias_primas                inteiro indice_maximo = opcoes_materia_prima.tamanho - 1                enquanto (indice_atual MenorOuIgual indice_maximo) faz{                    objeto opcao_materia_prima = opcoes_materia_prima{indice_atual}                    objeto mp_escolhida = opcoes_materia_prima{indice_escolhido}                    se (opcao_materia_prima.preco menorOuIgual mp_escolhida.preco){                        indice_escolhido = indice_atual                    }                    indice_atual = indice_atual + 1                } opcoes_materia_prima{indice_escolhido}           }",
+                            "language": 0
+                          }
+                        },
+                        "time_spent_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "tempo_gasto",
+                            "script": "inteiro tamanho = medidas_do_trabalho.tamanho - 1               flutuante tempo = 0,0             se (agrupamento_de_processos.agrupado_por_medida) {                 inteiro indice = 0                objeto medida                enquanto (indice menorOuIgual tamanho) faz {                    medida = medidas_do_trabalho{indice}                     tempo = tempo + ((medida.comprimento + medida.largura) * 2 / tabela_de_produtividade.produtividade ) * medida.copias + tabela_de_produtividade.tempo_de_setup                     indice = indice + 1                 }             } senão {                objeto medida = medidas_do_trabalho{indice}                 tempo = tempo + ((medida.comprimento + medida.largura) * 2 / tabela_de_produtividade.tabela_de_produtividade ) * medida.copias + tabela_de_produtividade.tempo_de_setup             }            tempo = (tempo) hr             tempo",
+                            "language": 0
+                          }
+                        },
+                        "feedstock_spent_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "materia_prima_gasta",
+                            "script": "0",
+                            "language": 0
+                          }
+                        },
+                        "total_time_spent_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "custo_tempo",
+                            "script": " tempo_gasto * tabela_de_produtividade.numero_de_pessoas_alocadas * centro_de_custos",
+                            "language": 0
+                          }
+                        },
+                        "total_feedstock_spent_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "custo_materia_prima",
+                            "script": "materia_prima_gasta * materia_prima_selecionada.preco",
+                            "language": 0
+                          }
+                        },
+                        "sub_total_formula": null,
+                        "post_hpl_scripts": [],
+                        "entry_variables": {
+                          "medidas_do_trabalho": "medidas_do_trabalho",
+                          "midia_de_impressao": "midia_de_impressao"
+                        },
+                        "return_variables": {
+                          "materia_prima_escolhida": "materia_prima_escolhida",
+                          "tempo_gasto": "tempo_gasto",
+                          "custo_tempo": "custo_tempo",
+                          "materia_prima_gasta": "materia_prima_gasta",
+                          "custo_materia_prima": "custo_materia_prima",
+                          "custo_total": "custo_total"
+                        },
+                        "processes": null,
+                        "cost_center_hour": 0.0,
+                        "feedstocks": [],
+                        "production_cost": null,
+                        "time_spent": 0.0
+                      }
+                    }
+                  ],
+                  "pre_hpl_scripts": null,
+                  "post_hpl_scripts": null,
+                  "feedstocks": [],
+                  "production_cost": null,
+                  "income_selling_cost": {
+                    "__IncomeTaxSellingCost__": {
+                      "imposto_percentual": 3.0,
+                      "imposto_absoluto": 0.0
+                    }
+                  },
+                  "selling_cost": null,
+                  "total_value": 0.0
+                }
+              }
+            ],
+            "processes": [],
+            "feedstocks": [],
+            "selling_cost": null,
+            "production_cost": null,
+            "hidden": false,
+            "apportionment_value": 0.0
+          }
+        }
+      ],
+      "public_id": 115,
+      "account_id": 173,
+      "calculation_id": "5be46bbbbdc16a1acce7ebb7"
+    },
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1laWQiOiI1Yjc0NTljNzM4YmQ1YzA1NDgwMDY0NjUiLCJ1bmlxdWVfbmFtZSI6Im1heXphYmVlbEBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL2FjY2Vzc2NvbnRyb2xzZXJ2aWNlLzIwMTAvMDcvY2xhaW1zL2lkZW50aXR5cHJvdmlkZXIiOiJBU1AuTkVUIElkZW50aXR5IiwiZW1haWwiOiJtYXl6YWJlZWxAZ21haWwuY29tIiwidXNlcm5hbWUiOiJtYXl6YWJlZWxAZ21haWwuY29tIiwiYWNjb3VudCI6IjE3MyIsImxhbmd1YWdlIjoicHQtQlIiLCJpc3MiOiJIb2xkcHJpbnROZXRBdXRoIiwiYXVkIjoiNDE0ZTE5MjdhMzg4NGY2OGFiYzc5ZjcyODM4MzdmZDEiLCJleHAiOjE1NDE3NjIxNTksIm5iZiI6MTU0MTY3NTc1OX0.aEwVt8gFv-qbqcWbLxZhhbmSQkNRUmk5A0frzle_P6k"
+  }
+}

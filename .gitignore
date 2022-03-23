@@ -1,0 +1,8 @@
+.idea
+.idea/*
+*.pyc
+venv/*
+/.vs/VSWorkspaceState.json
+/.vs/slnx.sqlite
+/.vs/PythonSettings.json
+parselog.txt

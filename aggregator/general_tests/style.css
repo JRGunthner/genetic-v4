@@ -1,0 +1,34 @@
+#main {
+	width: 1050px;
+	margin: 0 auto;
+	font-family: "Arial";
+	font-size: 24;
+}
+
+h1 {
+	background-color: #F1F1F1;
+	text-align: left;
+	padding: 10px;
+	font-size: 20px;
+}
+
+#tblListItems {
+	width: 100%;
+	border: solid 1px;
+	text-align: left;
+	border-collapse: collapse;
+}
+
+#tblListItems tbody tr {
+	border: solid 1px;
+	height: 30px;
+}
+
+#tblListItems thead {
+	background: #F1F1F1;
+}
+
+textarea {
+	font-family: "Arial";
+	font-size: 24;
+}

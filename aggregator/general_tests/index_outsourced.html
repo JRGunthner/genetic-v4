@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title> Cadastro de Terceirizados </title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta name="description" content="htmlOutsourced"/>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/script_resources.js"></script>
+	<link rel="stylesheet" href="style.css" type="text/css"/>
+</head>
+<body>
+	<div id="main">
+		<h1> Cadastro de itens</h1>
+		<form action="" method="post" id="frmLoadFile">
+			<fieldset>
+				<legend>Carregar Lista de Terceirizados</legend>
+				<table id="tblLoadFile" cellspacing="10">
+					<tr>
+						<td>
+							<input type="file" id="fileUpload" accept=".json"/>
+						</td>
+						<td>
+							<input type="submit" value="Carregar arquivo" id="btnLoadFile"/>
+						</td>
+					</tr>
+				</table><!-- /tblLoadFile -->
+			</fieldset>
+			<p></p>
+		</form><!-- /frmLoadFile -->
+		<form action="" method="post" id="frmRegister">
+			<fieldset>
+				<legend>Cadastro de Terceirizados</legend>
+				<table id="tblRegisterItems" cellspacing="10">
+					<tr>
+						<td>
+							<label for="txtOutsourcedID">ID:</label><br>
+							<input type="text" id="txtOutsourcedID" class="input" value="" size="30"/>
+						</td>
+						<td>
+							<label for="txtOutsourcedName">Fornecedor:</label><br>
+							<input type="text" id="txtOutsourcedName" class="input" value="" size="30"/>
+						</td>
+						<td>
+							<label for="txtOutsourcedMEC">MEC:</label><br>
+							<input type="text" id="txtOutsourcedMEC" class="input" value="" size="30"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="txtOutsourcedLeadtime">Leadtime (dias):</label><br>
+							<input type="text" id="txtOutsourcedLeadtime" class="input" value="" size="30"/>
+						</td>
+						<td>
+							<label for="txtOutsourcedRuntime">Prazo execução (hs):</label><br>
+							<input type="text" id="txtOutsourcedRuntime" class="input" value="" size="30"/>
+						</td>
+					</tr>
+				</table><!-- /tblRegisterItems -->
+				<input type="submit" value="Adicionar" id="btnAddItem"/>
+			</fieldset>
+		</form><!-- /frmRegister -->
+		<table id="tblListItems"></table>
+		<input type="submit" value="Salvar" id="btnRegister"/>
+	</div><!-- /main -->
+</body>
+</html>

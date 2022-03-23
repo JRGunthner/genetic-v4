@@ -1,0 +1,222 @@
+{
+  "__ProposalWithUserToken__": {
+    "data": {
+      "context": {},
+      "items": [
+        {
+          "__ProposalItem__": {
+            "context": {
+              "__Context__": {}
+            },
+            "price_method": null,
+            "products": [
+              {
+                "__Product__": {
+                  "context": {
+                    "medidas_do_trabalho": [
+                      {
+                        "largura": "3m",
+                        "comprimento": "6m",
+                        "copias": 1.0,
+                        "descricao": "teste"
+                      }
+                    ],
+                    "midia_de_impressao": [
+                      {
+                        "materias_primas": [
+                          {
+                            "price": 123.0,
+                            "id": "5cc859f7d9daa50adce5431c",
+                            "version": 4,
+                            "comercial_id": 1,
+                            "option_id": 1.0,
+                            "familia": [
+                              "adesivos",
+                              "brancos"
+                            ],
+                            "opcoes": {
+                              "largura": "1m",
+                              "comprimento": "4m"
+                            },
+                            "propriedades": {
+                              "espessura": "55mm"
+                            },
+                            "campos_customizados": {}
+                          }
+                        ]
+                      }
+                    ],
+                    "checklists": {}
+                  },
+                  "price_method": {
+                    "__BudgetPriceMethod__": {
+                      "hpl_formula": {
+                        "__HPLScript__": {
+                          "context_variable": "custo_total",
+                          "script": "flutuante percentual = 0,0 se ( existe(margem)){ se(existe(margem_minima)){ se (margem maiorOuIgual margem_minima) { percentual = percentual + margem } senão { percentual = percentual + margem_minima } } senão { percentual = percentual + margem }} se ( existe(imposto_percentual)){ percentual = percentual + imposto_percentual} se (existe(comissao_percentual)){ percentual = percentual + comissao_percentual} (custo_total * 100) /(100 - percentual)",
+                          "language": 0
+                        }
+                      },
+                      "context": {
+                        "margem": 30.0,
+                        "margem_minima": 15.0,
+                        "tipo": "0"
+                      }
+                    }
+                  },
+                  "commission": null,
+                  "processes": [
+                    {
+                      "__Process__": {
+                        "context": {
+                          "tabela_de_produtividade": {
+                            "tabela_de_produtividade": [
+                              {
+                                "espessura_maxima": "2m",
+                                "produtividade": "2m/hr",
+                                "familia_para_refilar": [
+                                  "Adesivos",
+                                  "Brancos"
+                                ]
+                              }
+                            ],
+                            "espessura_maxima": null,
+                            "tempo_de_setup": "1min",
+                            "numero_de_pessoas_alocadas": 1.0
+                          },
+                          "sobras_de_midia_por_copia": {
+                            "descricao": null,
+                            "superior": null,
+                            "inferior": null,
+                            "esquerda": null,
+                            "direita": null
+                          },
+                          "agrupamento_de_processos": {
+                            "agrupado_por_medida": true
+                          },
+                          "largura": null,
+                          "comprimento": null,
+                          "familia_para_refilar": null,
+                          "espessura_maxima": null,
+                          "produtividade": null,
+                          "tempo_de_setup": null,
+                          "numero_de_pessoas_alocadas": null,
+                          "descricao": null,
+                          "superior": null,
+                          "inferior": null,
+                          "esquerda": null,
+                          "direita": null,
+                          "group_by_measurement": null,
+                          "materias_primas": null,
+                          "copias": null,
+                          "centro_de_custos": "110,1 1/hr"
+                        },
+                        "pre_hpl_scripts": [
+                          {
+                            "__HPLScript__": {
+                              "context_variable": "tabela_de_produtividade",
+                              "script": "sequência tabela_temporaria = tabela_de_produtividade.tabela_de_produtividade            inteiro tamanho_produtividade = tabela_temporaria.tamanho - 1            inteiro produtividade_atual = 0  sequência materias_primas_escolhidas = materia_prima_escolhida inteiro tamanho_materia_prima_escolhida = materias_primas_escolhidas.tamanho - 1 inteiro materia_prima_atual = 0 enquanto(materia_prima_atual menorOuIgual tamanho_materia_prima_escolhida) faz { objeto propriedades_materia_prima = materias_primas_escolhidas{materia_prima_atual}.propriedades            enquanto(produtividade_atual menorOuIgual tamanho_produtividade) faz {                               objeto linha_produtividade = tabela_temporaria{produtividade_atual}                               sequência familias_produtividade = linha_produtividade.familia_para_refilar                                se (familias_produtividade.contem(materias_primas_escolhidas{materia_prima_atual}.familia) e                                    propriedades_materia_prima.espessura menorOuIgual linha_produtividade.espessura_maxima){                                    linha_produtividade{\"tempo_de_setup\"}=tabela_de_produtividade{\"tempo_de_setup\"}                                    linha_produtividade{\"numero_de_pessoas_alocadas\"}=tabela_de_produtividade{\"numero_de_pessoas_alocadas\"}                                    tabela_de_produtividade = linha_produtividade                                }                                produtividade_atual = produtividade_atual + 1                }   materia_prima_atual = materia_prima_atual + 1     }         tabela_de_produtividade",
+                              "language": 0
+                            }
+                          }
+                        ],
+                        "simulator_hpl_script": null,
+                        "ink_cost_formula": null,
+                        "ink_quantity_formula": null,
+                        "inks_quantities_formula": null,
+                        "total_loss_formula": null,
+                        "percent_loss_formula": null,
+                        "printing_area_formula": null,
+                        "choose_machine_id_formula": null,
+                        "choose_profile_index_formula": null,
+                        "choose_midia_feedstock_formula": null,
+                        "time_spent_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "tempo_gasto",
+                            "script": "inteiro tamanho = medidas_do_trabalho.tamanho - 1               flutuante tempo = 0,0             se (agrupamento_de_processos.agrupado_por_medida) {                 inteiro indice = 0                objeto medida                enquanto (indice menorOuIgual tamanho) faz {                    medida = medidas_do_trabalho{indice}                     tempo = tempo + ((medida.comprimento + medida.largura) * 2 / tabela_de_produtividade.produtividade ) * medida.copias + tabela_de_produtividade.tempo_de_setup                     indice = indice + 1                 }             } senão {                objeto medida = medidas_do_trabalho{indice}                 tempo = tempo + ((medida.comprimento + medida.largura) * 2 / tabela_de_produtividade.tabela_de_produtividade ) * medida.copias + tabela_de_produtividade.tempo_de_setup             }            tempo = (tempo) hr             tempo",
+                            "language": 0
+                          }
+                        },
+                        "feedstock_formulas": [
+                          {
+                            "__ProcessFeedstockFormula__": {
+                              "feedstock_spent_formula": {
+                                "__HPLScript__": {
+                                  "context_variable": "materia_prima_gasta",
+                                  "script": "0",
+                                  "language": 0
+                                }
+                              },
+                              "choose_feedstock_formula": {
+                                "__HPLScript__": {
+                                  "context_variable": "materia_prima_escolhida",
+                                  "script": "se (não existe(materia_prima_escolhida)) { inteiro indice_escolhido = 0 inteiro indice_atual = 0 objeto materias_primas = midia_de_impressao{0} sequência opcoes_materia_prima = materias_primas.materias_primas inteiro indice_maximo = opcoes_materia_prima.tamanho - 1 sequência materias_primas_escolhidas enquanto (indice_atual MenorOuIgual indice_maximo) faz { objeto opcao_materia_prima = opcoes_materia_prima{indice_atual} objeto mp_escolhida = opcoes_materia_prima{indice_escolhido} se (opcao_materia_prima.price menorOuIgual mp_escolhida.price) { indice_escolhido = indice_atual materias_primas_escolhidas.adiciona(opcoes_materia_prima{indice_escolhido}) } indice_atual = indice_atual + 1 } materias_primas_escolhidas }",
+                                  "language": 0
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "total_time_spent_formula": {
+                          "__HPLScript__": {
+                            "context_variable": "custo_tempo",
+                            "script": " tempo_gasto * tabela_de_produtividade.numero_de_pessoas_alocadas * centro_de_custos",
+                            "language": 0
+                          }
+                        },
+                        "allocation_map_formula": null,
+                        "amendment_list_formula": null,
+                        "obj_formula": null,
+                        "sub_total_formula": null,
+                        "post_hpl_scripts": [],
+                        "entry_variables": {
+                          "medidas_do_trabalho": "medidas_do_trabalho",
+                          "midia_de_impressao": "midia_de_impressao"
+                        },
+                        "return_variables": {
+                          "tabela_de_produtividade": "tabela_de_produtividade",
+                          "materia_prima_escolhida": "materia_prima_escolhida",
+                          "materia_prima_gasta": "materia_prima_gasta",
+                          "tempo_gasto": "tempo_gasto",
+                          "custo_tempo": "custo_tempo",
+                          "custo_total": "custo_total"
+                        },
+                        "processes": null,
+                        "cost_center_hour": 0.0,
+                        "feedstocks": [],
+                        "production_cost": null,
+                        "time_spent": 0.0
+                      }
+                    }
+                  ],
+                  "pre_hpl_scripts": null,
+                  "post_hpl_scripts": null,
+                  "feedstocks": [],
+                  "production_cost": null,
+                  "income_selling_cost": {
+                    "__IncomeTaxSellingCost__": {
+                      "imposto_percentual": 10.0,
+                      "imposto_absoluto": 0.0
+                    }
+                  },
+                  "selling_cost": null,
+                  "total_value": 0.0
+                }
+              }
+            ],
+            "processes": [],
+            "feedstocks": [],
+            "selling_cost": null,
+            "production_cost": null,
+            "hidden": false,
+            "apportionment_value": 0.0
+          }
+        }
+      ],
+      "public_id": 25,
+      "account_id": 240,
+      "calculation_id": "5ccb210d66dab62c98f9cc7a"
+    },
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1laWQiOiI1YzUwN2M1YmUyM2RjNDAzZWNmYjMyZjgiLCJ1bmlxdWVfbmFtZSI6InRob21hcy52aWVyQGhvbGRwcmludC5jb20uYnIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL2FjY2Vzc2NvbnRyb2xzZXJ2aWNlLzIwMTAvMDcvY2xhaW1zL2lkZW50aXR5cHJvdmlkZXIiOiJBU1AuTkVUIElkZW50aXR5IiwiZW1haWwiOiJ0aG9tYXMudmllckBob2xkcHJpbnQuY29tLmJyIiwidXNlcm5hbWUiOiJ0aG9tYXMudmllckBob2xkcHJpbnQuY29tLmJyIiwiYWNjb3VudCI6IjI0MCIsImxhbmd1YWdlIjoicHQtQlIiLCJwcm9maWxlSWQiOiI1Y2M4NThhMmQ5ZGFhNTBhZGNlNTQzMGQiLCJpc3MiOiJIb2xkcHJpbnROZXRBdXRoIiwiYXVkIjoiNDE0ZTE5MjdhMzg4NGY2OGFiYzc5ZjcyODM4MzdmZDEiLCJuYmYiOjE1NTY4MDQ2NDZ9.yV3XSGGcoKdreGUBGhJQwv_lSp0ihMVr9kzBeuyWTrw"
+  }
+}

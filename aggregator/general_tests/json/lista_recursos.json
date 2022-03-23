@@ -1,0 +1,146 @@
+[
+  {
+    "ResourceID": "1",
+    "ResourceName": "Aline_Souza",
+    "ResourceHourType": "Homem",
+    "ResourceSectors": "Acabamento",
+    "ResourceGroups": "Acabamentistas",
+    "ResourceCostCenter": "23",
+    "ResourceJourney": "Normal"
+  },
+  {
+    "ResourceID": "2",
+    "ResourceName": "Carlos_Pereira",
+    "ResourceHourType": "Homem",
+    "ResourceSectors": "Pré-Impressão",
+    "ResourceGroups": "Arte_Finalistas",
+    "ResourceCostCenter": "45",
+    "ResourceJourney": "Normal"
+  },
+  {
+    "ResourceID": "3",
+    "ResourceName": "Jaime_Simões",
+    "ResourceHourType": "Homem",
+    "ResourceSectors": "Serralheria",
+    "ResourceGroups": "Serralheiros",
+    "ResourceCostCenter": "66",
+    "ResourceJourney": "Normal"
+  },
+  {
+    "ResourceID": "4",
+    "ResourceName": "Jair_Bolsonaro",
+    "ResourceHourType": "Homem",
+    "ResourceSectors": "Acabamento",
+    "ResourceGroups": "Acabamentistas",
+    "ResourceCostCenter": "23",
+    "ResourceJourney": "Normal"
+  },
+  {
+    "ResourceID": "5",
+    "ResourceName": "Jéssica_Renali",
+    "ResourceHourType": "Homem",
+    "ResourceSectors": "Expedição",
+    "ResourceGroups": "Expedicionistas",
+    "ResourceCostCenter": "15",
+    "ResourceJourney": "Normal"
+  },
+  {
+    "ResourceID": "6",
+    "ResourceName": "João_Morais",
+    "ResourceHourType": "Homem",
+    "ResourceSectors": "Entrega",
+    "ResourceGroups": "Entregadores",
+    "ResourceCostCenter": "44",
+    "ResourceJourney": "Normal"
+  },
+  {
+    "ResourceID": "7",
+    "ResourceName": "Josué_Pereira",
+    "ResourceHourType": "Homem",
+    "ResourceSectors": "Instalação",
+    "ResourceGroups": "Instaladores",
+    "ResourceCostCenter": "85",
+    "ResourceJourney": "Normal"
+  },
+  {
+    "ResourceID": "8",
+    "ResourceName": "Manoel_Porto",
+    "ResourceHourType": "Homem",
+    "ResourceSectors": "Instalação",
+    "ResourceGroups": "Instaladores",
+    "ResourceCostCenter": "85",
+    "ResourceJourney": "Normal"
+  },
+  {
+    "ResourceID": "9",
+    "ResourceName": "Mimaki",
+    "ResourceHourType": "Máquina",
+    "ResourceSectors": "Impressão",
+    "ResourceGroups": "Impressoras",
+    "ResourceCostCenter": "49",
+    "ResourceJourney": "Normal"
+  },
+  {
+    "ResourceID": "10",
+    "ResourceName": "Paulinho_Bozano",
+    "ResourceHourType": "Homem",
+    "ResourceSectors": "Instalação",
+    "ResourceGroups": "Instaladores",
+    "ResourceCostCenter": "85",
+    "ResourceJourney": "Normal"
+  },
+  {
+    "ResourceID": "11",
+    "ResourceName": "Pedrinho_Serra",
+    "ResourceHourType": "Homem",
+    "ResourceSectors": "Serralheria",
+    "ResourceGroups": "Serralheiros",
+    "ResourceCostCenter": "66",
+    "ResourceJourney": "Normal"
+  },
+  {
+    "ResourceID": "12",
+    "ResourceName": "Pedro_Silva",
+    "ResourceHourType": "Homem",
+    "ResourceSectors": "Acabamento",
+    "ResourceGroups": "Acabamentistas",
+    "ResourceCostCenter": "23",
+    "ResourceJourney": "Normal"
+  },
+  {
+    "ResourceID": "13",
+    "ResourceName": "Prismajet",
+    "ResourceHourType": "Máquina",
+    "ResourceSectors": "Impressão",
+    "ResourceGroups": "Impressoras",
+    "ResourceCostCenter": "69",
+    "ResourceJourney": "Normal"
+  },
+  {
+    "ResourceID": "14",
+    "ResourceName": "Roland_Recorte",
+    "ResourceHourType": "Máquina",
+    "ResourceSectors": "Recorte_Eletrônico",
+    "ResourceGroups": "Recorte_Eletrônico",
+    "ResourceCostCenter": "35",
+    "ResourceJourney": "Normal"
+  },
+  {
+    "ResourceID": "15",
+    "ResourceName": "Saveiro_IXJ-8877",
+    "ResourceHourType": "Máquina",
+    "ResourceSectors": "Instalação_Entrega",
+    "ResourceGroups": "Veículos",
+    "ResourceCostCenter": "44",
+    "ResourceJourney": "Normal"
+  },
+  {
+    "ResourceID": "16",
+    "ResourceName": "Uno_IUU-9800",
+    "ResourceHourType": "Máquina",
+    "ResourceSectors": "Instalação_Entrega",
+    "ResourceGroups": "Veículos",
+    "ResourceCostCenter": "44",
+    "ResourceJourney": "Normal"
+  }
+]

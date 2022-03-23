@@ -1,0 +1,131 @@
+sequência medidas_temporarias = medidas_do_trabalho
+inteiro tamanho_medida = medidas_temporarias.tamanho - 1
+inteiro indice_medida_atual = 0
+objeto medida_atual
+sequência medidas
+enquanto (indice_medida_atual menorOuIgual tamanho_medida) faz {
+  medida_atual = medidas_temporarias{indice_medida_atual}
+  texto largura = medida_atual.largura
+  texto comprimento = medida_atual.comprimento
+  texto descricao = medida_atual.descricao
+  flutuante num_copias = medida_atual.copias
+  flutuante tamanho_da_emenda = 100
+  texto emenda_horizontal = \"right\"
+  texto emenda_vertical = \"bottom\"
+  indice_medida_atual = indice_medida_atual + 1
+  sequência medida = [largura; comprimento; descricao; num_copias; tamanho_da_emenda; emenda_horizontal; emenda_vertical]
+  medidas.adiciona(medida)
+}
+
+sequência maquinas_temporarias = equipamentos.equipamentos
+inteiro tamanho_maquinas = maquinas_temporarias.tamanho - 1
+inteiro indice_maquina_atual = 0
+objeto maquina_atual
+sequência maquinas
+enquanto (indice_maquina_atual menorOuIgual tamanho_maquinas) faz {
+  maquina_atual = maquinas_temporarias{indice_maquina_atual}
+  sequência perfis_de_impressao = maquina_atual.context.perfis_de_impressao.perfis_de_impressao
+
+  inteiro tamanho_perfis_de_impressao = perfis_de_impressao.tamanho - 1
+  inteiro indice_perfil_atual = 0
+  objeto perfil_atual
+  enquanto (indice_perfil_atual menorOuIgual tamanho_perfis_de_impressao) faz {
+    perfil_atual = perfis_de_impressao{indice_perfil_atual}
+
+    texto RIP_time = perfil_atual.rip
+
+    sequência midia_de_impressao = midia_de_impressao
+    inteiro tamanho_midias = midia_de_impressao.tamanho - 1
+    inteiro indice_midia_atual = 0
+    sequência bins
+    sequência lista_materias_primas
+    enquanto (indice_midia_atual menorOuIgual tamanho_midias) faz {
+      objeto midia_atual = midia_de_impressao{indice_midia_atual}
+
+      sequência materias_primas = midia_atual.materias_primas
+      inteiro tamanho_materias = materias_primas.tamanho - 1
+      inteiro indice_materia_prima_atual = 0
+      indice_midia_atual = indice_midia_atual + 1
+      enquanto (indice_materia_prima_atual menorOuIgual tamanho_materias) faz {
+        objeto materia_prima_atual = materias_primas{indice_materia_prima_atual}
+
+        objeto opcoes = materia_prima_atual.opcoes
+        texto largura = opcoes.largura
+        texto comprimento = opcoes.comprimento
+        flutuante preco = materia_prima_atual.preco
+        inteiro option_id = materia_prima_atual.option_id
+        indice_materia_prima_atual = indice_materia_prima_atual + 1
+        sequência bin = [largura; comprimento; preco; option_id]
+        bins.adiciona(bin)
+        lista_materias_primas.adiciona(materia_prima_atual)
+      }
+    }
+
+    sequência perfis = perfil_atual.tinta
+    sequência tintas = perfis.inks
+    inteiro tamanho_tintas = tintas.tamanho - 1
+    inteiro indice_tinta_atual = 0
+    objeto tinta_atual
+    sequencia inks
+    enquanto (indice_tinta_atual menorOuIgual tamanho_tintas) faz {
+        tinta_atual = tintas{indice_tinta_atual}
+
+        objeto related_feedstock = tinta_atual.related_feedstock
+        sequência ink = [related_feedstock.id; related_feedstock.feedstock_price_id; tinta_atual.consumption]
+        inks.adiciona(ink)
+    }
+
+
+    texto calc_type = \"openess_calc\"
+
+    texto init_time = perfil_atual.acerto_midia
+
+    booleano inset_reels = falso
+
+    objeto margens_e_sobras_padroes = maquina_atual.context.margens_e_sobras_padroes
+    texto superior = margens_e_sobras_padroes.superior
+    texto esquerda = margens_e_sobras_padroes.esquerda
+    texto direita = margens_e_sobras_padroes.direita
+    texto inferior = margens_e_sobras_padroes.inferior
+
+
+    objeto margins = { top: superior; left: esquerda; right: direita; bottom: inferior}
+
+    objeto propriedades_da_impressora = maquina_atual.context.propriedades_da_impressora
+    texto openess = propriedades_da_impressora.boca
+
+    texto produtivity = perfil_atual.produtividade
+
+    texto time_cost = maquina_atual.context.centro_de_custos
+    inteiro space_between_reels = 100
+
+    inteiro max_parallel_reels = 100
+
+    indice_perfil_atual = indice_perfil_atual + 1
+    indice_maquina_atual = indice_maquina_atual + 1
+
+    objeto maquina_temporaria = {RIP_time: RIP_time; bins: bins; calc_type: calc_type; init_time: init_time; inset_reels: inset_reels; margins: margins; max_parallel_reels: max_parallel_reels; openess: openess; produtivity: produtivity; time_cost: time_cost; space_between_reels: space_between_reels}
+    maquinas.adiciona(maquina_temporaria)
+  }
+}
+
+inteiro generations = 300
+inteiro max_stablement = 10
+inteiro population = 10
+
+objeto informacoes_geneticas = {generations: generations; max_stablement: max_stablement; population: population}
+
+texto consider_amendments_number = restricoes.considerar_o_numero_de_emendas
+texto consider_bins_number = restricoes.considerar_o_numero_de_midias
+texto horizontal_cut = restricoes.aceitar_cortes_horizontais
+texto infinite_height = restricoes.considerar_midias_com_altura_maxima
+flutuante minimum_cut = 1000
+booleano overwrite_itens_amendments_configurations = falso
+texto printed_amendment = restricoes.considerar_sobra_para_emenda_imprimivel
+texto reuse_bins = restricoes.permitir_reuso_de_midia
+texto same_supplier = restricoes.considerar_apenas_um_fornecedor
+texto vertical_cut = restricoes.aceitar_cortes_verticais
+
+objeto restricoes = {consider_amendments_number: consider_amendments_number; consider_bins_number: consider_bins_number; horizontal_cut: horizontal_cut; infinite_height: infinite_height; minimum_cut: minimum_cut; overwrite_itens_amendments_configurations: overwrite_itens_amendments_configurations; printed_amendment: printed_amendment; reuse_bins: reuse_bins; same_supplier: same_supplier; vertical_cut: vertical_cut}
+
+simulador_impressao(medidas;maquinas;informacoes_geneticas; restricoes)

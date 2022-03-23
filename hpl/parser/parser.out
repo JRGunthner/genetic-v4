@@ -1,0 +1,3076 @@
+Created by PLY version 3.10 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    TP_CHAR
+    TP_STRING
+    THEN
+    CHAR
+    DOT
+    COMMENT
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> command_sequence
+Rule 2     term -> term measure_unit
+Rule 3     measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT
+Rule 4     measure_unit -> MEASUREMENT_UNIT
+Rule 5     expression -> term
+Rule 6     command_sequence -> command
+Rule 7     command_sequence -> command command_sequence
+Rule 8     command -> expression
+Rule 9     command -> control_operations
+Rule 10    command -> attribution_statement
+Rule 11    command -> IDENTIFIER
+Rule 12    command -> array
+Rule 13    expression -> load_statement
+Rule 14    expression -> expression TIMES term
+Rule 15    expression -> expression DIVIDE term
+Rule 16    expression -> expression PLUS term
+Rule 17    expression -> expression MINUS term
+Rule 18    expression -> expression AND term
+Rule 19    expression -> expression OR term
+Rule 20    expression -> expression LESS_EQUAL expression
+Rule 21    expression -> expression GREAT_EQUAL expression
+Rule 22    expression -> expression NOT_EQUAL expression
+Rule 23    expression -> expression EQUAL expression
+Rule 24    term -> INTEGER
+Rule 25    term -> FLOAT
+Rule 26    term -> LPAREN expression RPAREN
+Rule 27    term -> BOOL
+Rule 28    term -> IDENTIFIER
+Rule 29    term -> array
+Rule 30    load_statement -> LOAD STRING FROM STRING WHERE expression
+Rule 31    if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement
+Rule 32    if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty
+Rule 33    else_statement -> ELSE LBRACKET command_sequence RBRACKET
+Rule 34    else_statement -> ELSE if_statement
+Rule 35    control_operations -> if_statement
+Rule 36    control_operations -> while_statement
+Rule 37    while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET
+Rule 38    array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+Rule 39    list_terms -> list_terms DOTCOMMA term
+Rule 40    list_terms -> term_array
+Rule 41    term_array -> STRING
+Rule 42    term_array -> expression
+Rule 43    attribution_statement -> type IDENTIFIER empty
+Rule 44    attribution_statement -> type IDENTIFIER ATTRIBUTION term
+Rule 45    attribution_statement -> IDENTIFIER ATTRIBUTION term
+Rule 46    term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+Rule 47    type -> TP_OBJECT
+Rule 48    type -> TP_INTEGER
+Rule 49    type -> TP_FLOAT
+Rule 50    type -> TP_BOOL
+Rule 51    type -> TP_ARRAY
+Rule 52    empty -> <empty>
+
+Terminals, with rules where they appear
+
+AND                  : 18
+ATTRIBUTION          : 44 45 46
+BOOL                 : 27
+CHAR                 : 
+COMMENT              : 
+DIVIDE               : 3 15
+DO                   : 37
+DOT                  : 
+DOTCOMMA             : 39
+ELSE                 : 33 34
+EQUAL                : 23
+FLOAT                : 25
+FROM                 : 30
+GREAT_EQUAL          : 21
+IDENTIFIER           : 11 28 43 44 45 46
+IF                   : 31 32
+INTEGER              : 24
+LBRACKET             : 31 32 33 37 46
+LESS_EQUAL           : 20
+LOAD                 : 30
+LPAREN               : 26 31 32 37
+LSQUARE_BRACKET      : 38
+MEASUREMENT_UNIT     : 3 3 4
+MINUS                : 17
+NOT_EQUAL            : 22
+OR                   : 19
+PLUS                 : 16
+RBRACKET             : 31 32 33 37 46
+RPAREN               : 26 31 32 37
+RSQUARE_BRACKET      : 38
+STRING               : 30 30 41
+THEN                 : 
+TIMES                : 14
+TP_ARRAY             : 51
+TP_BOOL              : 50
+TP_CHAR              : 
+TP_FLOAT             : 49
+TP_INTEGER           : 48
+TP_OBJECT            : 47
+TP_STRING            : 
+WHERE                : 30
+WHILE                : 37
+error                : 
+
+Nonterminals, with rules where they appear
+
+array                : 12 29
+attribution_statement : 10
+command              : 6 7
+command_sequence     : 1 7 31 32 33 37
+control_operations   : 9
+else_statement       : 31
+empty                : 32 43
+expression           : 8 14 15 16 17 18 19 20 20 21 21 22 22 23 23 26 30 31 32 37 42
+if_statement         : 34 35
+list_terms           : 38 39
+load_statement       : 13
+measure_unit         : 2
+program              : 0
+term                 : 2 5 14 15 16 17 18 19 39 44 45 46 46
+term_array           : 40
+type                 : 43 44
+while_statement      : 36
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . command_sequence
+    (6) command_sequence -> . command
+    (7) command_sequence -> . command command_sequence
+    (8) command -> . expression
+    (9) command -> . control_operations
+    (10) command -> . attribution_statement
+    (11) command -> . IDENTIFIER
+    (12) command -> . array
+    (5) expression -> . term
+    (13) expression -> . load_statement
+    (14) expression -> . expression TIMES term
+    (15) expression -> . expression DIVIDE term
+    (16) expression -> . expression PLUS term
+    (17) expression -> . expression MINUS term
+    (18) expression -> . expression AND term
+    (19) expression -> . expression OR term
+    (20) expression -> . expression LESS_EQUAL expression
+    (21) expression -> . expression GREAT_EQUAL expression
+    (22) expression -> . expression NOT_EQUAL expression
+    (23) expression -> . expression EQUAL expression
+    (35) control_operations -> . if_statement
+    (36) control_operations -> . while_statement
+    (43) attribution_statement -> . type IDENTIFIER empty
+    (44) attribution_statement -> . type IDENTIFIER ATTRIBUTION term
+    (45) attribution_statement -> . IDENTIFIER ATTRIBUTION term
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (30) load_statement -> . LOAD STRING FROM STRING WHERE expression
+    (31) if_statement -> . IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement
+    (32) if_statement -> . IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty
+    (37) while_statement -> . WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET
+    (47) type -> . TP_OBJECT
+    (48) type -> . TP_INTEGER
+    (49) type -> . TP_FLOAT
+    (50) type -> . TP_BOOL
+    (51) type -> . TP_ARRAY
+
+    IDENTIFIER      shift and go to state 7
+    LSQUARE_BRACKET shift and go to state 14
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    LOAD            shift and go to state 19
+    IF              shift and go to state 20
+    WHILE           shift and go to state 21
+    TP_OBJECT       shift and go to state 22
+    TP_INTEGER      shift and go to state 23
+    TP_FLOAT        shift and go to state 24
+    TP_BOOL         shift and go to state 25
+    TP_ARRAY        shift and go to state 26
+
+    program                        shift and go to state 1
+    command_sequence               shift and go to state 2
+    command                        shift and go to state 3
+    expression                     shift and go to state 4
+    control_operations             shift and go to state 5
+    attribution_statement          shift and go to state 6
+    array                          shift and go to state 8
+    term                           shift and go to state 9
+    load_statement                 shift and go to state 10
+    if_statement                   shift and go to state 11
+    while_statement                shift and go to state 12
+    type                           shift and go to state 13
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> command_sequence .
+
+    $end            reduce using rule 1 (program -> command_sequence .)
+
+
+state 3
+
+    (6) command_sequence -> command .
+    (7) command_sequence -> command . command_sequence
+    (6) command_sequence -> . command
+    (7) command_sequence -> . command command_sequence
+    (8) command -> . expression
+    (9) command -> . control_operations
+    (10) command -> . attribution_statement
+    (11) command -> . IDENTIFIER
+    (12) command -> . array
+    (5) expression -> . term
+    (13) expression -> . load_statement
+    (14) expression -> . expression TIMES term
+    (15) expression -> . expression DIVIDE term
+    (16) expression -> . expression PLUS term
+    (17) expression -> . expression MINUS term
+    (18) expression -> . expression AND term
+    (19) expression -> . expression OR term
+    (20) expression -> . expression LESS_EQUAL expression
+    (21) expression -> . expression GREAT_EQUAL expression
+    (22) expression -> . expression NOT_EQUAL expression
+    (23) expression -> . expression EQUAL expression
+    (35) control_operations -> . if_statement
+    (36) control_operations -> . while_statement
+    (43) attribution_statement -> . type IDENTIFIER empty
+    (44) attribution_statement -> . type IDENTIFIER ATTRIBUTION term
+    (45) attribution_statement -> . IDENTIFIER ATTRIBUTION term
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (30) load_statement -> . LOAD STRING FROM STRING WHERE expression
+    (31) if_statement -> . IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement
+    (32) if_statement -> . IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty
+    (37) while_statement -> . WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET
+    (47) type -> . TP_OBJECT
+    (48) type -> . TP_INTEGER
+    (49) type -> . TP_FLOAT
+    (50) type -> . TP_BOOL
+    (51) type -> . TP_ARRAY
+
+    $end            reduce using rule 6 (command_sequence -> command .)
+    RBRACKET        reduce using rule 6 (command_sequence -> command .)
+    IDENTIFIER      shift and go to state 7
+    LSQUARE_BRACKET shift and go to state 14
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    LOAD            shift and go to state 19
+    IF              shift and go to state 20
+    WHILE           shift and go to state 21
+    TP_OBJECT       shift and go to state 22
+    TP_INTEGER      shift and go to state 23
+    TP_FLOAT        shift and go to state 24
+    TP_BOOL         shift and go to state 25
+    TP_ARRAY        shift and go to state 26
+
+    command                        shift and go to state 3
+    command_sequence               shift and go to state 27
+    expression                     shift and go to state 4
+    control_operations             shift and go to state 5
+    attribution_statement          shift and go to state 6
+    array                          shift and go to state 8
+    term                           shift and go to state 9
+    load_statement                 shift and go to state 10
+    if_statement                   shift and go to state 11
+    while_statement                shift and go to state 12
+    type                           shift and go to state 13
+
+state 4
+
+    (8) command -> expression .
+    (14) expression -> expression . TIMES term
+    (15) expression -> expression . DIVIDE term
+    (16) expression -> expression . PLUS term
+    (17) expression -> expression . MINUS term
+    (18) expression -> expression . AND term
+    (19) expression -> expression . OR term
+    (20) expression -> expression . LESS_EQUAL expression
+    (21) expression -> expression . GREAT_EQUAL expression
+    (22) expression -> expression . NOT_EQUAL expression
+    (23) expression -> expression . EQUAL expression
+
+    IDENTIFIER      reduce using rule 8 (command -> expression .)
+    LSQUARE_BRACKET reduce using rule 8 (command -> expression .)
+    INTEGER         reduce using rule 8 (command -> expression .)
+    FLOAT           reduce using rule 8 (command -> expression .)
+    LPAREN          reduce using rule 8 (command -> expression .)
+    BOOL            reduce using rule 8 (command -> expression .)
+    LOAD            reduce using rule 8 (command -> expression .)
+    IF              reduce using rule 8 (command -> expression .)
+    WHILE           reduce using rule 8 (command -> expression .)
+    TP_OBJECT       reduce using rule 8 (command -> expression .)
+    TP_INTEGER      reduce using rule 8 (command -> expression .)
+    TP_FLOAT        reduce using rule 8 (command -> expression .)
+    TP_BOOL         reduce using rule 8 (command -> expression .)
+    TP_ARRAY        reduce using rule 8 (command -> expression .)
+    $end            reduce using rule 8 (command -> expression .)
+    RBRACKET        reduce using rule 8 (command -> expression .)
+    TIMES           shift and go to state 28
+    DIVIDE          shift and go to state 29
+    PLUS            shift and go to state 30
+    MINUS           shift and go to state 31
+    AND             shift and go to state 32
+    OR              shift and go to state 33
+    LESS_EQUAL      shift and go to state 34
+    GREAT_EQUAL     shift and go to state 35
+    NOT_EQUAL       shift and go to state 36
+    EQUAL           shift and go to state 37
+
+
+state 5
+
+    (9) command -> control_operations .
+
+    IDENTIFIER      reduce using rule 9 (command -> control_operations .)
+    LSQUARE_BRACKET reduce using rule 9 (command -> control_operations .)
+    INTEGER         reduce using rule 9 (command -> control_operations .)
+    FLOAT           reduce using rule 9 (command -> control_operations .)
+    LPAREN          reduce using rule 9 (command -> control_operations .)
+    BOOL            reduce using rule 9 (command -> control_operations .)
+    LOAD            reduce using rule 9 (command -> control_operations .)
+    IF              reduce using rule 9 (command -> control_operations .)
+    WHILE           reduce using rule 9 (command -> control_operations .)
+    TP_OBJECT       reduce using rule 9 (command -> control_operations .)
+    TP_INTEGER      reduce using rule 9 (command -> control_operations .)
+    TP_FLOAT        reduce using rule 9 (command -> control_operations .)
+    TP_BOOL         reduce using rule 9 (command -> control_operations .)
+    TP_ARRAY        reduce using rule 9 (command -> control_operations .)
+    $end            reduce using rule 9 (command -> control_operations .)
+    RBRACKET        reduce using rule 9 (command -> control_operations .)
+
+
+state 6
+
+    (10) command -> attribution_statement .
+
+    IDENTIFIER      reduce using rule 10 (command -> attribution_statement .)
+    LSQUARE_BRACKET reduce using rule 10 (command -> attribution_statement .)
+    INTEGER         reduce using rule 10 (command -> attribution_statement .)
+    FLOAT           reduce using rule 10 (command -> attribution_statement .)
+    LPAREN          reduce using rule 10 (command -> attribution_statement .)
+    BOOL            reduce using rule 10 (command -> attribution_statement .)
+    LOAD            reduce using rule 10 (command -> attribution_statement .)
+    IF              reduce using rule 10 (command -> attribution_statement .)
+    WHILE           reduce using rule 10 (command -> attribution_statement .)
+    TP_OBJECT       reduce using rule 10 (command -> attribution_statement .)
+    TP_INTEGER      reduce using rule 10 (command -> attribution_statement .)
+    TP_FLOAT        reduce using rule 10 (command -> attribution_statement .)
+    TP_BOOL         reduce using rule 10 (command -> attribution_statement .)
+    TP_ARRAY        reduce using rule 10 (command -> attribution_statement .)
+    $end            reduce using rule 10 (command -> attribution_statement .)
+    RBRACKET        reduce using rule 10 (command -> attribution_statement .)
+
+
+state 7
+
+    (11) command -> IDENTIFIER .
+    (45) attribution_statement -> IDENTIFIER . ATTRIBUTION term
+    (28) term -> IDENTIFIER .
+    (46) term -> IDENTIFIER . LBRACKET term RBRACKET ATTRIBUTION term
+
+  ! reduce/reduce conflict for IDENTIFIER resolved using rule 11 (command -> IDENTIFIER .)
+  ! reduce/reduce conflict for LSQUARE_BRACKET resolved using rule 11 (command -> IDENTIFIER .)
+  ! reduce/reduce conflict for INTEGER resolved using rule 11 (command -> IDENTIFIER .)
+  ! reduce/reduce conflict for FLOAT resolved using rule 11 (command -> IDENTIFIER .)
+  ! reduce/reduce conflict for LPAREN resolved using rule 11 (command -> IDENTIFIER .)
+  ! reduce/reduce conflict for BOOL resolved using rule 11 (command -> IDENTIFIER .)
+  ! reduce/reduce conflict for LOAD resolved using rule 11 (command -> IDENTIFIER .)
+  ! reduce/reduce conflict for IF resolved using rule 11 (command -> IDENTIFIER .)
+  ! reduce/reduce conflict for WHILE resolved using rule 11 (command -> IDENTIFIER .)
+  ! reduce/reduce conflict for TP_OBJECT resolved using rule 11 (command -> IDENTIFIER .)
+  ! reduce/reduce conflict for TP_INTEGER resolved using rule 11 (command -> IDENTIFIER .)
+  ! reduce/reduce conflict for TP_FLOAT resolved using rule 11 (command -> IDENTIFIER .)
+  ! reduce/reduce conflict for TP_BOOL resolved using rule 11 (command -> IDENTIFIER .)
+  ! reduce/reduce conflict for TP_ARRAY resolved using rule 11 (command -> IDENTIFIER .)
+  ! reduce/reduce conflict for $end resolved using rule 11 (command -> IDENTIFIER .)
+  ! reduce/reduce conflict for RBRACKET resolved using rule 11 (command -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 11 (command -> IDENTIFIER .)
+    LSQUARE_BRACKET reduce using rule 11 (command -> IDENTIFIER .)
+    INTEGER         reduce using rule 11 (command -> IDENTIFIER .)
+    FLOAT           reduce using rule 11 (command -> IDENTIFIER .)
+    LPAREN          reduce using rule 11 (command -> IDENTIFIER .)
+    BOOL            reduce using rule 11 (command -> IDENTIFIER .)
+    LOAD            reduce using rule 11 (command -> IDENTIFIER .)
+    IF              reduce using rule 11 (command -> IDENTIFIER .)
+    WHILE           reduce using rule 11 (command -> IDENTIFIER .)
+    TP_OBJECT       reduce using rule 11 (command -> IDENTIFIER .)
+    TP_INTEGER      reduce using rule 11 (command -> IDENTIFIER .)
+    TP_FLOAT        reduce using rule 11 (command -> IDENTIFIER .)
+    TP_BOOL         reduce using rule 11 (command -> IDENTIFIER .)
+    TP_ARRAY        reduce using rule 11 (command -> IDENTIFIER .)
+    $end            reduce using rule 11 (command -> IDENTIFIER .)
+    RBRACKET        reduce using rule 11 (command -> IDENTIFIER .)
+    ATTRIBUTION     shift and go to state 38
+    MEASUREMENT_UNIT reduce using rule 28 (term -> IDENTIFIER .)
+    TIMES           reduce using rule 28 (term -> IDENTIFIER .)
+    DIVIDE          reduce using rule 28 (term -> IDENTIFIER .)
+    PLUS            reduce using rule 28 (term -> IDENTIFIER .)
+    MINUS           reduce using rule 28 (term -> IDENTIFIER .)
+    AND             reduce using rule 28 (term -> IDENTIFIER .)
+    OR              reduce using rule 28 (term -> IDENTIFIER .)
+    LESS_EQUAL      reduce using rule 28 (term -> IDENTIFIER .)
+    GREAT_EQUAL     reduce using rule 28 (term -> IDENTIFIER .)
+    NOT_EQUAL       reduce using rule 28 (term -> IDENTIFIER .)
+    EQUAL           reduce using rule 28 (term -> IDENTIFIER .)
+    LBRACKET        shift and go to state 39
+
+  ! IDENTIFIER      [ reduce using rule 28 (term -> IDENTIFIER .) ]
+  ! LSQUARE_BRACKET [ reduce using rule 28 (term -> IDENTIFIER .) ]
+  ! INTEGER         [ reduce using rule 28 (term -> IDENTIFIER .) ]
+  ! FLOAT           [ reduce using rule 28 (term -> IDENTIFIER .) ]
+  ! LPAREN          [ reduce using rule 28 (term -> IDENTIFIER .) ]
+  ! BOOL            [ reduce using rule 28 (term -> IDENTIFIER .) ]
+  ! LOAD            [ reduce using rule 28 (term -> IDENTIFIER .) ]
+  ! IF              [ reduce using rule 28 (term -> IDENTIFIER .) ]
+  ! WHILE           [ reduce using rule 28 (term -> IDENTIFIER .) ]
+  ! TP_OBJECT       [ reduce using rule 28 (term -> IDENTIFIER .) ]
+  ! TP_INTEGER      [ reduce using rule 28 (term -> IDENTIFIER .) ]
+  ! TP_FLOAT        [ reduce using rule 28 (term -> IDENTIFIER .) ]
+  ! TP_BOOL         [ reduce using rule 28 (term -> IDENTIFIER .) ]
+  ! TP_ARRAY        [ reduce using rule 28 (term -> IDENTIFIER .) ]
+  ! $end            [ reduce using rule 28 (term -> IDENTIFIER .) ]
+  ! RBRACKET        [ reduce using rule 28 (term -> IDENTIFIER .) ]
+
+
+state 8
+
+    (12) command -> array .
+    (29) term -> array .
+
+  ! reduce/reduce conflict for IDENTIFIER resolved using rule 12 (command -> array .)
+  ! reduce/reduce conflict for LSQUARE_BRACKET resolved using rule 12 (command -> array .)
+  ! reduce/reduce conflict for INTEGER resolved using rule 12 (command -> array .)
+  ! reduce/reduce conflict for FLOAT resolved using rule 12 (command -> array .)
+  ! reduce/reduce conflict for LPAREN resolved using rule 12 (command -> array .)
+  ! reduce/reduce conflict for BOOL resolved using rule 12 (command -> array .)
+  ! reduce/reduce conflict for LOAD resolved using rule 12 (command -> array .)
+  ! reduce/reduce conflict for IF resolved using rule 12 (command -> array .)
+  ! reduce/reduce conflict for WHILE resolved using rule 12 (command -> array .)
+  ! reduce/reduce conflict for TP_OBJECT resolved using rule 12 (command -> array .)
+  ! reduce/reduce conflict for TP_INTEGER resolved using rule 12 (command -> array .)
+  ! reduce/reduce conflict for TP_FLOAT resolved using rule 12 (command -> array .)
+  ! reduce/reduce conflict for TP_BOOL resolved using rule 12 (command -> array .)
+  ! reduce/reduce conflict for TP_ARRAY resolved using rule 12 (command -> array .)
+  ! reduce/reduce conflict for $end resolved using rule 12 (command -> array .)
+  ! reduce/reduce conflict for RBRACKET resolved using rule 12 (command -> array .)
+    IDENTIFIER      reduce using rule 12 (command -> array .)
+    LSQUARE_BRACKET reduce using rule 12 (command -> array .)
+    INTEGER         reduce using rule 12 (command -> array .)
+    FLOAT           reduce using rule 12 (command -> array .)
+    LPAREN          reduce using rule 12 (command -> array .)
+    BOOL            reduce using rule 12 (command -> array .)
+    LOAD            reduce using rule 12 (command -> array .)
+    IF              reduce using rule 12 (command -> array .)
+    WHILE           reduce using rule 12 (command -> array .)
+    TP_OBJECT       reduce using rule 12 (command -> array .)
+    TP_INTEGER      reduce using rule 12 (command -> array .)
+    TP_FLOAT        reduce using rule 12 (command -> array .)
+    TP_BOOL         reduce using rule 12 (command -> array .)
+    TP_ARRAY        reduce using rule 12 (command -> array .)
+    $end            reduce using rule 12 (command -> array .)
+    RBRACKET        reduce using rule 12 (command -> array .)
+    MEASUREMENT_UNIT reduce using rule 29 (term -> array .)
+    TIMES           reduce using rule 29 (term -> array .)
+    DIVIDE          reduce using rule 29 (term -> array .)
+    PLUS            reduce using rule 29 (term -> array .)
+    MINUS           reduce using rule 29 (term -> array .)
+    AND             reduce using rule 29 (term -> array .)
+    OR              reduce using rule 29 (term -> array .)
+    LESS_EQUAL      reduce using rule 29 (term -> array .)
+    GREAT_EQUAL     reduce using rule 29 (term -> array .)
+    NOT_EQUAL       reduce using rule 29 (term -> array .)
+    EQUAL           reduce using rule 29 (term -> array .)
+
+  ! IDENTIFIER      [ reduce using rule 29 (term -> array .) ]
+  ! LSQUARE_BRACKET [ reduce using rule 29 (term -> array .) ]
+  ! INTEGER         [ reduce using rule 29 (term -> array .) ]
+  ! FLOAT           [ reduce using rule 29 (term -> array .) ]
+  ! LPAREN          [ reduce using rule 29 (term -> array .) ]
+  ! BOOL            [ reduce using rule 29 (term -> array .) ]
+  ! LOAD            [ reduce using rule 29 (term -> array .) ]
+  ! IF              [ reduce using rule 29 (term -> array .) ]
+  ! WHILE           [ reduce using rule 29 (term -> array .) ]
+  ! TP_OBJECT       [ reduce using rule 29 (term -> array .) ]
+  ! TP_INTEGER      [ reduce using rule 29 (term -> array .) ]
+  ! TP_FLOAT        [ reduce using rule 29 (term -> array .) ]
+  ! TP_BOOL         [ reduce using rule 29 (term -> array .) ]
+  ! TP_ARRAY        [ reduce using rule 29 (term -> array .) ]
+  ! $end            [ reduce using rule 29 (term -> array .) ]
+  ! RBRACKET        [ reduce using rule 29 (term -> array .) ]
+
+
+state 9
+
+    (5) expression -> term .
+    (2) term -> term . measure_unit
+    (3) measure_unit -> . MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT
+    (4) measure_unit -> . MEASUREMENT_UNIT
+
+    TIMES           reduce using rule 5 (expression -> term .)
+    DIVIDE          reduce using rule 5 (expression -> term .)
+    PLUS            reduce using rule 5 (expression -> term .)
+    MINUS           reduce using rule 5 (expression -> term .)
+    AND             reduce using rule 5 (expression -> term .)
+    OR              reduce using rule 5 (expression -> term .)
+    LESS_EQUAL      reduce using rule 5 (expression -> term .)
+    GREAT_EQUAL     reduce using rule 5 (expression -> term .)
+    NOT_EQUAL       reduce using rule 5 (expression -> term .)
+    EQUAL           reduce using rule 5 (expression -> term .)
+    IDENTIFIER      reduce using rule 5 (expression -> term .)
+    LSQUARE_BRACKET reduce using rule 5 (expression -> term .)
+    INTEGER         reduce using rule 5 (expression -> term .)
+    FLOAT           reduce using rule 5 (expression -> term .)
+    LPAREN          reduce using rule 5 (expression -> term .)
+    BOOL            reduce using rule 5 (expression -> term .)
+    LOAD            reduce using rule 5 (expression -> term .)
+    IF              reduce using rule 5 (expression -> term .)
+    WHILE           reduce using rule 5 (expression -> term .)
+    TP_OBJECT       reduce using rule 5 (expression -> term .)
+    TP_INTEGER      reduce using rule 5 (expression -> term .)
+    TP_FLOAT        reduce using rule 5 (expression -> term .)
+    TP_BOOL         reduce using rule 5 (expression -> term .)
+    TP_ARRAY        reduce using rule 5 (expression -> term .)
+    $end            reduce using rule 5 (expression -> term .)
+    RBRACKET        reduce using rule 5 (expression -> term .)
+    RSQUARE_BRACKET reduce using rule 5 (expression -> term .)
+    DOTCOMMA        reduce using rule 5 (expression -> term .)
+    RPAREN          reduce using rule 5 (expression -> term .)
+    MEASUREMENT_UNIT shift and go to state 41
+
+    measure_unit                   shift and go to state 40
+
+state 10
+
+    (13) expression -> load_statement .
+
+    TIMES           reduce using rule 13 (expression -> load_statement .)
+    DIVIDE          reduce using rule 13 (expression -> load_statement .)
+    PLUS            reduce using rule 13 (expression -> load_statement .)
+    MINUS           reduce using rule 13 (expression -> load_statement .)
+    AND             reduce using rule 13 (expression -> load_statement .)
+    OR              reduce using rule 13 (expression -> load_statement .)
+    LESS_EQUAL      reduce using rule 13 (expression -> load_statement .)
+    GREAT_EQUAL     reduce using rule 13 (expression -> load_statement .)
+    NOT_EQUAL       reduce using rule 13 (expression -> load_statement .)
+    EQUAL           reduce using rule 13 (expression -> load_statement .)
+    IDENTIFIER      reduce using rule 13 (expression -> load_statement .)
+    LSQUARE_BRACKET reduce using rule 13 (expression -> load_statement .)
+    INTEGER         reduce using rule 13 (expression -> load_statement .)
+    FLOAT           reduce using rule 13 (expression -> load_statement .)
+    LPAREN          reduce using rule 13 (expression -> load_statement .)
+    BOOL            reduce using rule 13 (expression -> load_statement .)
+    LOAD            reduce using rule 13 (expression -> load_statement .)
+    IF              reduce using rule 13 (expression -> load_statement .)
+    WHILE           reduce using rule 13 (expression -> load_statement .)
+    TP_OBJECT       reduce using rule 13 (expression -> load_statement .)
+    TP_INTEGER      reduce using rule 13 (expression -> load_statement .)
+    TP_FLOAT        reduce using rule 13 (expression -> load_statement .)
+    TP_BOOL         reduce using rule 13 (expression -> load_statement .)
+    TP_ARRAY        reduce using rule 13 (expression -> load_statement .)
+    $end            reduce using rule 13 (expression -> load_statement .)
+    RBRACKET        reduce using rule 13 (expression -> load_statement .)
+    RSQUARE_BRACKET reduce using rule 13 (expression -> load_statement .)
+    DOTCOMMA        reduce using rule 13 (expression -> load_statement .)
+    RPAREN          reduce using rule 13 (expression -> load_statement .)
+
+
+state 11
+
+    (35) control_operations -> if_statement .
+
+    IDENTIFIER      reduce using rule 35 (control_operations -> if_statement .)
+    LSQUARE_BRACKET reduce using rule 35 (control_operations -> if_statement .)
+    INTEGER         reduce using rule 35 (control_operations -> if_statement .)
+    FLOAT           reduce using rule 35 (control_operations -> if_statement .)
+    LPAREN          reduce using rule 35 (control_operations -> if_statement .)
+    BOOL            reduce using rule 35 (control_operations -> if_statement .)
+    LOAD            reduce using rule 35 (control_operations -> if_statement .)
+    IF              reduce using rule 35 (control_operations -> if_statement .)
+    WHILE           reduce using rule 35 (control_operations -> if_statement .)
+    TP_OBJECT       reduce using rule 35 (control_operations -> if_statement .)
+    TP_INTEGER      reduce using rule 35 (control_operations -> if_statement .)
+    TP_FLOAT        reduce using rule 35 (control_operations -> if_statement .)
+    TP_BOOL         reduce using rule 35 (control_operations -> if_statement .)
+    TP_ARRAY        reduce using rule 35 (control_operations -> if_statement .)
+    $end            reduce using rule 35 (control_operations -> if_statement .)
+    RBRACKET        reduce using rule 35 (control_operations -> if_statement .)
+
+
+state 12
+
+    (36) control_operations -> while_statement .
+
+    IDENTIFIER      reduce using rule 36 (control_operations -> while_statement .)
+    LSQUARE_BRACKET reduce using rule 36 (control_operations -> while_statement .)
+    INTEGER         reduce using rule 36 (control_operations -> while_statement .)
+    FLOAT           reduce using rule 36 (control_operations -> while_statement .)
+    LPAREN          reduce using rule 36 (control_operations -> while_statement .)
+    BOOL            reduce using rule 36 (control_operations -> while_statement .)
+    LOAD            reduce using rule 36 (control_operations -> while_statement .)
+    IF              reduce using rule 36 (control_operations -> while_statement .)
+    WHILE           reduce using rule 36 (control_operations -> while_statement .)
+    TP_OBJECT       reduce using rule 36 (control_operations -> while_statement .)
+    TP_INTEGER      reduce using rule 36 (control_operations -> while_statement .)
+    TP_FLOAT        reduce using rule 36 (control_operations -> while_statement .)
+    TP_BOOL         reduce using rule 36 (control_operations -> while_statement .)
+    TP_ARRAY        reduce using rule 36 (control_operations -> while_statement .)
+    $end            reduce using rule 36 (control_operations -> while_statement .)
+    RBRACKET        reduce using rule 36 (control_operations -> while_statement .)
+
+
+state 13
+
+    (43) attribution_statement -> type . IDENTIFIER empty
+    (44) attribution_statement -> type . IDENTIFIER ATTRIBUTION term
+
+    IDENTIFIER      shift and go to state 42
+
+
+state 14
+
+    (38) array -> LSQUARE_BRACKET . list_terms RSQUARE_BRACKET
+    (39) list_terms -> . list_terms DOTCOMMA term
+    (40) list_terms -> . term_array
+    (41) term_array -> . STRING
+    (42) term_array -> . expression
+    (5) expression -> . term
+    (13) expression -> . load_statement
+    (14) expression -> . expression TIMES term
+    (15) expression -> . expression DIVIDE term
+    (16) expression -> . expression PLUS term
+    (17) expression -> . expression MINUS term
+    (18) expression -> . expression AND term
+    (19) expression -> . expression OR term
+    (20) expression -> . expression LESS_EQUAL expression
+    (21) expression -> . expression GREAT_EQUAL expression
+    (22) expression -> . expression NOT_EQUAL expression
+    (23) expression -> . expression EQUAL expression
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (30) load_statement -> . LOAD STRING FROM STRING WHERE expression
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    STRING          shift and go to state 45
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LOAD            shift and go to state 19
+    LSQUARE_BRACKET shift and go to state 14
+
+    list_terms                     shift and go to state 43
+    term                           shift and go to state 9
+    term_array                     shift and go to state 44
+    expression                     shift and go to state 46
+    load_statement                 shift and go to state 10
+    array                          shift and go to state 48
+
+state 15
+
+    (24) term -> INTEGER .
+
+    MEASUREMENT_UNIT reduce using rule 24 (term -> INTEGER .)
+    TIMES           reduce using rule 24 (term -> INTEGER .)
+    DIVIDE          reduce using rule 24 (term -> INTEGER .)
+    PLUS            reduce using rule 24 (term -> INTEGER .)
+    MINUS           reduce using rule 24 (term -> INTEGER .)
+    AND             reduce using rule 24 (term -> INTEGER .)
+    OR              reduce using rule 24 (term -> INTEGER .)
+    LESS_EQUAL      reduce using rule 24 (term -> INTEGER .)
+    GREAT_EQUAL     reduce using rule 24 (term -> INTEGER .)
+    NOT_EQUAL       reduce using rule 24 (term -> INTEGER .)
+    EQUAL           reduce using rule 24 (term -> INTEGER .)
+    IDENTIFIER      reduce using rule 24 (term -> INTEGER .)
+    LSQUARE_BRACKET reduce using rule 24 (term -> INTEGER .)
+    INTEGER         reduce using rule 24 (term -> INTEGER .)
+    FLOAT           reduce using rule 24 (term -> INTEGER .)
+    LPAREN          reduce using rule 24 (term -> INTEGER .)
+    BOOL            reduce using rule 24 (term -> INTEGER .)
+    LOAD            reduce using rule 24 (term -> INTEGER .)
+    IF              reduce using rule 24 (term -> INTEGER .)
+    WHILE           reduce using rule 24 (term -> INTEGER .)
+    TP_OBJECT       reduce using rule 24 (term -> INTEGER .)
+    TP_INTEGER      reduce using rule 24 (term -> INTEGER .)
+    TP_FLOAT        reduce using rule 24 (term -> INTEGER .)
+    TP_BOOL         reduce using rule 24 (term -> INTEGER .)
+    TP_ARRAY        reduce using rule 24 (term -> INTEGER .)
+    $end            reduce using rule 24 (term -> INTEGER .)
+    RBRACKET        reduce using rule 24 (term -> INTEGER .)
+    RSQUARE_BRACKET reduce using rule 24 (term -> INTEGER .)
+    DOTCOMMA        reduce using rule 24 (term -> INTEGER .)
+    RPAREN          reduce using rule 24 (term -> INTEGER .)
+
+
+state 16
+
+    (25) term -> FLOAT .
+
+    MEASUREMENT_UNIT reduce using rule 25 (term -> FLOAT .)
+    TIMES           reduce using rule 25 (term -> FLOAT .)
+    DIVIDE          reduce using rule 25 (term -> FLOAT .)
+    PLUS            reduce using rule 25 (term -> FLOAT .)
+    MINUS           reduce using rule 25 (term -> FLOAT .)
+    AND             reduce using rule 25 (term -> FLOAT .)
+    OR              reduce using rule 25 (term -> FLOAT .)
+    LESS_EQUAL      reduce using rule 25 (term -> FLOAT .)
+    GREAT_EQUAL     reduce using rule 25 (term -> FLOAT .)
+    NOT_EQUAL       reduce using rule 25 (term -> FLOAT .)
+    EQUAL           reduce using rule 25 (term -> FLOAT .)
+    IDENTIFIER      reduce using rule 25 (term -> FLOAT .)
+    LSQUARE_BRACKET reduce using rule 25 (term -> FLOAT .)
+    INTEGER         reduce using rule 25 (term -> FLOAT .)
+    FLOAT           reduce using rule 25 (term -> FLOAT .)
+    LPAREN          reduce using rule 25 (term -> FLOAT .)
+    BOOL            reduce using rule 25 (term -> FLOAT .)
+    LOAD            reduce using rule 25 (term -> FLOAT .)
+    IF              reduce using rule 25 (term -> FLOAT .)
+    WHILE           reduce using rule 25 (term -> FLOAT .)
+    TP_OBJECT       reduce using rule 25 (term -> FLOAT .)
+    TP_INTEGER      reduce using rule 25 (term -> FLOAT .)
+    TP_FLOAT        reduce using rule 25 (term -> FLOAT .)
+    TP_BOOL         reduce using rule 25 (term -> FLOAT .)
+    TP_ARRAY        reduce using rule 25 (term -> FLOAT .)
+    $end            reduce using rule 25 (term -> FLOAT .)
+    RBRACKET        reduce using rule 25 (term -> FLOAT .)
+    RSQUARE_BRACKET reduce using rule 25 (term -> FLOAT .)
+    DOTCOMMA        reduce using rule 25 (term -> FLOAT .)
+    RPAREN          reduce using rule 25 (term -> FLOAT .)
+
+
+state 17
+
+    (26) term -> LPAREN . expression RPAREN
+    (5) expression -> . term
+    (13) expression -> . load_statement
+    (14) expression -> . expression TIMES term
+    (15) expression -> . expression DIVIDE term
+    (16) expression -> . expression PLUS term
+    (17) expression -> . expression MINUS term
+    (18) expression -> . expression AND term
+    (19) expression -> . expression OR term
+    (20) expression -> . expression LESS_EQUAL expression
+    (21) expression -> . expression GREAT_EQUAL expression
+    (22) expression -> . expression NOT_EQUAL expression
+    (23) expression -> . expression EQUAL expression
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (30) load_statement -> . LOAD STRING FROM STRING WHERE expression
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LOAD            shift and go to state 19
+    LSQUARE_BRACKET shift and go to state 14
+
+    expression                     shift and go to state 49
+    term                           shift and go to state 9
+    load_statement                 shift and go to state 10
+    array                          shift and go to state 48
+
+state 18
+
+    (27) term -> BOOL .
+
+    MEASUREMENT_UNIT reduce using rule 27 (term -> BOOL .)
+    TIMES           reduce using rule 27 (term -> BOOL .)
+    DIVIDE          reduce using rule 27 (term -> BOOL .)
+    PLUS            reduce using rule 27 (term -> BOOL .)
+    MINUS           reduce using rule 27 (term -> BOOL .)
+    AND             reduce using rule 27 (term -> BOOL .)
+    OR              reduce using rule 27 (term -> BOOL .)
+    LESS_EQUAL      reduce using rule 27 (term -> BOOL .)
+    GREAT_EQUAL     reduce using rule 27 (term -> BOOL .)
+    NOT_EQUAL       reduce using rule 27 (term -> BOOL .)
+    EQUAL           reduce using rule 27 (term -> BOOL .)
+    IDENTIFIER      reduce using rule 27 (term -> BOOL .)
+    LSQUARE_BRACKET reduce using rule 27 (term -> BOOL .)
+    INTEGER         reduce using rule 27 (term -> BOOL .)
+    FLOAT           reduce using rule 27 (term -> BOOL .)
+    LPAREN          reduce using rule 27 (term -> BOOL .)
+    BOOL            reduce using rule 27 (term -> BOOL .)
+    LOAD            reduce using rule 27 (term -> BOOL .)
+    IF              reduce using rule 27 (term -> BOOL .)
+    WHILE           reduce using rule 27 (term -> BOOL .)
+    TP_OBJECT       reduce using rule 27 (term -> BOOL .)
+    TP_INTEGER      reduce using rule 27 (term -> BOOL .)
+    TP_FLOAT        reduce using rule 27 (term -> BOOL .)
+    TP_BOOL         reduce using rule 27 (term -> BOOL .)
+    TP_ARRAY        reduce using rule 27 (term -> BOOL .)
+    $end            reduce using rule 27 (term -> BOOL .)
+    RBRACKET        reduce using rule 27 (term -> BOOL .)
+    RSQUARE_BRACKET reduce using rule 27 (term -> BOOL .)
+    DOTCOMMA        reduce using rule 27 (term -> BOOL .)
+    RPAREN          reduce using rule 27 (term -> BOOL .)
+
+
+state 19
+
+    (30) load_statement -> LOAD . STRING FROM STRING WHERE expression
+
+    STRING          shift and go to state 50
+
+
+state 20
+
+    (31) if_statement -> IF . LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement
+    (32) if_statement -> IF . LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty
+
+    LPAREN          shift and go to state 51
+
+
+state 21
+
+    (37) while_statement -> WHILE . LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET
+
+    LPAREN          shift and go to state 52
+
+
+state 22
+
+    (47) type -> TP_OBJECT .
+
+    IDENTIFIER      reduce using rule 47 (type -> TP_OBJECT .)
+
+
+state 23
+
+    (48) type -> TP_INTEGER .
+
+    IDENTIFIER      reduce using rule 48 (type -> TP_INTEGER .)
+
+
+state 24
+
+    (49) type -> TP_FLOAT .
+
+    IDENTIFIER      reduce using rule 49 (type -> TP_FLOAT .)
+
+
+state 25
+
+    (50) type -> TP_BOOL .
+
+    IDENTIFIER      reduce using rule 50 (type -> TP_BOOL .)
+
+
+state 26
+
+    (51) type -> TP_ARRAY .
+
+    IDENTIFIER      reduce using rule 51 (type -> TP_ARRAY .)
+
+
+state 27
+
+    (7) command_sequence -> command command_sequence .
+
+    $end            reduce using rule 7 (command_sequence -> command command_sequence .)
+    RBRACKET        reduce using rule 7 (command_sequence -> command command_sequence .)
+
+
+state 28
+
+    (14) expression -> expression TIMES . term
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LSQUARE_BRACKET shift and go to state 14
+
+    term                           shift and go to state 53
+    array                          shift and go to state 48
+
+state 29
+
+    (15) expression -> expression DIVIDE . term
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LSQUARE_BRACKET shift and go to state 14
+
+    term                           shift and go to state 54
+    array                          shift and go to state 48
+
+state 30
+
+    (16) expression -> expression PLUS . term
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LSQUARE_BRACKET shift and go to state 14
+
+    term                           shift and go to state 55
+    array                          shift and go to state 48
+
+state 31
+
+    (17) expression -> expression MINUS . term
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LSQUARE_BRACKET shift and go to state 14
+
+    term                           shift and go to state 56
+    array                          shift and go to state 48
+
+state 32
+
+    (18) expression -> expression AND . term
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LSQUARE_BRACKET shift and go to state 14
+
+    term                           shift and go to state 57
+    array                          shift and go to state 48
+
+state 33
+
+    (19) expression -> expression OR . term
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LSQUARE_BRACKET shift and go to state 14
+
+    term                           shift and go to state 58
+    array                          shift and go to state 48
+
+state 34
+
+    (20) expression -> expression LESS_EQUAL . expression
+    (5) expression -> . term
+    (13) expression -> . load_statement
+    (14) expression -> . expression TIMES term
+    (15) expression -> . expression DIVIDE term
+    (16) expression -> . expression PLUS term
+    (17) expression -> . expression MINUS term
+    (18) expression -> . expression AND term
+    (19) expression -> . expression OR term
+    (20) expression -> . expression LESS_EQUAL expression
+    (21) expression -> . expression GREAT_EQUAL expression
+    (22) expression -> . expression NOT_EQUAL expression
+    (23) expression -> . expression EQUAL expression
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (30) load_statement -> . LOAD STRING FROM STRING WHERE expression
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LOAD            shift and go to state 19
+    LSQUARE_BRACKET shift and go to state 14
+
+    expression                     shift and go to state 59
+    term                           shift and go to state 9
+    load_statement                 shift and go to state 10
+    array                          shift and go to state 48
+
+state 35
+
+    (21) expression -> expression GREAT_EQUAL . expression
+    (5) expression -> . term
+    (13) expression -> . load_statement
+    (14) expression -> . expression TIMES term
+    (15) expression -> . expression DIVIDE term
+    (16) expression -> . expression PLUS term
+    (17) expression -> . expression MINUS term
+    (18) expression -> . expression AND term
+    (19) expression -> . expression OR term
+    (20) expression -> . expression LESS_EQUAL expression
+    (21) expression -> . expression GREAT_EQUAL expression
+    (22) expression -> . expression NOT_EQUAL expression
+    (23) expression -> . expression EQUAL expression
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (30) load_statement -> . LOAD STRING FROM STRING WHERE expression
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LOAD            shift and go to state 19
+    LSQUARE_BRACKET shift and go to state 14
+
+    expression                     shift and go to state 60
+    term                           shift and go to state 9
+    load_statement                 shift and go to state 10
+    array                          shift and go to state 48
+
+state 36
+
+    (22) expression -> expression NOT_EQUAL . expression
+    (5) expression -> . term
+    (13) expression -> . load_statement
+    (14) expression -> . expression TIMES term
+    (15) expression -> . expression DIVIDE term
+    (16) expression -> . expression PLUS term
+    (17) expression -> . expression MINUS term
+    (18) expression -> . expression AND term
+    (19) expression -> . expression OR term
+    (20) expression -> . expression LESS_EQUAL expression
+    (21) expression -> . expression GREAT_EQUAL expression
+    (22) expression -> . expression NOT_EQUAL expression
+    (23) expression -> . expression EQUAL expression
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (30) load_statement -> . LOAD STRING FROM STRING WHERE expression
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LOAD            shift and go to state 19
+    LSQUARE_BRACKET shift and go to state 14
+
+    expression                     shift and go to state 61
+    term                           shift and go to state 9
+    load_statement                 shift and go to state 10
+    array                          shift and go to state 48
+
+state 37
+
+    (23) expression -> expression EQUAL . expression
+    (5) expression -> . term
+    (13) expression -> . load_statement
+    (14) expression -> . expression TIMES term
+    (15) expression -> . expression DIVIDE term
+    (16) expression -> . expression PLUS term
+    (17) expression -> . expression MINUS term
+    (18) expression -> . expression AND term
+    (19) expression -> . expression OR term
+    (20) expression -> . expression LESS_EQUAL expression
+    (21) expression -> . expression GREAT_EQUAL expression
+    (22) expression -> . expression NOT_EQUAL expression
+    (23) expression -> . expression EQUAL expression
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (30) load_statement -> . LOAD STRING FROM STRING WHERE expression
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LOAD            shift and go to state 19
+    LSQUARE_BRACKET shift and go to state 14
+
+    expression                     shift and go to state 62
+    term                           shift and go to state 9
+    load_statement                 shift and go to state 10
+    array                          shift and go to state 48
+
+state 38
+
+    (45) attribution_statement -> IDENTIFIER ATTRIBUTION . term
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LSQUARE_BRACKET shift and go to state 14
+
+    term                           shift and go to state 63
+    array                          shift and go to state 48
+
+state 39
+
+    (46) term -> IDENTIFIER LBRACKET . term RBRACKET ATTRIBUTION term
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LSQUARE_BRACKET shift and go to state 14
+
+    term                           shift and go to state 64
+    array                          shift and go to state 48
+
+state 40
+
+    (2) term -> term measure_unit .
+
+    MEASUREMENT_UNIT reduce using rule 2 (term -> term measure_unit .)
+    TIMES           reduce using rule 2 (term -> term measure_unit .)
+    DIVIDE          reduce using rule 2 (term -> term measure_unit .)
+    PLUS            reduce using rule 2 (term -> term measure_unit .)
+    MINUS           reduce using rule 2 (term -> term measure_unit .)
+    AND             reduce using rule 2 (term -> term measure_unit .)
+    OR              reduce using rule 2 (term -> term measure_unit .)
+    LESS_EQUAL      reduce using rule 2 (term -> term measure_unit .)
+    GREAT_EQUAL     reduce using rule 2 (term -> term measure_unit .)
+    NOT_EQUAL       reduce using rule 2 (term -> term measure_unit .)
+    EQUAL           reduce using rule 2 (term -> term measure_unit .)
+    IDENTIFIER      reduce using rule 2 (term -> term measure_unit .)
+    LSQUARE_BRACKET reduce using rule 2 (term -> term measure_unit .)
+    INTEGER         reduce using rule 2 (term -> term measure_unit .)
+    FLOAT           reduce using rule 2 (term -> term measure_unit .)
+    LPAREN          reduce using rule 2 (term -> term measure_unit .)
+    BOOL            reduce using rule 2 (term -> term measure_unit .)
+    LOAD            reduce using rule 2 (term -> term measure_unit .)
+    IF              reduce using rule 2 (term -> term measure_unit .)
+    WHILE           reduce using rule 2 (term -> term measure_unit .)
+    TP_OBJECT       reduce using rule 2 (term -> term measure_unit .)
+    TP_INTEGER      reduce using rule 2 (term -> term measure_unit .)
+    TP_FLOAT        reduce using rule 2 (term -> term measure_unit .)
+    TP_BOOL         reduce using rule 2 (term -> term measure_unit .)
+    TP_ARRAY        reduce using rule 2 (term -> term measure_unit .)
+    $end            reduce using rule 2 (term -> term measure_unit .)
+    RBRACKET        reduce using rule 2 (term -> term measure_unit .)
+    RSQUARE_BRACKET reduce using rule 2 (term -> term measure_unit .)
+    DOTCOMMA        reduce using rule 2 (term -> term measure_unit .)
+    RPAREN          reduce using rule 2 (term -> term measure_unit .)
+
+
+state 41
+
+    (3) measure_unit -> MEASUREMENT_UNIT . DIVIDE MEASUREMENT_UNIT
+    (4) measure_unit -> MEASUREMENT_UNIT .
+
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    DIVIDE          shift and go to state 65
+    MEASUREMENT_UNIT reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    TIMES           reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    PLUS            reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    MINUS           reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    AND             reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    OR              reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    LESS_EQUAL      reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    GREAT_EQUAL     reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    NOT_EQUAL       reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    EQUAL           reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    IDENTIFIER      reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    LSQUARE_BRACKET reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    INTEGER         reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    FLOAT           reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    LPAREN          reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    BOOL            reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    LOAD            reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    IF              reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    WHILE           reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    TP_OBJECT       reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    TP_INTEGER      reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    TP_FLOAT        reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    TP_BOOL         reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    TP_ARRAY        reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    $end            reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    RBRACKET        reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    RSQUARE_BRACKET reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    DOTCOMMA        reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+    RPAREN          reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .)
+
+  ! DIVIDE          [ reduce using rule 4 (measure_unit -> MEASUREMENT_UNIT .) ]
+
+
+state 42
+
+    (43) attribution_statement -> type IDENTIFIER . empty
+    (44) attribution_statement -> type IDENTIFIER . ATTRIBUTION term
+    (52) empty -> .
+
+    ATTRIBUTION     shift and go to state 67
+    IDENTIFIER      reduce using rule 52 (empty -> .)
+    LSQUARE_BRACKET reduce using rule 52 (empty -> .)
+    INTEGER         reduce using rule 52 (empty -> .)
+    FLOAT           reduce using rule 52 (empty -> .)
+    LPAREN          reduce using rule 52 (empty -> .)
+    BOOL            reduce using rule 52 (empty -> .)
+    LOAD            reduce using rule 52 (empty -> .)
+    IF              reduce using rule 52 (empty -> .)
+    WHILE           reduce using rule 52 (empty -> .)
+    TP_OBJECT       reduce using rule 52 (empty -> .)
+    TP_INTEGER      reduce using rule 52 (empty -> .)
+    TP_FLOAT        reduce using rule 52 (empty -> .)
+    TP_BOOL         reduce using rule 52 (empty -> .)
+    TP_ARRAY        reduce using rule 52 (empty -> .)
+    $end            reduce using rule 52 (empty -> .)
+    RBRACKET        reduce using rule 52 (empty -> .)
+
+    empty                          shift and go to state 66
+
+state 43
+
+    (38) array -> LSQUARE_BRACKET list_terms . RSQUARE_BRACKET
+    (39) list_terms -> list_terms . DOTCOMMA term
+
+    RSQUARE_BRACKET shift and go to state 68
+    DOTCOMMA        shift and go to state 69
+
+
+state 44
+
+    (40) list_terms -> term_array .
+
+    RSQUARE_BRACKET reduce using rule 40 (list_terms -> term_array .)
+    DOTCOMMA        reduce using rule 40 (list_terms -> term_array .)
+
+
+state 45
+
+    (41) term_array -> STRING .
+
+    RSQUARE_BRACKET reduce using rule 41 (term_array -> STRING .)
+    DOTCOMMA        reduce using rule 41 (term_array -> STRING .)
+
+
+state 46
+
+    (42) term_array -> expression .
+    (14) expression -> expression . TIMES term
+    (15) expression -> expression . DIVIDE term
+    (16) expression -> expression . PLUS term
+    (17) expression -> expression . MINUS term
+    (18) expression -> expression . AND term
+    (19) expression -> expression . OR term
+    (20) expression -> expression . LESS_EQUAL expression
+    (21) expression -> expression . GREAT_EQUAL expression
+    (22) expression -> expression . NOT_EQUAL expression
+    (23) expression -> expression . EQUAL expression
+
+    RSQUARE_BRACKET reduce using rule 42 (term_array -> expression .)
+    DOTCOMMA        reduce using rule 42 (term_array -> expression .)
+    TIMES           shift and go to state 28
+    DIVIDE          shift and go to state 29
+    PLUS            shift and go to state 30
+    MINUS           shift and go to state 31
+    AND             shift and go to state 32
+    OR              shift and go to state 33
+    LESS_EQUAL      shift and go to state 34
+    GREAT_EQUAL     shift and go to state 35
+    NOT_EQUAL       shift and go to state 36
+    EQUAL           shift and go to state 37
+
+
+state 47
+
+    (28) term -> IDENTIFIER .
+    (46) term -> IDENTIFIER . LBRACKET term RBRACKET ATTRIBUTION term
+
+    MEASUREMENT_UNIT reduce using rule 28 (term -> IDENTIFIER .)
+    TIMES           reduce using rule 28 (term -> IDENTIFIER .)
+    DIVIDE          reduce using rule 28 (term -> IDENTIFIER .)
+    PLUS            reduce using rule 28 (term -> IDENTIFIER .)
+    MINUS           reduce using rule 28 (term -> IDENTIFIER .)
+    AND             reduce using rule 28 (term -> IDENTIFIER .)
+    OR              reduce using rule 28 (term -> IDENTIFIER .)
+    LESS_EQUAL      reduce using rule 28 (term -> IDENTIFIER .)
+    GREAT_EQUAL     reduce using rule 28 (term -> IDENTIFIER .)
+    NOT_EQUAL       reduce using rule 28 (term -> IDENTIFIER .)
+    EQUAL           reduce using rule 28 (term -> IDENTIFIER .)
+    RSQUARE_BRACKET reduce using rule 28 (term -> IDENTIFIER .)
+    DOTCOMMA        reduce using rule 28 (term -> IDENTIFIER .)
+    RPAREN          reduce using rule 28 (term -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 28 (term -> IDENTIFIER .)
+    LSQUARE_BRACKET reduce using rule 28 (term -> IDENTIFIER .)
+    INTEGER         reduce using rule 28 (term -> IDENTIFIER .)
+    FLOAT           reduce using rule 28 (term -> IDENTIFIER .)
+    LPAREN          reduce using rule 28 (term -> IDENTIFIER .)
+    BOOL            reduce using rule 28 (term -> IDENTIFIER .)
+    LOAD            reduce using rule 28 (term -> IDENTIFIER .)
+    IF              reduce using rule 28 (term -> IDENTIFIER .)
+    WHILE           reduce using rule 28 (term -> IDENTIFIER .)
+    TP_OBJECT       reduce using rule 28 (term -> IDENTIFIER .)
+    TP_INTEGER      reduce using rule 28 (term -> IDENTIFIER .)
+    TP_FLOAT        reduce using rule 28 (term -> IDENTIFIER .)
+    TP_BOOL         reduce using rule 28 (term -> IDENTIFIER .)
+    TP_ARRAY        reduce using rule 28 (term -> IDENTIFIER .)
+    $end            reduce using rule 28 (term -> IDENTIFIER .)
+    RBRACKET        reduce using rule 28 (term -> IDENTIFIER .)
+    LBRACKET        shift and go to state 39
+
+
+state 48
+
+    (29) term -> array .
+
+    MEASUREMENT_UNIT reduce using rule 29 (term -> array .)
+    TIMES           reduce using rule 29 (term -> array .)
+    DIVIDE          reduce using rule 29 (term -> array .)
+    PLUS            reduce using rule 29 (term -> array .)
+    MINUS           reduce using rule 29 (term -> array .)
+    AND             reduce using rule 29 (term -> array .)
+    OR              reduce using rule 29 (term -> array .)
+    LESS_EQUAL      reduce using rule 29 (term -> array .)
+    GREAT_EQUAL     reduce using rule 29 (term -> array .)
+    NOT_EQUAL       reduce using rule 29 (term -> array .)
+    EQUAL           reduce using rule 29 (term -> array .)
+    RSQUARE_BRACKET reduce using rule 29 (term -> array .)
+    DOTCOMMA        reduce using rule 29 (term -> array .)
+    RPAREN          reduce using rule 29 (term -> array .)
+    IDENTIFIER      reduce using rule 29 (term -> array .)
+    LSQUARE_BRACKET reduce using rule 29 (term -> array .)
+    INTEGER         reduce using rule 29 (term -> array .)
+    FLOAT           reduce using rule 29 (term -> array .)
+    LPAREN          reduce using rule 29 (term -> array .)
+    BOOL            reduce using rule 29 (term -> array .)
+    LOAD            reduce using rule 29 (term -> array .)
+    IF              reduce using rule 29 (term -> array .)
+    WHILE           reduce using rule 29 (term -> array .)
+    TP_OBJECT       reduce using rule 29 (term -> array .)
+    TP_INTEGER      reduce using rule 29 (term -> array .)
+    TP_FLOAT        reduce using rule 29 (term -> array .)
+    TP_BOOL         reduce using rule 29 (term -> array .)
+    TP_ARRAY        reduce using rule 29 (term -> array .)
+    $end            reduce using rule 29 (term -> array .)
+    RBRACKET        reduce using rule 29 (term -> array .)
+
+
+state 49
+
+    (26) term -> LPAREN expression . RPAREN
+    (14) expression -> expression . TIMES term
+    (15) expression -> expression . DIVIDE term
+    (16) expression -> expression . PLUS term
+    (17) expression -> expression . MINUS term
+    (18) expression -> expression . AND term
+    (19) expression -> expression . OR term
+    (20) expression -> expression . LESS_EQUAL expression
+    (21) expression -> expression . GREAT_EQUAL expression
+    (22) expression -> expression . NOT_EQUAL expression
+    (23) expression -> expression . EQUAL expression
+
+    RPAREN          shift and go to state 70
+    TIMES           shift and go to state 28
+    DIVIDE          shift and go to state 29
+    PLUS            shift and go to state 30
+    MINUS           shift and go to state 31
+    AND             shift and go to state 32
+    OR              shift and go to state 33
+    LESS_EQUAL      shift and go to state 34
+    GREAT_EQUAL     shift and go to state 35
+    NOT_EQUAL       shift and go to state 36
+    EQUAL           shift and go to state 37
+
+
+state 50
+
+    (30) load_statement -> LOAD STRING . FROM STRING WHERE expression
+
+    FROM            shift and go to state 71
+
+
+state 51
+
+    (31) if_statement -> IF LPAREN . expression RPAREN LBRACKET command_sequence RBRACKET else_statement
+    (32) if_statement -> IF LPAREN . expression RPAREN LBRACKET command_sequence RBRACKET empty
+    (5) expression -> . term
+    (13) expression -> . load_statement
+    (14) expression -> . expression TIMES term
+    (15) expression -> . expression DIVIDE term
+    (16) expression -> . expression PLUS term
+    (17) expression -> . expression MINUS term
+    (18) expression -> . expression AND term
+    (19) expression -> . expression OR term
+    (20) expression -> . expression LESS_EQUAL expression
+    (21) expression -> . expression GREAT_EQUAL expression
+    (22) expression -> . expression NOT_EQUAL expression
+    (23) expression -> . expression EQUAL expression
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (30) load_statement -> . LOAD STRING FROM STRING WHERE expression
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LOAD            shift and go to state 19
+    LSQUARE_BRACKET shift and go to state 14
+
+    expression                     shift and go to state 72
+    term                           shift and go to state 9
+    load_statement                 shift and go to state 10
+    array                          shift and go to state 48
+
+state 52
+
+    (37) while_statement -> WHILE LPAREN . expression RPAREN DO LBRACKET command_sequence RBRACKET
+    (5) expression -> . term
+    (13) expression -> . load_statement
+    (14) expression -> . expression TIMES term
+    (15) expression -> . expression DIVIDE term
+    (16) expression -> . expression PLUS term
+    (17) expression -> . expression MINUS term
+    (18) expression -> . expression AND term
+    (19) expression -> . expression OR term
+    (20) expression -> . expression LESS_EQUAL expression
+    (21) expression -> . expression GREAT_EQUAL expression
+    (22) expression -> . expression NOT_EQUAL expression
+    (23) expression -> . expression EQUAL expression
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (30) load_statement -> . LOAD STRING FROM STRING WHERE expression
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LOAD            shift and go to state 19
+    LSQUARE_BRACKET shift and go to state 14
+
+    expression                     shift and go to state 73
+    term                           shift and go to state 9
+    load_statement                 shift and go to state 10
+    array                          shift and go to state 48
+
+state 53
+
+    (14) expression -> expression TIMES term .
+    (2) term -> term . measure_unit
+    (3) measure_unit -> . MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT
+    (4) measure_unit -> . MEASUREMENT_UNIT
+
+    TIMES           reduce using rule 14 (expression -> expression TIMES term .)
+    DIVIDE          reduce using rule 14 (expression -> expression TIMES term .)
+    PLUS            reduce using rule 14 (expression -> expression TIMES term .)
+    MINUS           reduce using rule 14 (expression -> expression TIMES term .)
+    AND             reduce using rule 14 (expression -> expression TIMES term .)
+    OR              reduce using rule 14 (expression -> expression TIMES term .)
+    LESS_EQUAL      reduce using rule 14 (expression -> expression TIMES term .)
+    GREAT_EQUAL     reduce using rule 14 (expression -> expression TIMES term .)
+    NOT_EQUAL       reduce using rule 14 (expression -> expression TIMES term .)
+    EQUAL           reduce using rule 14 (expression -> expression TIMES term .)
+    IDENTIFIER      reduce using rule 14 (expression -> expression TIMES term .)
+    LSQUARE_BRACKET reduce using rule 14 (expression -> expression TIMES term .)
+    INTEGER         reduce using rule 14 (expression -> expression TIMES term .)
+    FLOAT           reduce using rule 14 (expression -> expression TIMES term .)
+    LPAREN          reduce using rule 14 (expression -> expression TIMES term .)
+    BOOL            reduce using rule 14 (expression -> expression TIMES term .)
+    LOAD            reduce using rule 14 (expression -> expression TIMES term .)
+    IF              reduce using rule 14 (expression -> expression TIMES term .)
+    WHILE           reduce using rule 14 (expression -> expression TIMES term .)
+    TP_OBJECT       reduce using rule 14 (expression -> expression TIMES term .)
+    TP_INTEGER      reduce using rule 14 (expression -> expression TIMES term .)
+    TP_FLOAT        reduce using rule 14 (expression -> expression TIMES term .)
+    TP_BOOL         reduce using rule 14 (expression -> expression TIMES term .)
+    TP_ARRAY        reduce using rule 14 (expression -> expression TIMES term .)
+    $end            reduce using rule 14 (expression -> expression TIMES term .)
+    RBRACKET        reduce using rule 14 (expression -> expression TIMES term .)
+    RSQUARE_BRACKET reduce using rule 14 (expression -> expression TIMES term .)
+    DOTCOMMA        reduce using rule 14 (expression -> expression TIMES term .)
+    RPAREN          reduce using rule 14 (expression -> expression TIMES term .)
+    MEASUREMENT_UNIT shift and go to state 41
+
+    measure_unit                   shift and go to state 40
+
+state 54
+
+    (15) expression -> expression DIVIDE term .
+    (2) term -> term . measure_unit
+    (3) measure_unit -> . MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT
+    (4) measure_unit -> . MEASUREMENT_UNIT
+
+    TIMES           reduce using rule 15 (expression -> expression DIVIDE term .)
+    DIVIDE          reduce using rule 15 (expression -> expression DIVIDE term .)
+    PLUS            reduce using rule 15 (expression -> expression DIVIDE term .)
+    MINUS           reduce using rule 15 (expression -> expression DIVIDE term .)
+    AND             reduce using rule 15 (expression -> expression DIVIDE term .)
+    OR              reduce using rule 15 (expression -> expression DIVIDE term .)
+    LESS_EQUAL      reduce using rule 15 (expression -> expression DIVIDE term .)
+    GREAT_EQUAL     reduce using rule 15 (expression -> expression DIVIDE term .)
+    NOT_EQUAL       reduce using rule 15 (expression -> expression DIVIDE term .)
+    EQUAL           reduce using rule 15 (expression -> expression DIVIDE term .)
+    IDENTIFIER      reduce using rule 15 (expression -> expression DIVIDE term .)
+    LSQUARE_BRACKET reduce using rule 15 (expression -> expression DIVIDE term .)
+    INTEGER         reduce using rule 15 (expression -> expression DIVIDE term .)
+    FLOAT           reduce using rule 15 (expression -> expression DIVIDE term .)
+    LPAREN          reduce using rule 15 (expression -> expression DIVIDE term .)
+    BOOL            reduce using rule 15 (expression -> expression DIVIDE term .)
+    LOAD            reduce using rule 15 (expression -> expression DIVIDE term .)
+    IF              reduce using rule 15 (expression -> expression DIVIDE term .)
+    WHILE           reduce using rule 15 (expression -> expression DIVIDE term .)
+    TP_OBJECT       reduce using rule 15 (expression -> expression DIVIDE term .)
+    TP_INTEGER      reduce using rule 15 (expression -> expression DIVIDE term .)
+    TP_FLOAT        reduce using rule 15 (expression -> expression DIVIDE term .)
+    TP_BOOL         reduce using rule 15 (expression -> expression DIVIDE term .)
+    TP_ARRAY        reduce using rule 15 (expression -> expression DIVIDE term .)
+    $end            reduce using rule 15 (expression -> expression DIVIDE term .)
+    RBRACKET        reduce using rule 15 (expression -> expression DIVIDE term .)
+    RSQUARE_BRACKET reduce using rule 15 (expression -> expression DIVIDE term .)
+    DOTCOMMA        reduce using rule 15 (expression -> expression DIVIDE term .)
+    RPAREN          reduce using rule 15 (expression -> expression DIVIDE term .)
+    MEASUREMENT_UNIT shift and go to state 41
+
+    measure_unit                   shift and go to state 40
+
+state 55
+
+    (16) expression -> expression PLUS term .
+    (2) term -> term . measure_unit
+    (3) measure_unit -> . MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT
+    (4) measure_unit -> . MEASUREMENT_UNIT
+
+    TIMES           reduce using rule 16 (expression -> expression PLUS term .)
+    DIVIDE          reduce using rule 16 (expression -> expression PLUS term .)
+    PLUS            reduce using rule 16 (expression -> expression PLUS term .)
+    MINUS           reduce using rule 16 (expression -> expression PLUS term .)
+    AND             reduce using rule 16 (expression -> expression PLUS term .)
+    OR              reduce using rule 16 (expression -> expression PLUS term .)
+    LESS_EQUAL      reduce using rule 16 (expression -> expression PLUS term .)
+    GREAT_EQUAL     reduce using rule 16 (expression -> expression PLUS term .)
+    NOT_EQUAL       reduce using rule 16 (expression -> expression PLUS term .)
+    EQUAL           reduce using rule 16 (expression -> expression PLUS term .)
+    IDENTIFIER      reduce using rule 16 (expression -> expression PLUS term .)
+    LSQUARE_BRACKET reduce using rule 16 (expression -> expression PLUS term .)
+    INTEGER         reduce using rule 16 (expression -> expression PLUS term .)
+    FLOAT           reduce using rule 16 (expression -> expression PLUS term .)
+    LPAREN          reduce using rule 16 (expression -> expression PLUS term .)
+    BOOL            reduce using rule 16 (expression -> expression PLUS term .)
+    LOAD            reduce using rule 16 (expression -> expression PLUS term .)
+    IF              reduce using rule 16 (expression -> expression PLUS term .)
+    WHILE           reduce using rule 16 (expression -> expression PLUS term .)
+    TP_OBJECT       reduce using rule 16 (expression -> expression PLUS term .)
+    TP_INTEGER      reduce using rule 16 (expression -> expression PLUS term .)
+    TP_FLOAT        reduce using rule 16 (expression -> expression PLUS term .)
+    TP_BOOL         reduce using rule 16 (expression -> expression PLUS term .)
+    TP_ARRAY        reduce using rule 16 (expression -> expression PLUS term .)
+    $end            reduce using rule 16 (expression -> expression PLUS term .)
+    RBRACKET        reduce using rule 16 (expression -> expression PLUS term .)
+    RSQUARE_BRACKET reduce using rule 16 (expression -> expression PLUS term .)
+    DOTCOMMA        reduce using rule 16 (expression -> expression PLUS term .)
+    RPAREN          reduce using rule 16 (expression -> expression PLUS term .)
+    MEASUREMENT_UNIT shift and go to state 41
+
+    measure_unit                   shift and go to state 40
+
+state 56
+
+    (17) expression -> expression MINUS term .
+    (2) term -> term . measure_unit
+    (3) measure_unit -> . MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT
+    (4) measure_unit -> . MEASUREMENT_UNIT
+
+    TIMES           reduce using rule 17 (expression -> expression MINUS term .)
+    DIVIDE          reduce using rule 17 (expression -> expression MINUS term .)
+    PLUS            reduce using rule 17 (expression -> expression MINUS term .)
+    MINUS           reduce using rule 17 (expression -> expression MINUS term .)
+    AND             reduce using rule 17 (expression -> expression MINUS term .)
+    OR              reduce using rule 17 (expression -> expression MINUS term .)
+    LESS_EQUAL      reduce using rule 17 (expression -> expression MINUS term .)
+    GREAT_EQUAL     reduce using rule 17 (expression -> expression MINUS term .)
+    NOT_EQUAL       reduce using rule 17 (expression -> expression MINUS term .)
+    EQUAL           reduce using rule 17 (expression -> expression MINUS term .)
+    IDENTIFIER      reduce using rule 17 (expression -> expression MINUS term .)
+    LSQUARE_BRACKET reduce using rule 17 (expression -> expression MINUS term .)
+    INTEGER         reduce using rule 17 (expression -> expression MINUS term .)
+    FLOAT           reduce using rule 17 (expression -> expression MINUS term .)
+    LPAREN          reduce using rule 17 (expression -> expression MINUS term .)
+    BOOL            reduce using rule 17 (expression -> expression MINUS term .)
+    LOAD            reduce using rule 17 (expression -> expression MINUS term .)
+    IF              reduce using rule 17 (expression -> expression MINUS term .)
+    WHILE           reduce using rule 17 (expression -> expression MINUS term .)
+    TP_OBJECT       reduce using rule 17 (expression -> expression MINUS term .)
+    TP_INTEGER      reduce using rule 17 (expression -> expression MINUS term .)
+    TP_FLOAT        reduce using rule 17 (expression -> expression MINUS term .)
+    TP_BOOL         reduce using rule 17 (expression -> expression MINUS term .)
+    TP_ARRAY        reduce using rule 17 (expression -> expression MINUS term .)
+    $end            reduce using rule 17 (expression -> expression MINUS term .)
+    RBRACKET        reduce using rule 17 (expression -> expression MINUS term .)
+    RSQUARE_BRACKET reduce using rule 17 (expression -> expression MINUS term .)
+    DOTCOMMA        reduce using rule 17 (expression -> expression MINUS term .)
+    RPAREN          reduce using rule 17 (expression -> expression MINUS term .)
+    MEASUREMENT_UNIT shift and go to state 41
+
+    measure_unit                   shift and go to state 40
+
+state 57
+
+    (18) expression -> expression AND term .
+    (2) term -> term . measure_unit
+    (3) measure_unit -> . MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT
+    (4) measure_unit -> . MEASUREMENT_UNIT
+
+    TIMES           reduce using rule 18 (expression -> expression AND term .)
+    DIVIDE          reduce using rule 18 (expression -> expression AND term .)
+    PLUS            reduce using rule 18 (expression -> expression AND term .)
+    MINUS           reduce using rule 18 (expression -> expression AND term .)
+    AND             reduce using rule 18 (expression -> expression AND term .)
+    OR              reduce using rule 18 (expression -> expression AND term .)
+    LESS_EQUAL      reduce using rule 18 (expression -> expression AND term .)
+    GREAT_EQUAL     reduce using rule 18 (expression -> expression AND term .)
+    NOT_EQUAL       reduce using rule 18 (expression -> expression AND term .)
+    EQUAL           reduce using rule 18 (expression -> expression AND term .)
+    IDENTIFIER      reduce using rule 18 (expression -> expression AND term .)
+    LSQUARE_BRACKET reduce using rule 18 (expression -> expression AND term .)
+    INTEGER         reduce using rule 18 (expression -> expression AND term .)
+    FLOAT           reduce using rule 18 (expression -> expression AND term .)
+    LPAREN          reduce using rule 18 (expression -> expression AND term .)
+    BOOL            reduce using rule 18 (expression -> expression AND term .)
+    LOAD            reduce using rule 18 (expression -> expression AND term .)
+    IF              reduce using rule 18 (expression -> expression AND term .)
+    WHILE           reduce using rule 18 (expression -> expression AND term .)
+    TP_OBJECT       reduce using rule 18 (expression -> expression AND term .)
+    TP_INTEGER      reduce using rule 18 (expression -> expression AND term .)
+    TP_FLOAT        reduce using rule 18 (expression -> expression AND term .)
+    TP_BOOL         reduce using rule 18 (expression -> expression AND term .)
+    TP_ARRAY        reduce using rule 18 (expression -> expression AND term .)
+    $end            reduce using rule 18 (expression -> expression AND term .)
+    RBRACKET        reduce using rule 18 (expression -> expression AND term .)
+    RSQUARE_BRACKET reduce using rule 18 (expression -> expression AND term .)
+    DOTCOMMA        reduce using rule 18 (expression -> expression AND term .)
+    RPAREN          reduce using rule 18 (expression -> expression AND term .)
+    MEASUREMENT_UNIT shift and go to state 41
+
+    measure_unit                   shift and go to state 40
+
+state 58
+
+    (19) expression -> expression OR term .
+    (2) term -> term . measure_unit
+    (3) measure_unit -> . MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT
+    (4) measure_unit -> . MEASUREMENT_UNIT
+
+    TIMES           reduce using rule 19 (expression -> expression OR term .)
+    DIVIDE          reduce using rule 19 (expression -> expression OR term .)
+    PLUS            reduce using rule 19 (expression -> expression OR term .)
+    MINUS           reduce using rule 19 (expression -> expression OR term .)
+    AND             reduce using rule 19 (expression -> expression OR term .)
+    OR              reduce using rule 19 (expression -> expression OR term .)
+    LESS_EQUAL      reduce using rule 19 (expression -> expression OR term .)
+    GREAT_EQUAL     reduce using rule 19 (expression -> expression OR term .)
+    NOT_EQUAL       reduce using rule 19 (expression -> expression OR term .)
+    EQUAL           reduce using rule 19 (expression -> expression OR term .)
+    IDENTIFIER      reduce using rule 19 (expression -> expression OR term .)
+    LSQUARE_BRACKET reduce using rule 19 (expression -> expression OR term .)
+    INTEGER         reduce using rule 19 (expression -> expression OR term .)
+    FLOAT           reduce using rule 19 (expression -> expression OR term .)
+    LPAREN          reduce using rule 19 (expression -> expression OR term .)
+    BOOL            reduce using rule 19 (expression -> expression OR term .)
+    LOAD            reduce using rule 19 (expression -> expression OR term .)
+    IF              reduce using rule 19 (expression -> expression OR term .)
+    WHILE           reduce using rule 19 (expression -> expression OR term .)
+    TP_OBJECT       reduce using rule 19 (expression -> expression OR term .)
+    TP_INTEGER      reduce using rule 19 (expression -> expression OR term .)
+    TP_FLOAT        reduce using rule 19 (expression -> expression OR term .)
+    TP_BOOL         reduce using rule 19 (expression -> expression OR term .)
+    TP_ARRAY        reduce using rule 19 (expression -> expression OR term .)
+    $end            reduce using rule 19 (expression -> expression OR term .)
+    RBRACKET        reduce using rule 19 (expression -> expression OR term .)
+    RSQUARE_BRACKET reduce using rule 19 (expression -> expression OR term .)
+    DOTCOMMA        reduce using rule 19 (expression -> expression OR term .)
+    RPAREN          reduce using rule 19 (expression -> expression OR term .)
+    MEASUREMENT_UNIT shift and go to state 41
+
+    measure_unit                   shift and go to state 40
+
+state 59
+
+    (20) expression -> expression LESS_EQUAL expression .
+    (14) expression -> expression . TIMES term
+    (15) expression -> expression . DIVIDE term
+    (16) expression -> expression . PLUS term
+    (17) expression -> expression . MINUS term
+    (18) expression -> expression . AND term
+    (19) expression -> expression . OR term
+    (20) expression -> expression . LESS_EQUAL expression
+    (21) expression -> expression . GREAT_EQUAL expression
+    (22) expression -> expression . NOT_EQUAL expression
+    (23) expression -> expression . EQUAL expression
+
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for LESS_EQUAL resolved as shift
+  ! shift/reduce conflict for GREAT_EQUAL resolved as shift
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+    IDENTIFIER      reduce using rule 20 (expression -> expression LESS_EQUAL expression .)
+    LSQUARE_BRACKET reduce using rule 20 (expression -> expression LESS_EQUAL expression .)
+    INTEGER         reduce using rule 20 (expression -> expression LESS_EQUAL expression .)
+    FLOAT           reduce using rule 20 (expression -> expression LESS_EQUAL expression .)
+    LPAREN          reduce using rule 20 (expression -> expression LESS_EQUAL expression .)
+    BOOL            reduce using rule 20 (expression -> expression LESS_EQUAL expression .)
+    LOAD            reduce using rule 20 (expression -> expression LESS_EQUAL expression .)
+    IF              reduce using rule 20 (expression -> expression LESS_EQUAL expression .)
+    WHILE           reduce using rule 20 (expression -> expression LESS_EQUAL expression .)
+    TP_OBJECT       reduce using rule 20 (expression -> expression LESS_EQUAL expression .)
+    TP_INTEGER      reduce using rule 20 (expression -> expression LESS_EQUAL expression .)
+    TP_FLOAT        reduce using rule 20 (expression -> expression LESS_EQUAL expression .)
+    TP_BOOL         reduce using rule 20 (expression -> expression LESS_EQUAL expression .)
+    TP_ARRAY        reduce using rule 20 (expression -> expression LESS_EQUAL expression .)
+    $end            reduce using rule 20 (expression -> expression LESS_EQUAL expression .)
+    RBRACKET        reduce using rule 20 (expression -> expression LESS_EQUAL expression .)
+    RSQUARE_BRACKET reduce using rule 20 (expression -> expression LESS_EQUAL expression .)
+    DOTCOMMA        reduce using rule 20 (expression -> expression LESS_EQUAL expression .)
+    RPAREN          reduce using rule 20 (expression -> expression LESS_EQUAL expression .)
+    TIMES           shift and go to state 28
+    DIVIDE          shift and go to state 29
+    PLUS            shift and go to state 30
+    MINUS           shift and go to state 31
+    AND             shift and go to state 32
+    OR              shift and go to state 33
+    LESS_EQUAL      shift and go to state 34
+    GREAT_EQUAL     shift and go to state 35
+    NOT_EQUAL       shift and go to state 36
+    EQUAL           shift and go to state 37
+
+  ! TIMES           [ reduce using rule 20 (expression -> expression LESS_EQUAL expression .) ]
+  ! DIVIDE          [ reduce using rule 20 (expression -> expression LESS_EQUAL expression .) ]
+  ! PLUS            [ reduce using rule 20 (expression -> expression LESS_EQUAL expression .) ]
+  ! MINUS           [ reduce using rule 20 (expression -> expression LESS_EQUAL expression .) ]
+  ! AND             [ reduce using rule 20 (expression -> expression LESS_EQUAL expression .) ]
+  ! OR              [ reduce using rule 20 (expression -> expression LESS_EQUAL expression .) ]
+  ! LESS_EQUAL      [ reduce using rule 20 (expression -> expression LESS_EQUAL expression .) ]
+  ! GREAT_EQUAL     [ reduce using rule 20 (expression -> expression LESS_EQUAL expression .) ]
+  ! NOT_EQUAL       [ reduce using rule 20 (expression -> expression LESS_EQUAL expression .) ]
+  ! EQUAL           [ reduce using rule 20 (expression -> expression LESS_EQUAL expression .) ]
+
+
+state 60
+
+    (21) expression -> expression GREAT_EQUAL expression .
+    (14) expression -> expression . TIMES term
+    (15) expression -> expression . DIVIDE term
+    (16) expression -> expression . PLUS term
+    (17) expression -> expression . MINUS term
+    (18) expression -> expression . AND term
+    (19) expression -> expression . OR term
+    (20) expression -> expression . LESS_EQUAL expression
+    (21) expression -> expression . GREAT_EQUAL expression
+    (22) expression -> expression . NOT_EQUAL expression
+    (23) expression -> expression . EQUAL expression
+
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for LESS_EQUAL resolved as shift
+  ! shift/reduce conflict for GREAT_EQUAL resolved as shift
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+    IDENTIFIER      reduce using rule 21 (expression -> expression GREAT_EQUAL expression .)
+    LSQUARE_BRACKET reduce using rule 21 (expression -> expression GREAT_EQUAL expression .)
+    INTEGER         reduce using rule 21 (expression -> expression GREAT_EQUAL expression .)
+    FLOAT           reduce using rule 21 (expression -> expression GREAT_EQUAL expression .)
+    LPAREN          reduce using rule 21 (expression -> expression GREAT_EQUAL expression .)
+    BOOL            reduce using rule 21 (expression -> expression GREAT_EQUAL expression .)
+    LOAD            reduce using rule 21 (expression -> expression GREAT_EQUAL expression .)
+    IF              reduce using rule 21 (expression -> expression GREAT_EQUAL expression .)
+    WHILE           reduce using rule 21 (expression -> expression GREAT_EQUAL expression .)
+    TP_OBJECT       reduce using rule 21 (expression -> expression GREAT_EQUAL expression .)
+    TP_INTEGER      reduce using rule 21 (expression -> expression GREAT_EQUAL expression .)
+    TP_FLOAT        reduce using rule 21 (expression -> expression GREAT_EQUAL expression .)
+    TP_BOOL         reduce using rule 21 (expression -> expression GREAT_EQUAL expression .)
+    TP_ARRAY        reduce using rule 21 (expression -> expression GREAT_EQUAL expression .)
+    $end            reduce using rule 21 (expression -> expression GREAT_EQUAL expression .)
+    RBRACKET        reduce using rule 21 (expression -> expression GREAT_EQUAL expression .)
+    RSQUARE_BRACKET reduce using rule 21 (expression -> expression GREAT_EQUAL expression .)
+    DOTCOMMA        reduce using rule 21 (expression -> expression GREAT_EQUAL expression .)
+    RPAREN          reduce using rule 21 (expression -> expression GREAT_EQUAL expression .)
+    TIMES           shift and go to state 28
+    DIVIDE          shift and go to state 29
+    PLUS            shift and go to state 30
+    MINUS           shift and go to state 31
+    AND             shift and go to state 32
+    OR              shift and go to state 33
+    LESS_EQUAL      shift and go to state 34
+    GREAT_EQUAL     shift and go to state 35
+    NOT_EQUAL       shift and go to state 36
+    EQUAL           shift and go to state 37
+
+  ! TIMES           [ reduce using rule 21 (expression -> expression GREAT_EQUAL expression .) ]
+  ! DIVIDE          [ reduce using rule 21 (expression -> expression GREAT_EQUAL expression .) ]
+  ! PLUS            [ reduce using rule 21 (expression -> expression GREAT_EQUAL expression .) ]
+  ! MINUS           [ reduce using rule 21 (expression -> expression GREAT_EQUAL expression .) ]
+  ! AND             [ reduce using rule 21 (expression -> expression GREAT_EQUAL expression .) ]
+  ! OR              [ reduce using rule 21 (expression -> expression GREAT_EQUAL expression .) ]
+  ! LESS_EQUAL      [ reduce using rule 21 (expression -> expression GREAT_EQUAL expression .) ]
+  ! GREAT_EQUAL     [ reduce using rule 21 (expression -> expression GREAT_EQUAL expression .) ]
+  ! NOT_EQUAL       [ reduce using rule 21 (expression -> expression GREAT_EQUAL expression .) ]
+  ! EQUAL           [ reduce using rule 21 (expression -> expression GREAT_EQUAL expression .) ]
+
+
+state 61
+
+    (22) expression -> expression NOT_EQUAL expression .
+    (14) expression -> expression . TIMES term
+    (15) expression -> expression . DIVIDE term
+    (16) expression -> expression . PLUS term
+    (17) expression -> expression . MINUS term
+    (18) expression -> expression . AND term
+    (19) expression -> expression . OR term
+    (20) expression -> expression . LESS_EQUAL expression
+    (21) expression -> expression . GREAT_EQUAL expression
+    (22) expression -> expression . NOT_EQUAL expression
+    (23) expression -> expression . EQUAL expression
+
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for LESS_EQUAL resolved as shift
+  ! shift/reduce conflict for GREAT_EQUAL resolved as shift
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+    IDENTIFIER      reduce using rule 22 (expression -> expression NOT_EQUAL expression .)
+    LSQUARE_BRACKET reduce using rule 22 (expression -> expression NOT_EQUAL expression .)
+    INTEGER         reduce using rule 22 (expression -> expression NOT_EQUAL expression .)
+    FLOAT           reduce using rule 22 (expression -> expression NOT_EQUAL expression .)
+    LPAREN          reduce using rule 22 (expression -> expression NOT_EQUAL expression .)
+    BOOL            reduce using rule 22 (expression -> expression NOT_EQUAL expression .)
+    LOAD            reduce using rule 22 (expression -> expression NOT_EQUAL expression .)
+    IF              reduce using rule 22 (expression -> expression NOT_EQUAL expression .)
+    WHILE           reduce using rule 22 (expression -> expression NOT_EQUAL expression .)
+    TP_OBJECT       reduce using rule 22 (expression -> expression NOT_EQUAL expression .)
+    TP_INTEGER      reduce using rule 22 (expression -> expression NOT_EQUAL expression .)
+    TP_FLOAT        reduce using rule 22 (expression -> expression NOT_EQUAL expression .)
+    TP_BOOL         reduce using rule 22 (expression -> expression NOT_EQUAL expression .)
+    TP_ARRAY        reduce using rule 22 (expression -> expression NOT_EQUAL expression .)
+    $end            reduce using rule 22 (expression -> expression NOT_EQUAL expression .)
+    RBRACKET        reduce using rule 22 (expression -> expression NOT_EQUAL expression .)
+    RSQUARE_BRACKET reduce using rule 22 (expression -> expression NOT_EQUAL expression .)
+    DOTCOMMA        reduce using rule 22 (expression -> expression NOT_EQUAL expression .)
+    RPAREN          reduce using rule 22 (expression -> expression NOT_EQUAL expression .)
+    TIMES           shift and go to state 28
+    DIVIDE          shift and go to state 29
+    PLUS            shift and go to state 30
+    MINUS           shift and go to state 31
+    AND             shift and go to state 32
+    OR              shift and go to state 33
+    LESS_EQUAL      shift and go to state 34
+    GREAT_EQUAL     shift and go to state 35
+    NOT_EQUAL       shift and go to state 36
+    EQUAL           shift and go to state 37
+
+  ! TIMES           [ reduce using rule 22 (expression -> expression NOT_EQUAL expression .) ]
+  ! DIVIDE          [ reduce using rule 22 (expression -> expression NOT_EQUAL expression .) ]
+  ! PLUS            [ reduce using rule 22 (expression -> expression NOT_EQUAL expression .) ]
+  ! MINUS           [ reduce using rule 22 (expression -> expression NOT_EQUAL expression .) ]
+  ! AND             [ reduce using rule 22 (expression -> expression NOT_EQUAL expression .) ]
+  ! OR              [ reduce using rule 22 (expression -> expression NOT_EQUAL expression .) ]
+  ! LESS_EQUAL      [ reduce using rule 22 (expression -> expression NOT_EQUAL expression .) ]
+  ! GREAT_EQUAL     [ reduce using rule 22 (expression -> expression NOT_EQUAL expression .) ]
+  ! NOT_EQUAL       [ reduce using rule 22 (expression -> expression NOT_EQUAL expression .) ]
+  ! EQUAL           [ reduce using rule 22 (expression -> expression NOT_EQUAL expression .) ]
+
+
+state 62
+
+    (23) expression -> expression EQUAL expression .
+    (14) expression -> expression . TIMES term
+    (15) expression -> expression . DIVIDE term
+    (16) expression -> expression . PLUS term
+    (17) expression -> expression . MINUS term
+    (18) expression -> expression . AND term
+    (19) expression -> expression . OR term
+    (20) expression -> expression . LESS_EQUAL expression
+    (21) expression -> expression . GREAT_EQUAL expression
+    (22) expression -> expression . NOT_EQUAL expression
+    (23) expression -> expression . EQUAL expression
+
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for LESS_EQUAL resolved as shift
+  ! shift/reduce conflict for GREAT_EQUAL resolved as shift
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+    IDENTIFIER      reduce using rule 23 (expression -> expression EQUAL expression .)
+    LSQUARE_BRACKET reduce using rule 23 (expression -> expression EQUAL expression .)
+    INTEGER         reduce using rule 23 (expression -> expression EQUAL expression .)
+    FLOAT           reduce using rule 23 (expression -> expression EQUAL expression .)
+    LPAREN          reduce using rule 23 (expression -> expression EQUAL expression .)
+    BOOL            reduce using rule 23 (expression -> expression EQUAL expression .)
+    LOAD            reduce using rule 23 (expression -> expression EQUAL expression .)
+    IF              reduce using rule 23 (expression -> expression EQUAL expression .)
+    WHILE           reduce using rule 23 (expression -> expression EQUAL expression .)
+    TP_OBJECT       reduce using rule 23 (expression -> expression EQUAL expression .)
+    TP_INTEGER      reduce using rule 23 (expression -> expression EQUAL expression .)
+    TP_FLOAT        reduce using rule 23 (expression -> expression EQUAL expression .)
+    TP_BOOL         reduce using rule 23 (expression -> expression EQUAL expression .)
+    TP_ARRAY        reduce using rule 23 (expression -> expression EQUAL expression .)
+    $end            reduce using rule 23 (expression -> expression EQUAL expression .)
+    RBRACKET        reduce using rule 23 (expression -> expression EQUAL expression .)
+    RSQUARE_BRACKET reduce using rule 23 (expression -> expression EQUAL expression .)
+    DOTCOMMA        reduce using rule 23 (expression -> expression EQUAL expression .)
+    RPAREN          reduce using rule 23 (expression -> expression EQUAL expression .)
+    TIMES           shift and go to state 28
+    DIVIDE          shift and go to state 29
+    PLUS            shift and go to state 30
+    MINUS           shift and go to state 31
+    AND             shift and go to state 32
+    OR              shift and go to state 33
+    LESS_EQUAL      shift and go to state 34
+    GREAT_EQUAL     shift and go to state 35
+    NOT_EQUAL       shift and go to state 36
+    EQUAL           shift and go to state 37
+
+  ! TIMES           [ reduce using rule 23 (expression -> expression EQUAL expression .) ]
+  ! DIVIDE          [ reduce using rule 23 (expression -> expression EQUAL expression .) ]
+  ! PLUS            [ reduce using rule 23 (expression -> expression EQUAL expression .) ]
+  ! MINUS           [ reduce using rule 23 (expression -> expression EQUAL expression .) ]
+  ! AND             [ reduce using rule 23 (expression -> expression EQUAL expression .) ]
+  ! OR              [ reduce using rule 23 (expression -> expression EQUAL expression .) ]
+  ! LESS_EQUAL      [ reduce using rule 23 (expression -> expression EQUAL expression .) ]
+  ! GREAT_EQUAL     [ reduce using rule 23 (expression -> expression EQUAL expression .) ]
+  ! NOT_EQUAL       [ reduce using rule 23 (expression -> expression EQUAL expression .) ]
+  ! EQUAL           [ reduce using rule 23 (expression -> expression EQUAL expression .) ]
+
+
+state 63
+
+    (45) attribution_statement -> IDENTIFIER ATTRIBUTION term .
+    (2) term -> term . measure_unit
+    (3) measure_unit -> . MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT
+    (4) measure_unit -> . MEASUREMENT_UNIT
+
+    IDENTIFIER      reduce using rule 45 (attribution_statement -> IDENTIFIER ATTRIBUTION term .)
+    LSQUARE_BRACKET reduce using rule 45 (attribution_statement -> IDENTIFIER ATTRIBUTION term .)
+    INTEGER         reduce using rule 45 (attribution_statement -> IDENTIFIER ATTRIBUTION term .)
+    FLOAT           reduce using rule 45 (attribution_statement -> IDENTIFIER ATTRIBUTION term .)
+    LPAREN          reduce using rule 45 (attribution_statement -> IDENTIFIER ATTRIBUTION term .)
+    BOOL            reduce using rule 45 (attribution_statement -> IDENTIFIER ATTRIBUTION term .)
+    LOAD            reduce using rule 45 (attribution_statement -> IDENTIFIER ATTRIBUTION term .)
+    IF              reduce using rule 45 (attribution_statement -> IDENTIFIER ATTRIBUTION term .)
+    WHILE           reduce using rule 45 (attribution_statement -> IDENTIFIER ATTRIBUTION term .)
+    TP_OBJECT       reduce using rule 45 (attribution_statement -> IDENTIFIER ATTRIBUTION term .)
+    TP_INTEGER      reduce using rule 45 (attribution_statement -> IDENTIFIER ATTRIBUTION term .)
+    TP_FLOAT        reduce using rule 45 (attribution_statement -> IDENTIFIER ATTRIBUTION term .)
+    TP_BOOL         reduce using rule 45 (attribution_statement -> IDENTIFIER ATTRIBUTION term .)
+    TP_ARRAY        reduce using rule 45 (attribution_statement -> IDENTIFIER ATTRIBUTION term .)
+    $end            reduce using rule 45 (attribution_statement -> IDENTIFIER ATTRIBUTION term .)
+    RBRACKET        reduce using rule 45 (attribution_statement -> IDENTIFIER ATTRIBUTION term .)
+    MEASUREMENT_UNIT shift and go to state 41
+
+    measure_unit                   shift and go to state 40
+
+state 64
+
+    (46) term -> IDENTIFIER LBRACKET term . RBRACKET ATTRIBUTION term
+    (2) term -> term . measure_unit
+    (3) measure_unit -> . MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT
+    (4) measure_unit -> . MEASUREMENT_UNIT
+
+    RBRACKET        shift and go to state 74
+    MEASUREMENT_UNIT shift and go to state 41
+
+    measure_unit                   shift and go to state 40
+
+state 65
+
+    (3) measure_unit -> MEASUREMENT_UNIT DIVIDE . MEASUREMENT_UNIT
+
+    MEASUREMENT_UNIT shift and go to state 75
+
+
+state 66
+
+    (43) attribution_statement -> type IDENTIFIER empty .
+
+    IDENTIFIER      reduce using rule 43 (attribution_statement -> type IDENTIFIER empty .)
+    LSQUARE_BRACKET reduce using rule 43 (attribution_statement -> type IDENTIFIER empty .)
+    INTEGER         reduce using rule 43 (attribution_statement -> type IDENTIFIER empty .)
+    FLOAT           reduce using rule 43 (attribution_statement -> type IDENTIFIER empty .)
+    LPAREN          reduce using rule 43 (attribution_statement -> type IDENTIFIER empty .)
+    BOOL            reduce using rule 43 (attribution_statement -> type IDENTIFIER empty .)
+    LOAD            reduce using rule 43 (attribution_statement -> type IDENTIFIER empty .)
+    IF              reduce using rule 43 (attribution_statement -> type IDENTIFIER empty .)
+    WHILE           reduce using rule 43 (attribution_statement -> type IDENTIFIER empty .)
+    TP_OBJECT       reduce using rule 43 (attribution_statement -> type IDENTIFIER empty .)
+    TP_INTEGER      reduce using rule 43 (attribution_statement -> type IDENTIFIER empty .)
+    TP_FLOAT        reduce using rule 43 (attribution_statement -> type IDENTIFIER empty .)
+    TP_BOOL         reduce using rule 43 (attribution_statement -> type IDENTIFIER empty .)
+    TP_ARRAY        reduce using rule 43 (attribution_statement -> type IDENTIFIER empty .)
+    $end            reduce using rule 43 (attribution_statement -> type IDENTIFIER empty .)
+    RBRACKET        reduce using rule 43 (attribution_statement -> type IDENTIFIER empty .)
+
+
+state 67
+
+    (44) attribution_statement -> type IDENTIFIER ATTRIBUTION . term
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LSQUARE_BRACKET shift and go to state 14
+
+    term                           shift and go to state 76
+    array                          shift and go to state 48
+
+state 68
+
+    (38) array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .
+
+    IDENTIFIER      reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    LSQUARE_BRACKET reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    INTEGER         reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    FLOAT           reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    LPAREN          reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    BOOL            reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    LOAD            reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    IF              reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    WHILE           reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    TP_OBJECT       reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    TP_INTEGER      reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    TP_FLOAT        reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    TP_BOOL         reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    TP_ARRAY        reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    $end            reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    MEASUREMENT_UNIT reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    TIMES           reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    DIVIDE          reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    PLUS            reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    MINUS           reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    AND             reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    OR              reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    LESS_EQUAL      reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    GREAT_EQUAL     reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    NOT_EQUAL       reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    EQUAL           reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    RBRACKET        reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    RSQUARE_BRACKET reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    DOTCOMMA        reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+    RPAREN          reduce using rule 38 (array -> LSQUARE_BRACKET list_terms RSQUARE_BRACKET .)
+
+
+state 69
+
+    (39) list_terms -> list_terms DOTCOMMA . term
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LSQUARE_BRACKET shift and go to state 14
+
+    term                           shift and go to state 77
+    array                          shift and go to state 48
+
+state 70
+
+    (26) term -> LPAREN expression RPAREN .
+
+    MEASUREMENT_UNIT reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    TIMES           reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    PLUS            reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    AND             reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    OR              reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    LESS_EQUAL      reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    GREAT_EQUAL     reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    NOT_EQUAL       reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    EQUAL           reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    IDENTIFIER      reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    LSQUARE_BRACKET reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    INTEGER         reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    FLOAT           reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    LPAREN          reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    BOOL            reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    LOAD            reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    IF              reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    WHILE           reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    TP_OBJECT       reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    TP_INTEGER      reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    TP_FLOAT        reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    TP_BOOL         reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    TP_ARRAY        reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    $end            reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    RBRACKET        reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    RSQUARE_BRACKET reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    DOTCOMMA        reduce using rule 26 (term -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 26 (term -> LPAREN expression RPAREN .)
+
+
+state 71
+
+    (30) load_statement -> LOAD STRING FROM . STRING WHERE expression
+
+    STRING          shift and go to state 78
+
+
+state 72
+
+    (31) if_statement -> IF LPAREN expression . RPAREN LBRACKET command_sequence RBRACKET else_statement
+    (32) if_statement -> IF LPAREN expression . RPAREN LBRACKET command_sequence RBRACKET empty
+    (14) expression -> expression . TIMES term
+    (15) expression -> expression . DIVIDE term
+    (16) expression -> expression . PLUS term
+    (17) expression -> expression . MINUS term
+    (18) expression -> expression . AND term
+    (19) expression -> expression . OR term
+    (20) expression -> expression . LESS_EQUAL expression
+    (21) expression -> expression . GREAT_EQUAL expression
+    (22) expression -> expression . NOT_EQUAL expression
+    (23) expression -> expression . EQUAL expression
+
+    RPAREN          shift and go to state 79
+    TIMES           shift and go to state 28
+    DIVIDE          shift and go to state 29
+    PLUS            shift and go to state 30
+    MINUS           shift and go to state 31
+    AND             shift and go to state 32
+    OR              shift and go to state 33
+    LESS_EQUAL      shift and go to state 34
+    GREAT_EQUAL     shift and go to state 35
+    NOT_EQUAL       shift and go to state 36
+    EQUAL           shift and go to state 37
+
+
+state 73
+
+    (37) while_statement -> WHILE LPAREN expression . RPAREN DO LBRACKET command_sequence RBRACKET
+    (14) expression -> expression . TIMES term
+    (15) expression -> expression . DIVIDE term
+    (16) expression -> expression . PLUS term
+    (17) expression -> expression . MINUS term
+    (18) expression -> expression . AND term
+    (19) expression -> expression . OR term
+    (20) expression -> expression . LESS_EQUAL expression
+    (21) expression -> expression . GREAT_EQUAL expression
+    (22) expression -> expression . NOT_EQUAL expression
+    (23) expression -> expression . EQUAL expression
+
+    RPAREN          shift and go to state 80
+    TIMES           shift and go to state 28
+    DIVIDE          shift and go to state 29
+    PLUS            shift and go to state 30
+    MINUS           shift and go to state 31
+    AND             shift and go to state 32
+    OR              shift and go to state 33
+    LESS_EQUAL      shift and go to state 34
+    GREAT_EQUAL     shift and go to state 35
+    NOT_EQUAL       shift and go to state 36
+    EQUAL           shift and go to state 37
+
+
+state 74
+
+    (46) term -> IDENTIFIER LBRACKET term RBRACKET . ATTRIBUTION term
+
+    ATTRIBUTION     shift and go to state 81
+
+
+state 75
+
+    (3) measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .
+
+    MEASUREMENT_UNIT reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    TIMES           reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    DIVIDE          reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    PLUS            reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    MINUS           reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    AND             reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    OR              reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    LESS_EQUAL      reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    GREAT_EQUAL     reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    NOT_EQUAL       reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    EQUAL           reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    IDENTIFIER      reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    LSQUARE_BRACKET reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    INTEGER         reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    FLOAT           reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    LPAREN          reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    BOOL            reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    LOAD            reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    IF              reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    WHILE           reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    TP_OBJECT       reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    TP_INTEGER      reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    TP_FLOAT        reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    TP_BOOL         reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    TP_ARRAY        reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    $end            reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    RBRACKET        reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    RSQUARE_BRACKET reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    DOTCOMMA        reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+    RPAREN          reduce using rule 3 (measure_unit -> MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT .)
+
+
+state 76
+
+    (44) attribution_statement -> type IDENTIFIER ATTRIBUTION term .
+    (2) term -> term . measure_unit
+    (3) measure_unit -> . MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT
+    (4) measure_unit -> . MEASUREMENT_UNIT
+
+    IDENTIFIER      reduce using rule 44 (attribution_statement -> type IDENTIFIER ATTRIBUTION term .)
+    LSQUARE_BRACKET reduce using rule 44 (attribution_statement -> type IDENTIFIER ATTRIBUTION term .)
+    INTEGER         reduce using rule 44 (attribution_statement -> type IDENTIFIER ATTRIBUTION term .)
+    FLOAT           reduce using rule 44 (attribution_statement -> type IDENTIFIER ATTRIBUTION term .)
+    LPAREN          reduce using rule 44 (attribution_statement -> type IDENTIFIER ATTRIBUTION term .)
+    BOOL            reduce using rule 44 (attribution_statement -> type IDENTIFIER ATTRIBUTION term .)
+    LOAD            reduce using rule 44 (attribution_statement -> type IDENTIFIER ATTRIBUTION term .)
+    IF              reduce using rule 44 (attribution_statement -> type IDENTIFIER ATTRIBUTION term .)
+    WHILE           reduce using rule 44 (attribution_statement -> type IDENTIFIER ATTRIBUTION term .)
+    TP_OBJECT       reduce using rule 44 (attribution_statement -> type IDENTIFIER ATTRIBUTION term .)
+    TP_INTEGER      reduce using rule 44 (attribution_statement -> type IDENTIFIER ATTRIBUTION term .)
+    TP_FLOAT        reduce using rule 44 (attribution_statement -> type IDENTIFIER ATTRIBUTION term .)
+    TP_BOOL         reduce using rule 44 (attribution_statement -> type IDENTIFIER ATTRIBUTION term .)
+    TP_ARRAY        reduce using rule 44 (attribution_statement -> type IDENTIFIER ATTRIBUTION term .)
+    $end            reduce using rule 44 (attribution_statement -> type IDENTIFIER ATTRIBUTION term .)
+    RBRACKET        reduce using rule 44 (attribution_statement -> type IDENTIFIER ATTRIBUTION term .)
+    MEASUREMENT_UNIT shift and go to state 41
+
+    measure_unit                   shift and go to state 40
+
+state 77
+
+    (39) list_terms -> list_terms DOTCOMMA term .
+    (2) term -> term . measure_unit
+    (3) measure_unit -> . MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT
+    (4) measure_unit -> . MEASUREMENT_UNIT
+
+    RSQUARE_BRACKET reduce using rule 39 (list_terms -> list_terms DOTCOMMA term .)
+    DOTCOMMA        reduce using rule 39 (list_terms -> list_terms DOTCOMMA term .)
+    MEASUREMENT_UNIT shift and go to state 41
+
+    measure_unit                   shift and go to state 40
+
+state 78
+
+    (30) load_statement -> LOAD STRING FROM STRING . WHERE expression
+
+    WHERE           shift and go to state 82
+
+
+state 79
+
+    (31) if_statement -> IF LPAREN expression RPAREN . LBRACKET command_sequence RBRACKET else_statement
+    (32) if_statement -> IF LPAREN expression RPAREN . LBRACKET command_sequence RBRACKET empty
+
+    LBRACKET        shift and go to state 83
+
+
+state 80
+
+    (37) while_statement -> WHILE LPAREN expression RPAREN . DO LBRACKET command_sequence RBRACKET
+
+    DO              shift and go to state 84
+
+
+state 81
+
+    (46) term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION . term
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LSQUARE_BRACKET shift and go to state 14
+
+    term                           shift and go to state 85
+    array                          shift and go to state 48
+
+state 82
+
+    (30) load_statement -> LOAD STRING FROM STRING WHERE . expression
+    (5) expression -> . term
+    (13) expression -> . load_statement
+    (14) expression -> . expression TIMES term
+    (15) expression -> . expression DIVIDE term
+    (16) expression -> . expression PLUS term
+    (17) expression -> . expression MINUS term
+    (18) expression -> . expression AND term
+    (19) expression -> . expression OR term
+    (20) expression -> . expression LESS_EQUAL expression
+    (21) expression -> . expression GREAT_EQUAL expression
+    (22) expression -> . expression NOT_EQUAL expression
+    (23) expression -> . expression EQUAL expression
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (30) load_statement -> . LOAD STRING FROM STRING WHERE expression
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    IDENTIFIER      shift and go to state 47
+    LOAD            shift and go to state 19
+    LSQUARE_BRACKET shift and go to state 14
+
+    expression                     shift and go to state 86
+    term                           shift and go to state 9
+    load_statement                 shift and go to state 10
+    array                          shift and go to state 48
+
+state 83
+
+    (31) if_statement -> IF LPAREN expression RPAREN LBRACKET . command_sequence RBRACKET else_statement
+    (32) if_statement -> IF LPAREN expression RPAREN LBRACKET . command_sequence RBRACKET empty
+    (6) command_sequence -> . command
+    (7) command_sequence -> . command command_sequence
+    (8) command -> . expression
+    (9) command -> . control_operations
+    (10) command -> . attribution_statement
+    (11) command -> . IDENTIFIER
+    (12) command -> . array
+    (5) expression -> . term
+    (13) expression -> . load_statement
+    (14) expression -> . expression TIMES term
+    (15) expression -> . expression DIVIDE term
+    (16) expression -> . expression PLUS term
+    (17) expression -> . expression MINUS term
+    (18) expression -> . expression AND term
+    (19) expression -> . expression OR term
+    (20) expression -> . expression LESS_EQUAL expression
+    (21) expression -> . expression GREAT_EQUAL expression
+    (22) expression -> . expression NOT_EQUAL expression
+    (23) expression -> . expression EQUAL expression
+    (35) control_operations -> . if_statement
+    (36) control_operations -> . while_statement
+    (43) attribution_statement -> . type IDENTIFIER empty
+    (44) attribution_statement -> . type IDENTIFIER ATTRIBUTION term
+    (45) attribution_statement -> . IDENTIFIER ATTRIBUTION term
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (30) load_statement -> . LOAD STRING FROM STRING WHERE expression
+    (31) if_statement -> . IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement
+    (32) if_statement -> . IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty
+    (37) while_statement -> . WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET
+    (47) type -> . TP_OBJECT
+    (48) type -> . TP_INTEGER
+    (49) type -> . TP_FLOAT
+    (50) type -> . TP_BOOL
+    (51) type -> . TP_ARRAY
+
+    IDENTIFIER      shift and go to state 7
+    LSQUARE_BRACKET shift and go to state 14
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    LOAD            shift and go to state 19
+    IF              shift and go to state 20
+    WHILE           shift and go to state 21
+    TP_OBJECT       shift and go to state 22
+    TP_INTEGER      shift and go to state 23
+    TP_FLOAT        shift and go to state 24
+    TP_BOOL         shift and go to state 25
+    TP_ARRAY        shift and go to state 26
+
+    expression                     shift and go to state 4
+    command_sequence               shift and go to state 87
+    command                        shift and go to state 3
+    control_operations             shift and go to state 5
+    attribution_statement          shift and go to state 6
+    array                          shift and go to state 8
+    term                           shift and go to state 9
+    load_statement                 shift and go to state 10
+    if_statement                   shift and go to state 11
+    while_statement                shift and go to state 12
+    type                           shift and go to state 13
+
+state 84
+
+    (37) while_statement -> WHILE LPAREN expression RPAREN DO . LBRACKET command_sequence RBRACKET
+
+    LBRACKET        shift and go to state 88
+
+
+state 85
+
+    (46) term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .
+    (2) term -> term . measure_unit
+    (3) measure_unit -> . MEASUREMENT_UNIT DIVIDE MEASUREMENT_UNIT
+    (4) measure_unit -> . MEASUREMENT_UNIT
+
+  ! shift/reduce conflict for MEASUREMENT_UNIT resolved as shift
+    TIMES           reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    DIVIDE          reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    PLUS            reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    MINUS           reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    AND             reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    OR              reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    LESS_EQUAL      reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    GREAT_EQUAL     reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    NOT_EQUAL       reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    EQUAL           reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    IDENTIFIER      reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    LSQUARE_BRACKET reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    INTEGER         reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    FLOAT           reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    LPAREN          reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    BOOL            reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    LOAD            reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    IF              reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    WHILE           reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    TP_OBJECT       reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    TP_INTEGER      reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    TP_FLOAT        reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    TP_BOOL         reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    TP_ARRAY        reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    $end            reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    RBRACKET        reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    RSQUARE_BRACKET reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    DOTCOMMA        reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    RPAREN          reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .)
+    MEASUREMENT_UNIT shift and go to state 41
+
+  ! MEASUREMENT_UNIT [ reduce using rule 46 (term -> IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term .) ]
+
+    measure_unit                   shift and go to state 40
+
+state 86
+
+    (30) load_statement -> LOAD STRING FROM STRING WHERE expression .
+    (14) expression -> expression . TIMES term
+    (15) expression -> expression . DIVIDE term
+    (16) expression -> expression . PLUS term
+    (17) expression -> expression . MINUS term
+    (18) expression -> expression . AND term
+    (19) expression -> expression . OR term
+    (20) expression -> expression . LESS_EQUAL expression
+    (21) expression -> expression . GREAT_EQUAL expression
+    (22) expression -> expression . NOT_EQUAL expression
+    (23) expression -> expression . EQUAL expression
+
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for LESS_EQUAL resolved as shift
+  ! shift/reduce conflict for GREAT_EQUAL resolved as shift
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+    IDENTIFIER      reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .)
+    LSQUARE_BRACKET reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .)
+    INTEGER         reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .)
+    FLOAT           reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .)
+    LPAREN          reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .)
+    BOOL            reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .)
+    LOAD            reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .)
+    IF              reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .)
+    WHILE           reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .)
+    TP_OBJECT       reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .)
+    TP_INTEGER      reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .)
+    TP_FLOAT        reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .)
+    TP_BOOL         reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .)
+    TP_ARRAY        reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .)
+    $end            reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .)
+    RBRACKET        reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .)
+    RSQUARE_BRACKET reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .)
+    DOTCOMMA        reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .)
+    RPAREN          reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .)
+    TIMES           shift and go to state 28
+    DIVIDE          shift and go to state 29
+    PLUS            shift and go to state 30
+    MINUS           shift and go to state 31
+    AND             shift and go to state 32
+    OR              shift and go to state 33
+    LESS_EQUAL      shift and go to state 34
+    GREAT_EQUAL     shift and go to state 35
+    NOT_EQUAL       shift and go to state 36
+    EQUAL           shift and go to state 37
+
+  ! TIMES           [ reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .) ]
+  ! DIVIDE          [ reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .) ]
+  ! PLUS            [ reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .) ]
+  ! MINUS           [ reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .) ]
+  ! AND             [ reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .) ]
+  ! OR              [ reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .) ]
+  ! LESS_EQUAL      [ reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .) ]
+  ! GREAT_EQUAL     [ reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .) ]
+  ! NOT_EQUAL       [ reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .) ]
+  ! EQUAL           [ reduce using rule 30 (load_statement -> LOAD STRING FROM STRING WHERE expression .) ]
+
+
+state 87
+
+    (31) if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence . RBRACKET else_statement
+    (32) if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence . RBRACKET empty
+
+    RBRACKET        shift and go to state 89
+
+
+state 88
+
+    (37) while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET . command_sequence RBRACKET
+    (6) command_sequence -> . command
+    (7) command_sequence -> . command command_sequence
+    (8) command -> . expression
+    (9) command -> . control_operations
+    (10) command -> . attribution_statement
+    (11) command -> . IDENTIFIER
+    (12) command -> . array
+    (5) expression -> . term
+    (13) expression -> . load_statement
+    (14) expression -> . expression TIMES term
+    (15) expression -> . expression DIVIDE term
+    (16) expression -> . expression PLUS term
+    (17) expression -> . expression MINUS term
+    (18) expression -> . expression AND term
+    (19) expression -> . expression OR term
+    (20) expression -> . expression LESS_EQUAL expression
+    (21) expression -> . expression GREAT_EQUAL expression
+    (22) expression -> . expression NOT_EQUAL expression
+    (23) expression -> . expression EQUAL expression
+    (35) control_operations -> . if_statement
+    (36) control_operations -> . while_statement
+    (43) attribution_statement -> . type IDENTIFIER empty
+    (44) attribution_statement -> . type IDENTIFIER ATTRIBUTION term
+    (45) attribution_statement -> . IDENTIFIER ATTRIBUTION term
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (30) load_statement -> . LOAD STRING FROM STRING WHERE expression
+    (31) if_statement -> . IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement
+    (32) if_statement -> . IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty
+    (37) while_statement -> . WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET
+    (47) type -> . TP_OBJECT
+    (48) type -> . TP_INTEGER
+    (49) type -> . TP_FLOAT
+    (50) type -> . TP_BOOL
+    (51) type -> . TP_ARRAY
+
+    IDENTIFIER      shift and go to state 7
+    LSQUARE_BRACKET shift and go to state 14
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    LOAD            shift and go to state 19
+    IF              shift and go to state 20
+    WHILE           shift and go to state 21
+    TP_OBJECT       shift and go to state 22
+    TP_INTEGER      shift and go to state 23
+    TP_FLOAT        shift and go to state 24
+    TP_BOOL         shift and go to state 25
+    TP_ARRAY        shift and go to state 26
+
+    expression                     shift and go to state 4
+    command_sequence               shift and go to state 90
+    command                        shift and go to state 3
+    control_operations             shift and go to state 5
+    attribution_statement          shift and go to state 6
+    array                          shift and go to state 8
+    term                           shift and go to state 9
+    load_statement                 shift and go to state 10
+    if_statement                   shift and go to state 11
+    while_statement                shift and go to state 12
+    type                           shift and go to state 13
+
+state 89
+
+    (31) if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET . else_statement
+    (32) if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET . empty
+    (33) else_statement -> . ELSE LBRACKET command_sequence RBRACKET
+    (34) else_statement -> . ELSE if_statement
+    (52) empty -> .
+
+    ELSE            shift and go to state 93
+    IDENTIFIER      reduce using rule 52 (empty -> .)
+    LSQUARE_BRACKET reduce using rule 52 (empty -> .)
+    INTEGER         reduce using rule 52 (empty -> .)
+    FLOAT           reduce using rule 52 (empty -> .)
+    LPAREN          reduce using rule 52 (empty -> .)
+    BOOL            reduce using rule 52 (empty -> .)
+    LOAD            reduce using rule 52 (empty -> .)
+    IF              reduce using rule 52 (empty -> .)
+    WHILE           reduce using rule 52 (empty -> .)
+    TP_OBJECT       reduce using rule 52 (empty -> .)
+    TP_INTEGER      reduce using rule 52 (empty -> .)
+    TP_FLOAT        reduce using rule 52 (empty -> .)
+    TP_BOOL         reduce using rule 52 (empty -> .)
+    TP_ARRAY        reduce using rule 52 (empty -> .)
+    $end            reduce using rule 52 (empty -> .)
+    RBRACKET        reduce using rule 52 (empty -> .)
+
+    else_statement                 shift and go to state 91
+    empty                          shift and go to state 92
+
+state 90
+
+    (37) while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET command_sequence . RBRACKET
+
+    RBRACKET        shift and go to state 94
+
+
+state 91
+
+    (31) if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement .
+
+    IDENTIFIER      reduce using rule 31 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement .)
+    LSQUARE_BRACKET reduce using rule 31 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement .)
+    INTEGER         reduce using rule 31 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement .)
+    FLOAT           reduce using rule 31 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement .)
+    LPAREN          reduce using rule 31 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement .)
+    BOOL            reduce using rule 31 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement .)
+    LOAD            reduce using rule 31 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement .)
+    IF              reduce using rule 31 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement .)
+    WHILE           reduce using rule 31 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement .)
+    TP_OBJECT       reduce using rule 31 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement .)
+    TP_INTEGER      reduce using rule 31 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement .)
+    TP_FLOAT        reduce using rule 31 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement .)
+    TP_BOOL         reduce using rule 31 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement .)
+    TP_ARRAY        reduce using rule 31 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement .)
+    $end            reduce using rule 31 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement .)
+    RBRACKET        reduce using rule 31 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement .)
+
+
+state 92
+
+    (32) if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty .
+
+    IDENTIFIER      reduce using rule 32 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty .)
+    LSQUARE_BRACKET reduce using rule 32 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty .)
+    INTEGER         reduce using rule 32 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty .)
+    FLOAT           reduce using rule 32 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty .)
+    LPAREN          reduce using rule 32 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty .)
+    BOOL            reduce using rule 32 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty .)
+    LOAD            reduce using rule 32 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty .)
+    IF              reduce using rule 32 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty .)
+    WHILE           reduce using rule 32 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty .)
+    TP_OBJECT       reduce using rule 32 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty .)
+    TP_INTEGER      reduce using rule 32 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty .)
+    TP_FLOAT        reduce using rule 32 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty .)
+    TP_BOOL         reduce using rule 32 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty .)
+    TP_ARRAY        reduce using rule 32 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty .)
+    $end            reduce using rule 32 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty .)
+    RBRACKET        reduce using rule 32 (if_statement -> IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty .)
+
+
+state 93
+
+    (33) else_statement -> ELSE . LBRACKET command_sequence RBRACKET
+    (34) else_statement -> ELSE . if_statement
+    (31) if_statement -> . IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement
+    (32) if_statement -> . IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty
+
+    LBRACKET        shift and go to state 95
+    IF              shift and go to state 20
+
+    if_statement                   shift and go to state 96
+
+state 94
+
+    (37) while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET .
+
+    IDENTIFIER      reduce using rule 37 (while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET .)
+    LSQUARE_BRACKET reduce using rule 37 (while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET .)
+    INTEGER         reduce using rule 37 (while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET .)
+    FLOAT           reduce using rule 37 (while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET .)
+    LPAREN          reduce using rule 37 (while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET .)
+    BOOL            reduce using rule 37 (while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET .)
+    LOAD            reduce using rule 37 (while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET .)
+    IF              reduce using rule 37 (while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET .)
+    WHILE           reduce using rule 37 (while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET .)
+    TP_OBJECT       reduce using rule 37 (while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET .)
+    TP_INTEGER      reduce using rule 37 (while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET .)
+    TP_FLOAT        reduce using rule 37 (while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET .)
+    TP_BOOL         reduce using rule 37 (while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET .)
+    TP_ARRAY        reduce using rule 37 (while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET .)
+    $end            reduce using rule 37 (while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET .)
+    RBRACKET        reduce using rule 37 (while_statement -> WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET .)
+
+
+state 95
+
+    (33) else_statement -> ELSE LBRACKET . command_sequence RBRACKET
+    (6) command_sequence -> . command
+    (7) command_sequence -> . command command_sequence
+    (8) command -> . expression
+    (9) command -> . control_operations
+    (10) command -> . attribution_statement
+    (11) command -> . IDENTIFIER
+    (12) command -> . array
+    (5) expression -> . term
+    (13) expression -> . load_statement
+    (14) expression -> . expression TIMES term
+    (15) expression -> . expression DIVIDE term
+    (16) expression -> . expression PLUS term
+    (17) expression -> . expression MINUS term
+    (18) expression -> . expression AND term
+    (19) expression -> . expression OR term
+    (20) expression -> . expression LESS_EQUAL expression
+    (21) expression -> . expression GREAT_EQUAL expression
+    (22) expression -> . expression NOT_EQUAL expression
+    (23) expression -> . expression EQUAL expression
+    (35) control_operations -> . if_statement
+    (36) control_operations -> . while_statement
+    (43) attribution_statement -> . type IDENTIFIER empty
+    (44) attribution_statement -> . type IDENTIFIER ATTRIBUTION term
+    (45) attribution_statement -> . IDENTIFIER ATTRIBUTION term
+    (38) array -> . LSQUARE_BRACKET list_terms RSQUARE_BRACKET
+    (2) term -> . term measure_unit
+    (24) term -> . INTEGER
+    (25) term -> . FLOAT
+    (26) term -> . LPAREN expression RPAREN
+    (27) term -> . BOOL
+    (28) term -> . IDENTIFIER
+    (29) term -> . array
+    (46) term -> . IDENTIFIER LBRACKET term RBRACKET ATTRIBUTION term
+    (30) load_statement -> . LOAD STRING FROM STRING WHERE expression
+    (31) if_statement -> . IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET else_statement
+    (32) if_statement -> . IF LPAREN expression RPAREN LBRACKET command_sequence RBRACKET empty
+    (37) while_statement -> . WHILE LPAREN expression RPAREN DO LBRACKET command_sequence RBRACKET
+    (47) type -> . TP_OBJECT
+    (48) type -> . TP_INTEGER
+    (49) type -> . TP_FLOAT
+    (50) type -> . TP_BOOL
+    (51) type -> . TP_ARRAY
+
+    IDENTIFIER      shift and go to state 7
+    LSQUARE_BRACKET shift and go to state 14
+    INTEGER         shift and go to state 15
+    FLOAT           shift and go to state 16
+    LPAREN          shift and go to state 17
+    BOOL            shift and go to state 18
+    LOAD            shift and go to state 19
+    IF              shift and go to state 20
+    WHILE           shift and go to state 21
+    TP_OBJECT       shift and go to state 22
+    TP_INTEGER      shift and go to state 23
+    TP_FLOAT        shift and go to state 24
+    TP_BOOL         shift and go to state 25
+    TP_ARRAY        shift and go to state 26
+
+    command_sequence               shift and go to state 97
+    command                        shift and go to state 3
+    expression                     shift and go to state 4
+    control_operations             shift and go to state 5
+    attribution_statement          shift and go to state 6
+    array                          shift and go to state 8
+    term                           shift and go to state 9
+    load_statement                 shift and go to state 10
+    if_statement                   shift and go to state 11
+    while_statement                shift and go to state 12
+    type                           shift and go to state 13
+
+state 96
+
+    (34) else_statement -> ELSE if_statement .
+
+    IDENTIFIER      reduce using rule 34 (else_statement -> ELSE if_statement .)
+    LSQUARE_BRACKET reduce using rule 34 (else_statement -> ELSE if_statement .)
+    INTEGER         reduce using rule 34 (else_statement -> ELSE if_statement .)
+    FLOAT           reduce using rule 34 (else_statement -> ELSE if_statement .)
+    LPAREN          reduce using rule 34 (else_statement -> ELSE if_statement .)
+    BOOL            reduce using rule 34 (else_statement -> ELSE if_statement .)
+    LOAD            reduce using rule 34 (else_statement -> ELSE if_statement .)
+    IF              reduce using rule 34 (else_statement -> ELSE if_statement .)
+    WHILE           reduce using rule 34 (else_statement -> ELSE if_statement .)
+    TP_OBJECT       reduce using rule 34 (else_statement -> ELSE if_statement .)
+    TP_INTEGER      reduce using rule 34 (else_statement -> ELSE if_statement .)
+    TP_FLOAT        reduce using rule 34 (else_statement -> ELSE if_statement .)
+    TP_BOOL         reduce using rule 34 (else_statement -> ELSE if_statement .)
+    TP_ARRAY        reduce using rule 34 (else_statement -> ELSE if_statement .)
+    $end            reduce using rule 34 (else_statement -> ELSE if_statement .)
+    RBRACKET        reduce using rule 34 (else_statement -> ELSE if_statement .)
+
+
+state 97
+
+    (33) else_statement -> ELSE LBRACKET command_sequence . RBRACKET
+
+    RBRACKET        shift and go to state 98
+
+
+state 98
+
+    (33) else_statement -> ELSE LBRACKET command_sequence RBRACKET .
+
+    IDENTIFIER      reduce using rule 33 (else_statement -> ELSE LBRACKET command_sequence RBRACKET .)
+    LSQUARE_BRACKET reduce using rule 33 (else_statement -> ELSE LBRACKET command_sequence RBRACKET .)
+    INTEGER         reduce using rule 33 (else_statement -> ELSE LBRACKET command_sequence RBRACKET .)
+    FLOAT           reduce using rule 33 (else_statement -> ELSE LBRACKET command_sequence RBRACKET .)
+    LPAREN          reduce using rule 33 (else_statement -> ELSE LBRACKET command_sequence RBRACKET .)
+    BOOL            reduce using rule 33 (else_statement -> ELSE LBRACKET command_sequence RBRACKET .)
+    LOAD            reduce using rule 33 (else_statement -> ELSE LBRACKET command_sequence RBRACKET .)
+    IF              reduce using rule 33 (else_statement -> ELSE LBRACKET command_sequence RBRACKET .)
+    WHILE           reduce using rule 33 (else_statement -> ELSE LBRACKET command_sequence RBRACKET .)
+    TP_OBJECT       reduce using rule 33 (else_statement -> ELSE LBRACKET command_sequence RBRACKET .)
+    TP_INTEGER      reduce using rule 33 (else_statement -> ELSE LBRACKET command_sequence RBRACKET .)
+    TP_FLOAT        reduce using rule 33 (else_statement -> ELSE LBRACKET command_sequence RBRACKET .)
+    TP_BOOL         reduce using rule 33 (else_statement -> ELSE LBRACKET command_sequence RBRACKET .)
+    TP_ARRAY        reduce using rule 33 (else_statement -> ELSE LBRACKET command_sequence RBRACKET .)
+    $end            reduce using rule 33 (else_statement -> ELSE LBRACKET command_sequence RBRACKET .)
+    RBRACKET        reduce using rule 33 (else_statement -> ELSE LBRACKET command_sequence RBRACKET .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for DIVIDE in state 41 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 59 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 59 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 59 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 59 resolved as shift
+WARNING: shift/reduce conflict for AND in state 59 resolved as shift
+WARNING: shift/reduce conflict for OR in state 59 resolved as shift
+WARNING: shift/reduce conflict for LESS_EQUAL in state 59 resolved as shift
+WARNING: shift/reduce conflict for GREAT_EQUAL in state 59 resolved as shift
+WARNING: shift/reduce conflict for NOT_EQUAL in state 59 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 59 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 60 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 60 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 60 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 60 resolved as shift
+WARNING: shift/reduce conflict for AND in state 60 resolved as shift
+WARNING: shift/reduce conflict for OR in state 60 resolved as shift
+WARNING: shift/reduce conflict for LESS_EQUAL in state 60 resolved as shift
+WARNING: shift/reduce conflict for GREAT_EQUAL in state 60 resolved as shift
+WARNING: shift/reduce conflict for NOT_EQUAL in state 60 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 60 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 61 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 61 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 61 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 61 resolved as shift
+WARNING: shift/reduce conflict for AND in state 61 resolved as shift
+WARNING: shift/reduce conflict for OR in state 61 resolved as shift
+WARNING: shift/reduce conflict for LESS_EQUAL in state 61 resolved as shift
+WARNING: shift/reduce conflict for GREAT_EQUAL in state 61 resolved as shift
+WARNING: shift/reduce conflict for NOT_EQUAL in state 61 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 61 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 62 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 62 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 62 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 62 resolved as shift
+WARNING: shift/reduce conflict for AND in state 62 resolved as shift
+WARNING: shift/reduce conflict for OR in state 62 resolved as shift
+WARNING: shift/reduce conflict for LESS_EQUAL in state 62 resolved as shift
+WARNING: shift/reduce conflict for GREAT_EQUAL in state 62 resolved as shift
+WARNING: shift/reduce conflict for NOT_EQUAL in state 62 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 62 resolved as shift
+WARNING: shift/reduce conflict for MEASUREMENT_UNIT in state 85 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 86 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 86 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 86 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 86 resolved as shift
+WARNING: shift/reduce conflict for AND in state 86 resolved as shift
+WARNING: shift/reduce conflict for OR in state 86 resolved as shift
+WARNING: shift/reduce conflict for LESS_EQUAL in state 86 resolved as shift
+WARNING: shift/reduce conflict for GREAT_EQUAL in state 86 resolved as shift
+WARNING: shift/reduce conflict for NOT_EQUAL in state 86 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 86 resolved as shift
+WARNING: reduce/reduce conflict in state 7 resolved using rule (command -> IDENTIFIER)
+WARNING: rejected rule (term -> IDENTIFIER) in state 7
+WARNING: reduce/reduce conflict in state 8 resolved using rule (command -> array)
+WARNING: rejected rule (term -> array) in state 8
